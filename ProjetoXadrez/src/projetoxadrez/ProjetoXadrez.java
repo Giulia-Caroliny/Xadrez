@@ -4,6 +4,9 @@
  */
 package projetoxadrez;
 
+import jogo.PartidaXadrez;
+import static projetoxadrez.ViewProvisorio.imprimirTabuleiro;
+
 /**
  *
  * @author giuli
@@ -14,7 +17,8 @@ public class ProjetoXadrez {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Olá Mundo!");
+        PartidaXadrez partida = new PartidaXadrez();
+        imprimirTabuleiro(partida.getPecas());
     }
     
 }
