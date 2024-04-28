@@ -8,7 +8,7 @@ package tabuleiro;
  *
  * @author giuli
  */
-public class XadrezException extends RuntimeException {
+public class XadrezException extends TabuleiroException {
 
     public XadrezException(String message) {
         super(message);
