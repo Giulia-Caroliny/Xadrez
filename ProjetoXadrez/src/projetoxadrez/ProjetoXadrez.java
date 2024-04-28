@@ -20,5 +20,5 @@ public class ProjetoXadrez {
         PartidaXadrez partida = new PartidaXadrez();
         imprimirTabuleiro(partida.getPecas());
     }
-    
+
 }

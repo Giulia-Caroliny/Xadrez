@@ -4,15 +4,22 @@
  */
 package jogo;
 
+import tabuleiro.Posicao;
+import tabuleiro.XadrezException;
+
 /**
  *
  * @author giuli
  */
 public class PosicaoXadrez {
+
     private int linha;
     private char coluna;
 
     public PosicaoXadrez(int linha, char coluna) {
+        if (linha > 8 || linha < 0 || coluna > 'h' || coluna < 'a') {
+            throw new XadrezException("Erro ao instanciar posição. Posições válidas estão entre a1 e h8");
+        }
         this.linha = linha;
         this.coluna = coluna;
     }
@@ -21,17 +28,21 @@ public class PosicaoXadrez {
         return linha;
     }
 
-    public void setLinha(int linha) {
-        this.linha = linha;
-    }
-
     public char getColuna() {
         return coluna;
     }
 
-    public void setColuna(char coluna) {
-        this.coluna = coluna;
+    protected Posicao posicaoTabuleiro() {
+        return new Posicao(8 - linha, coluna - 'a');
     }
-    
-    
+
+    protected PosicaoXadrez posicaoXadrez(Posicao pos) {
+        return new PosicaoXadrez(8 - pos.getLinha(), (char) ('a' - pos.getColuna()));
+    }
+
+    @Override
+    public String toString() {
+        return "" + coluna + linha;
+    }
+
 }
