@@ -32,6 +32,10 @@ public class ProjetoXadrez {
 
                 System.out.println("Coordenadas de origem:");
                 PosicaoXadrez origem = ViewProvisorio.lerPosicaoJogador(sc);
+                
+                boolean[][] b = partida.movimentosPossiveisImprimir(origem);
+                
+                ViewProvisorio.imprimirTabuleiro(partida.getPecas(), b);
 
                 System.out.println("Coordenadas de destino:");
                 PosicaoXadrez destino = ViewProvisorio.lerPosicaoJogador(sc);

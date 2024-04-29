@@ -21,9 +21,22 @@ public abstract class Pecas {
         return tab;
     }
 
-    public abstract boolean movimentosPossiveis();
+    public abstract boolean[][] movimentosPossiveis();
+
+    public boolean podeMovimenar(Posicao pos) {
+        return movimentosPossiveis()[pos.getLinha()][pos.getColuna()];
+    }
 
     public boolean existeMovimentoPossivel() {
-        return true;
+        boolean[][] aux = movimentosPossiveis();
+
+        for (int i = 0; i < aux.length; i++) {
+            for (int j = 0; j < aux.length; j++) {
+                if (aux[i][j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

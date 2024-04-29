@@ -6,6 +6,7 @@ package jogo.pecasXadrez;
 
 import jogo.Cores;
 import jogo.PecasXadrez;
+import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 
 /**
@@ -19,8 +20,21 @@ public class Rei extends PecasXadrez {
     }
 
     @Override
-    public boolean movimentosPossiveis() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean[][] movimentosPossiveis() {
+        boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (getTab().temPeca(new Posicao(i, j))) {
+                    b[i][j] = false;
+                } else if(i <= pos.getLinha() + 1|| i >= pos.getLinha() - 1 || j <= pos.getColuna() + 1 || j >= pos.getColuna() + 1) {
+                    b[i][j] = true;
+                } else {
+                    b[i][j] = false;
+                }
+            }
+        }
+        return b;
+        
     }
 
     @Override

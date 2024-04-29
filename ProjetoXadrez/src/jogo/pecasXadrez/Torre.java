@@ -6,6 +6,7 @@ package jogo.pecasXadrez;
 
 import jogo.Cores;
 import jogo.PecasXadrez;
+import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 
 /**
@@ -19,8 +20,51 @@ public class Torre extends PecasXadrez {
     }
 
     @Override
-    public boolean movimentosPossiveis() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean[][] movimentosPossiveis() {
+        boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
+        Posicao p = new Posicao(pos.getLinha() - 1, pos.getColuna());
+                
+        //acima
+        while (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+            p.setLinha(p.getLinha() - 1);
+        }
+        if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //abaixo
+        p.setLinha(pos.getLinha() + 1);
+        while (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+            p.setLinha(p.getLinha() + 1);
+        }
+        if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //esquerda
+        p.setLinha(pos.getLinha());
+        p.setColuna(pos.getColuna() - 1);
+        while (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+            p.setColuna(p.getColuna() - 1);
+        }
+        if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //direita
+        p.setColuna(pos.getColuna() + 1);
+        while (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+            p.setColuna(p.getColuna() + 1);
+        }
+        if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        return b;
     }
 
     @Override

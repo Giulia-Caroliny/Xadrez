@@ -5,6 +5,7 @@
 package jogo;
 
 import tabuleiro.Pecas;
+import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 
 /**
@@ -23,6 +24,11 @@ public abstract class PecasXadrez extends Pecas {
 
     public Cores getCor() {
         return cor;
+    }
+
+    protected boolean pecaOponente(Posicao pos) {
+        PecasXadrez p = (PecasXadrez) getTab().peca(pos);
+        return p != null && p.getCor() != cor;
     }
 
     public int getContagemMovimentos() {
