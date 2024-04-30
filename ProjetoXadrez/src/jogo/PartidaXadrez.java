@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import jogo.pecasXadrez.Bispo;
+import jogo.pecasXadrez.Cavalo;
 import jogo.pecasXadrez.Peao;
 import jogo.pecasXadrez.Rei;
 import jogo.pecasXadrez.Torre;
@@ -244,6 +245,12 @@ public class PartidaXadrez {
         lugarNovaPeca('f', 1, new Bispo(Cores.BRANCAS, tab));
         lugarNovaPeca('c', 8, new Bispo(Cores.PRETAS, tab));
         lugarNovaPeca('f', 8, new Bispo(Cores.PRETAS, tab));
+        
+        //cavalos
+        lugarNovaPeca('b', 1, new Cavalo(Cores.BRANCAS, tab));
+        lugarNovaPeca('g', 1, new Cavalo(Cores.BRANCAS, tab));
+        lugarNovaPeca('b', 8, new Cavalo(Cores.PRETAS, tab));
+        lugarNovaPeca('g', 8, new Cavalo(Cores.PRETAS, tab));
     }
 
 }

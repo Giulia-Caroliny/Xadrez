@@ -13,12 +13,12 @@ import tabuleiro.Tabuleiro;
  *
  * @author giuli
  */
-public class Rei extends PecasXadrez {
+public class Cavalo extends PecasXadrez{
 
-    public Rei(Cores cor, Tabuleiro tab) {
+    public Cavalo(Cores cor, Tabuleiro tab) {
         super(cor, tab);
     }
-
+    
     public boolean podeMover(Posicao pos) {
         PecasXadrez pe = (PecasXadrez) getTab().peca(pos);
         return pe == null || pe.getCor() != getCor();
@@ -27,62 +27,61 @@ public class Rei extends PecasXadrez {
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
-        Posicao p = new Posicao(pos.getLinha() - 1, pos.getColuna() - 1);
+        Posicao p = new Posicao(pos.getLinha() - 2, pos.getColuna() - 1);
 
-        //diagonal superior esquerda
+        //superior esquerda 1
         if (getTab().posicaoExiste(p) && podeMover(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
 
-        //acima
-        p.setColuna(pos.getColuna());
-        if (getTab().posicaoExiste(p) && podeMover(p)) {
-            b[p.getLinha()][p.getColuna()] = true;
-        }
-
-        //diagonal superior direita
+        //superior direita 1
         p.setColuna(pos.getColuna() + 1);
         if (getTab().posicaoExiste(p) && podeMover(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
 
-        //direita
-        p.setLinha(pos.getLinha());
+        //superior direita 2
+        p.setLinha(pos.getLinha() - 1);
+        p.setColuna(pos.getColuna() + 2);
         if (getTab().posicaoExiste(p) && podeMover(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
 
-        //diagonal inferior direita
+        //superior esquerda 2
+        p.setColuna(pos.getColuna() - 2);
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //inferior esquerda 1
         p.setLinha(pos.getLinha() + 1);
         if (getTab().posicaoExiste(p) && podeMover(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
 
-        //abaixo
-        p.setColuna(pos.getColuna());
+        //inferior direita 1
+        p.setColuna(pos.getColuna() + 2);
         if (getTab().posicaoExiste(p) && podeMover(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
 
-        //diagonal inferior esquerda
+        //inferior direita 2
+        p.setLinha(pos.getLinha() + 2);
+        p.setColuna(pos.getColuna() + 1);
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+
+        //inferior esquerda 2
         p.setColuna(pos.getColuna() - 1);
         if (getTab().posicaoExiste(p) && podeMover(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
-
-        //esquerda
-        p.setColuna(pos.getColuna() - 1);
-        p.setLinha(pos.getLinha());
-        if (getTab().posicaoExiste(p) && podeMover(p)) {
-            b[p.getLinha()][p.getColuna()] = true;
-        }
-
         return b;
     }
 
     @Override
     public String toString() {
-        return "R ";
+        return "C ";
     }
-
 }
