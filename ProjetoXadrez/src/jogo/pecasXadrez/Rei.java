@@ -18,21 +18,65 @@ public class Rei extends PecasXadrez {
     public Rei(Cores cor, Tabuleiro tab) {
         super(cor, tab);
     }
+    
+    public boolean podeMover(Posicao pos){
+        PecasXadrez pe = (PecasXadrez) getTab().peca(pos);
+        return pe == null || pe.getCor() != getCor();
+    }
 
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (getTab().temPeca(new Posicao(i, j))) {
-                    b[i][j] = false;
-                } else if(i <= pos.getLinha() + 1|| i >= pos.getLinha() - 1 || j <= pos.getColuna() + 1 || j >= pos.getColuna() + 1) {
-                    b[i][j] = true;
-                } else {
-                    b[i][j] = false;
-                }
-            }
+        Posicao p = new Posicao(pos.getLinha() - 1, pos.getColuna() - 1);
+        
+        //diagonal superior esquerda
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
         }
+        
+        //acima
+        p.setColuna(pos.getColuna());
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //diagonal superior direita
+        p.setColuna(pos.getColuna() + 1);
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //direita
+        p.setLinha(pos.getLinha());
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //diagonal inferior direita
+        p.setLinha(pos.getLinha() + 1);
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //abaixo
+        p.setColuna(pos.getColuna());
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //diagonal inferior esquerda
+        p.setColuna(pos.getColuna() - 1);
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //esquerda
+        p.setColuna(pos.getColuna() - 1);
+        p.setLinha(pos.getLinha());
+        if (getTab().posicaoExiste(p) && podeMover(p)) {
+            b[p.getLinha()][p.getColuna()] = true;
+        }
+        
         return b;
         
     }

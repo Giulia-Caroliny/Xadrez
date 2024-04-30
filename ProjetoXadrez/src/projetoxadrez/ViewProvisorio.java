@@ -5,8 +5,11 @@
 package projetoxadrez;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import jogo.Cores;
+import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
 import jogo.PosicaoXadrez;
 
@@ -19,7 +22,7 @@ public class ViewProvisorio {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
-    
+
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 
     public static PosicaoXadrez lerPosicaoJogador(Scanner sc) {
@@ -33,6 +36,14 @@ public class ViewProvisorio {
         }
     }
 
+    public static void imprimirPartida(PartidaXadrez partida, List<PecasXadrez> pecas) {
+        imprimirTabuleiro(partida.getPecas());
+        System.out.println("");
+        System.out.println("Turno: " + partida.getTurno());
+        imprimirPecasCapturadas(pecas);
+        System.out.println("Aguardando jogador: " + partida.getJogadorVez());
+    }
+
     public static void imprimirTabuleiro(PecasXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + " ");
@@ -43,7 +54,7 @@ public class ViewProvisorio {
         }
         System.out.println("  a b c d e f g h");
     }
-    
+
     public static void imprimirTabuleiro(PecasXadrez[][] pecas, boolean[][] movimentosPossiveis) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + " ");
@@ -69,5 +80,14 @@ public class ViewProvisorio {
             }
         }
         System.out.print("");
+    }
+    
+    private static void imprimirPecasCapturadas(List<PecasXadrez> pecas){
+        List<PecasXadrez> pecasBrancas = pecas.stream().filter(x -> x.getCor() == Cores.BRANCAS).collect(Collectors.toList());
+        List<PecasXadrez> pecasPretas = pecas.stream().filter(x -> x.getCor() == Cores.PRETAS).collect(Collectors.toList());
+        
+        System.out.println("Peças capturadas: ");
+        System.out.println("Brancas: " + pecasBrancas);
+        System.out.println("Pretas: " + pecasPretas);
     }
 }
