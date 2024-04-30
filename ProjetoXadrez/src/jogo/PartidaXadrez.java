@@ -7,6 +7,7 @@ package jogo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import jogo.pecasXadrez.Bispo;
 import jogo.pecasXadrez.Peao;
 import jogo.pecasXadrez.Rei;
 import jogo.pecasXadrez.Torre;
@@ -237,6 +238,12 @@ public class PartidaXadrez {
         lugarNovaPeca('f', 7, new Peao(Cores.PRETAS, tab));
         lugarNovaPeca('g', 7, new Peao(Cores.PRETAS, tab));
         lugarNovaPeca('h', 7, new Peao(Cores.PRETAS, tab));
+        
+        //bispos
+        lugarNovaPeca('c', 1, new Bispo(Cores.BRANCAS, tab));
+        lugarNovaPeca('f', 1, new Bispo(Cores.BRANCAS, tab));
+        lugarNovaPeca('c', 8, new Bispo(Cores.PRETAS, tab));
+        lugarNovaPeca('f', 8, new Bispo(Cores.PRETAS, tab));
     }
 
 }
