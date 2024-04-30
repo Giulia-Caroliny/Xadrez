@@ -43,7 +43,12 @@ public class ViewProvisorio {
         imprimirPecasCapturadas(pecas);
 
         if (!partida.isCheckmate()) {
-            System.out.println("Aguardando jogador: " + partida.getJogadorVez());
+            System.out.print("Aguardando jogador: ");
+            if (partida.getJogadorVez() == Cores.BRANCAS) {
+                System.out.print(ANSI_PURPLE + partida.getJogadorVez() + ANSI_RESET);
+            } else {
+                System.out.print(ANSI_BLUE + partida.getJogadorVez() + ANSI_RESET);
+            }
             if (partida.isCheck()) {
                 System.out.println("CHECK!");
             }
@@ -79,12 +84,13 @@ public class ViewProvisorio {
             System.out.print(ANSI_CYAN_BACKGROUND);
         }
         if (peca == null) {
-            System.out.print("- " + ANSI_RESET);
+            System.out.print("-" + ANSI_RESET);
+            System.out.print(" ");
         } else {
             if (peca.getCor() == Cores.BRANCAS) {
-                System.out.print(ANSI_BLUE + peca + ANSI_RESET);
+                System.out.print(ANSI_PURPLE+ peca + ANSI_RESET);
             } else {
-                System.out.print(ANSI_PURPLE + peca + ANSI_RESET);
+                System.out.print(ANSI_BLUE + peca + ANSI_RESET);
             }
         }
         System.out.print("");

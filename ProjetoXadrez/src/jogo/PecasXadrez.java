@@ -38,9 +38,12 @@ public abstract class PecasXadrez extends Pecas {
     public int getContagemMovimentos() {
         return contagemMovimentos;
     }
-
-    public void setContagemMovimentos(int contagemMovimentos) {
-        this.contagemMovimentos = contagemMovimentos;
+    
+    protected void incrementoContagemMovimentos(){
+        contagemMovimentos++;
     }
-
+    
+    protected void decrementoContagemMovimentos(){
+        contagemMovimentos--;
+    }
 }
