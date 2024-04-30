@@ -24,6 +24,7 @@ public class PartidaXadrez {
     private Cores jogadorVez;
     private Tabuleiro tab;
     private boolean check;
+    private boolean checkmate;
 
     private List<Pecas> pecasTabuleiro = new ArrayList<Pecas>();
     private List<Pecas> pecasCapturadas = new ArrayList<Pecas>();
@@ -45,6 +46,10 @@ public class PartidaXadrez {
 
     public boolean isCheck() {
         return check;
+    }
+
+    public boolean isCheckmate() {
+        return checkmate;
     }
 
     public PecasXadrez[][] getPecas() {
@@ -78,9 +83,13 @@ public class PartidaXadrez {
 
         check = (testeCheck(oponente(jogadorVez)));
 
-        proximoTurno();
-        return (PecasXadrez) pecaCapturada;
+        if (testeCheckmate(oponente(jogadorVez))) {
+            checkmate = true;
+        } else {
+            proximoTurno();
+        }
 
+        return (PecasXadrez) pecaCapturada;
     }
 
     private Pecas fazerMovimento(Posicao origem, Posicao destino) {
@@ -160,17 +169,48 @@ public class PartidaXadrez {
         return false;
     }
 
+    private boolean testeCheckmate(Cores cor) {
+        if (!testeCheck(cor)) {
+            return false;
+        }
+
+        List<Pecas> lista = pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == cor).collect(Collectors.toList());
+
+        for (Pecas p : lista) {
+            boolean[][] bol = p.movimentosPossiveis();
+
+            for (int i = 0; i < tab.getLinhas(); i++) {
+                for (int j = 0; j < tab.getColunas(); j++) {
+
+                    System.out.println(p);
+                    System.out.println(bol);
+                    if (bol[i][j]) {
+                        Posicao origem = ((PecasXadrez) p).getPosicao().posicaoTabuleiro();
+                        Posicao destino = new Posicao(i, j);
+                        Pecas pecaCapturada = fazerMovimento(origem, destino);
+                        boolean deuRuim = testeCheck(cor);
+                        desfazerMovimento(origem, destino, pecaCapturada);
+                        if (!deuRuim) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     private void lugarNovaPeca(char coluna, int linha, PecasXadrez pecas) {
         tab.lugarPeca(pecas, new PosicaoXadrez(linha, coluna).posicaoTabuleiro());
         pecasTabuleiro.add(pecas);
     }
 
     private void iniciarPartida() {
-        lugarNovaPeca('a', 8, new Torre(Cores.BRANCAS, tab));
+        lugarNovaPeca('b', 8, new Torre(Cores.BRANCAS, tab));
         lugarNovaPeca('h', 8, new Torre(Cores.BRANCAS, tab));
-        lugarNovaPeca('a', 1, new Torre(Cores.PRETAS, tab));
         lugarNovaPeca('h', 1, new Torre(Cores.PRETAS, tab));
-        lugarNovaPeca('e', 8, new Rei(Cores.BRANCAS, tab));
+        lugarNovaPeca('b', 1, new Torre(Cores.PRETAS, tab));
+        lugarNovaPeca('a', 8, new Rei(Cores.BRANCAS, tab));
         lugarNovaPeca('e', 1, new Rei(Cores.PRETAS, tab));
     }
 

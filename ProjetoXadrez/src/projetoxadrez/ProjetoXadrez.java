@@ -29,7 +29,7 @@ public class ProjetoXadrez {
         List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
 
         try {
-            while (true) {
+            while (!partida.isCheckmate()) {
                 ViewProvisorio.imprimirPartida(partida, pecas);
                 System.out.println();
 
@@ -48,6 +48,7 @@ public class ProjetoXadrez {
                     pecas.add(pecaCapturada);
                 }
             }
+            ViewProvisorio.imprimirPartida(partida, pecas);
         } catch (XadrezException e) {
             System.out.println(e.getMessage());
             sc.nextLine();

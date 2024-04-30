@@ -41,9 +41,14 @@ public class ViewProvisorio {
         System.out.println("");
         System.out.println("Turno: " + partida.getTurno());
         imprimirPecasCapturadas(pecas);
-        System.out.println("Aguardando jogador: " + partida.getJogadorVez());
-        if (partida.isCheck()) {
-            System.out.println("CHECK!");
+
+        if (!partida.isCheckmate()) {
+            System.out.println("Aguardando jogador: " + partida.getJogadorVez());
+            if (partida.isCheck()) {
+                System.out.println("CHECK!");
+            }
+        } else {
+            System.out.println("CHECKMATE!");
         }
     }
 
