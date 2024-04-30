@@ -6,6 +6,7 @@ package jogo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import jogo.pecasXadrez.Rei;
 import jogo.pecasXadrez.Torre;
 import tabuleiro.Pecas;
@@ -22,6 +23,7 @@ public class PartidaXadrez {
     private int turno;
     private Cores jogadorVez;
     private Tabuleiro tab;
+    private boolean check;
 
     private List<Pecas> pecasTabuleiro = new ArrayList<Pecas>();
     private List<Pecas> pecasCapturadas = new ArrayList<Pecas>();
@@ -39,6 +41,10 @@ public class PartidaXadrez {
 
     public Cores getJogadorVez() {
         return jogadorVez;
+    }
+
+    public boolean isCheck() {
+        return check;
     }
 
     public PecasXadrez[][] getPecas() {
@@ -65,20 +71,39 @@ public class PartidaXadrez {
         validarPosicaoDestino(origem, destino);
         Pecas pecaCapturada = fazerMovimento(origem, destino);
 
+        if (testeCheck(jogadorVez)) {
+            desfazerMovimento(origem, destino, pecaCapturada);
+            throw new XadrezException("Rei não pode ser colocado em check.");
+        }
+
+        check = (testeCheck(oponente(jogadorVez)));
+
         proximoTurno();
         return (PecasXadrez) pecaCapturada;
+
     }
 
     private Pecas fazerMovimento(Posicao origem, Posicao destino) {
         Pecas aux = tab.removerPecas(origem);
         Pecas pecaCapturada = tab.removerPecas(destino);
         tab.lugarPeca(aux, destino);
-        
+
         if (pecaCapturada != null) {
             pecasTabuleiro.remove(pecaCapturada);
             pecasCapturadas.add(pecaCapturada);
         }
         return pecaCapturada;
+    }
+
+    private void desfazerMovimento(Posicao origem, Posicao destino, Pecas pecaCapturada) {
+        Pecas aux = tab.removerPecas(destino);
+        tab.lugarPeca(aux, origem);
+
+        if (pecaCapturada != null) {
+            tab.lugarPeca(pecaCapturada, destino);
+            pecasTabuleiro.add(pecaCapturada);
+            pecasCapturadas.remove(pecaCapturada);
+        }
     }
 
     private void validarPosicaoOrigem(Posicao origem) {
@@ -102,6 +127,37 @@ public class PartidaXadrez {
     private void proximoTurno() {
         turno++;
         jogadorVez = (jogadorVez == Cores.BRANCAS) ? Cores.PRETAS : Cores.BRANCAS;
+    }
+
+    private Cores oponente(Cores cor) {
+        return (cor == Cores.BRANCAS) ? Cores.PRETAS : Cores.BRANCAS;
+    }
+
+    private PecasXadrez getReis(Cores cor) {
+        List<Pecas> lista = pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == cor).collect(Collectors.toList());
+
+        for (Pecas p : lista) {
+            if (p instanceof Rei) {
+                return (PecasXadrez) p;
+            }
+        }
+        throw new IllegalStateException("Não existe rei da cor "
+                + cor
+                + " no tabuleiro");
+    }
+
+    private boolean testeCheck(Cores cor) {
+        List<Pecas> lista = pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == oponente(cor)).collect(Collectors.toList());
+        PecasXadrez rei = getReis(cor);
+
+        for (Pecas p : lista) {
+            boolean[][] bol = p.movimentosPossiveis();
+
+            if (bol[rei.getPosicao().posicaoTabuleiro().getLinha()][rei.getPosicao().posicaoTabuleiro().getColuna()]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void lugarNovaPeca(char coluna, int linha, PecasXadrez pecas) {

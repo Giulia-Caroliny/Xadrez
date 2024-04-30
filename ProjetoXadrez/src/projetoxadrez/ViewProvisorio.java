@@ -42,6 +42,9 @@ public class ViewProvisorio {
         System.out.println("Turno: " + partida.getTurno());
         imprimirPecasCapturadas(pecas);
         System.out.println("Aguardando jogador: " + partida.getJogadorVez());
+        if (partida.isCheck()) {
+            System.out.println("CHECK!");
+        }
     }
 
     public static void imprimirTabuleiro(PecasXadrez[][] pecas) {
@@ -81,11 +84,11 @@ public class ViewProvisorio {
         }
         System.out.print("");
     }
-    
-    private static void imprimirPecasCapturadas(List<PecasXadrez> pecas){
+
+    private static void imprimirPecasCapturadas(List<PecasXadrez> pecas) {
         List<PecasXadrez> pecasBrancas = pecas.stream().filter(x -> x.getCor() == Cores.BRANCAS).collect(Collectors.toList());
         List<PecasXadrez> pecasPretas = pecas.stream().filter(x -> x.getCor() == Cores.PRETAS).collect(Collectors.toList());
-        
+
         System.out.println("Peças capturadas: ");
         System.out.println("Brancas: " + pecasBrancas);
         System.out.println("Pretas: " + pecasPretas);

@@ -23,7 +23,7 @@ public class Torre extends PecasXadrez {
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
         Posicao p = new Posicao(pos.getLinha() - 1, pos.getColuna());
-                
+
         //acima
         while (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
             b[p.getLinha()][p.getColuna()] = true;
@@ -32,7 +32,7 @@ public class Torre extends PecasXadrez {
         if (getTab().posicaoExiste(p) && pecaOponente(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
-        
+
         //abaixo
         p.setLinha(pos.getLinha() + 1);
         while (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
@@ -42,7 +42,7 @@ public class Torre extends PecasXadrez {
         if (getTab().posicaoExiste(p) && pecaOponente(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
-        
+
         //esquerda
         p.setLinha(pos.getLinha());
         p.setColuna(pos.getColuna() - 1);
@@ -53,7 +53,7 @@ public class Torre extends PecasXadrez {
         if (getTab().posicaoExiste(p) && pecaOponente(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
-        
+
         //direita
         p.setColuna(pos.getColuna() + 1);
         while (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
@@ -63,7 +63,7 @@ public class Torre extends PecasXadrez {
         if (getTab().posicaoExiste(p) && pecaOponente(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
-        
+
         return b;
     }
 
