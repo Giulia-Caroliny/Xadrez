@@ -5,6 +5,7 @@
 package jogo.pecasXadrez;
 
 import jogo.Cores;
+import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -15,8 +16,11 @@ import tabuleiro.Tabuleiro;
  */
 public class Rei extends PecasXadrez {
 
-    public Rei(Cores cor, Tabuleiro tab) {
+    private PartidaXadrez partida;
+
+    public Rei(Cores cor, Tabuleiro tab, PartidaXadrez partida) {
         super(cor, tab);
+        this.partida = partida;
     }
 
     public boolean podeMover(Posicao pos) {
@@ -24,6 +28,11 @@ public class Rei extends PecasXadrez {
         return pe == null || pe.getCor() != getCor();
     }
 
+    public boolean testeTorreRoque(Posicao pos) {
+        PecasXadrez p = (PecasXadrez) getTab().peca(pos);
+        return p != null && p instanceof Torre && p.getCor() == getCor() && p.getContagemMovimentos() == 0;
+    }
+    
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
@@ -75,6 +84,28 @@ public class Rei extends PecasXadrez {
         p.setLinha(pos.getLinha());
         if (getTab().posicaoExiste(p) && podeMover(p)) {
             b[p.getLinha()][p.getColuna()] = true;
+        }
+
+        //jogada especial Roque
+        if (getContagemMovimentos() == 0 && !partida.isCheck()) {
+            Posicao torreD = new Posicao(pos.getLinha(), pos.getColuna() + 3);
+            if (testeTorreRoque(torreD)) {
+                Posicao pos1 = new Posicao(pos.getLinha(), pos.getColuna() + 1);
+                Posicao pos2 = new Posicao(pos.getLinha(), pos.getColuna() + 2);
+                if (!getTab().temPeca(pos1) && !getTab().temPeca(pos2)) {
+                    b[pos.getLinha()][pos.getColuna() + 2] = true;
+                }
+            }
+
+            Posicao torreE = new Posicao(pos.getLinha(), pos.getColuna() - 4);
+            if (testeTorreRoque(torreE)) {
+                Posicao pos1 = new Posicao(pos.getLinha(), pos.getColuna() - 1);
+                Posicao pos2 = new Posicao(pos.getLinha(), pos.getColuna() - 2);
+                Posicao pos3 = new Posicao(pos.getLinha(), pos.getColuna() - 3);
+                if (!getTab().temPeca(pos1) && !getTab().temPeca(pos2) && !getTab().temPeca(pos3)) {
+                    b[pos.getLinha()][pos.getColuna() - 2] = true;
+                }
+            }
         }
 
         return b;

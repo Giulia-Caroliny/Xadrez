@@ -13,6 +13,7 @@ import jogo.pecasXadrez.Dama;
 import jogo.pecasXadrez.Peao;
 import jogo.pecasXadrez.Rei;
 import jogo.pecasXadrez.Torre;
+import projetoxadrez.ViewProvisorio;
 import tabuleiro.Pecas;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -106,6 +107,21 @@ public class PartidaXadrez {
             pecasTabuleiro.remove(pecaCapturada);
             pecasCapturadas.add(pecaCapturada);
         }
+
+        //verificar roque
+        if (aux instanceof Rei) {
+            if (destino.getColuna() == origem.getColuna() + 2) {
+                Posicao pOrigem = new Posicao(origem.getLinha(), origem.getColuna() + 3);
+                Posicao pDestino = new Posicao(origem.getLinha(), origem.getColuna() + 1);
+                fazerMovimento(pOrigem, pDestino);
+            }
+            if (destino.getColuna() == origem.getColuna() - 2) {
+                Posicao pOrigem = new Posicao(origem.getLinha(), origem.getColuna() - 4);
+                Posicao pDestino = new Posicao(origem.getLinha(), origem.getColuna() - 1);
+                fazerMovimento(pOrigem, pDestino);
+            }
+        }
+
         return pecaCapturada;
     }
 
@@ -118,6 +134,20 @@ public class PartidaXadrez {
             tab.lugarPeca(pecaCapturada, destino);
             pecasTabuleiro.add(pecaCapturada);
             pecasCapturadas.remove(pecaCapturada);
+        }
+
+        //verificar roque
+        if (aux instanceof Rei) {
+            if (destino.getColuna() == origem.getColuna() + 2) {
+                Posicao pOrigem = new Posicao(origem.getLinha(), origem.getColuna() + 3);
+                Posicao pDestino = new Posicao(origem.getLinha(), origem.getColuna() + 1);
+                desfazerMovimento(pOrigem, pDestino, pecaCapturada);
+            }
+            if (destino.getColuna() == origem.getColuna() - 2) {
+                Posicao pOrigem = new Posicao(origem.getLinha(), origem.getColuna() - 4);
+                Posicao pDestino = new Posicao(origem.getLinha(), origem.getColuna() - 1);
+                desfazerMovimento(pOrigem, pDestino, pecaCapturada);
+            }
         }
     }
 
@@ -188,8 +218,6 @@ public class PartidaXadrez {
             for (int i = 0; i < tab.getLinhas(); i++) {
                 for (int j = 0; j < tab.getColunas(); j++) {
 
-                    System.out.println(p);
-                    System.out.println(bol);
                     if (bol[i][j]) {
                         Posicao origem = ((PecasXadrez) p).getPosicao().posicaoTabuleiro();
                         Posicao destino = new Posicao(i, j);
@@ -217,11 +245,11 @@ public class PartidaXadrez {
         lugarNovaPeca('h', 1, new Torre(Cores.BRANCAS, tab));
         lugarNovaPeca('a', 8, new Torre(Cores.PRETAS, tab));
         lugarNovaPeca('h', 8, new Torre(Cores.PRETAS, tab));
-        
+
         //reis
-        lugarNovaPeca('e', 1, new Rei(Cores.BRANCAS, tab));
-        lugarNovaPeca('e', 8, new Rei(Cores.PRETAS, tab));
-        
+        lugarNovaPeca('e', 1, new Rei(Cores.BRANCAS, tab, this));
+        lugarNovaPeca('e', 8, new Rei(Cores.PRETAS, tab, this));
+
         //peões
         lugarNovaPeca('a', 2, new Peao(Cores.BRANCAS, tab));
         lugarNovaPeca('b', 2, new Peao(Cores.BRANCAS, tab));
