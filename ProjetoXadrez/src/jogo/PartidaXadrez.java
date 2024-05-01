@@ -13,7 +13,6 @@ import jogo.pecasXadrez.Dama;
 import jogo.pecasXadrez.Peao;
 import jogo.pecasXadrez.Rei;
 import jogo.pecasXadrez.Torre;
-import projetoxadrez.ViewProvisorio;
 import tabuleiro.Pecas;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -31,6 +30,7 @@ public class PartidaXadrez {
     private boolean check;
     private boolean checkmate;
     private PecasXadrez enPassant;
+    private PecasXadrez promocao;
 
     private List<Pecas> pecasTabuleiro = new ArrayList<Pecas>();
     private List<Pecas> pecasCapturadas = new ArrayList<Pecas>();
@@ -62,6 +62,10 @@ public class PartidaXadrez {
         return enPassant;
     }
 
+    public PecasXadrez getPromocao() {
+        return promocao;
+    }
+
     public PecasXadrez[][] getPecas() {
         PecasXadrez[][] pecaAux = new PecasXadrez[tab.getLinhas()][tab.getColunas()];
 
@@ -90,9 +94,16 @@ public class PartidaXadrez {
             desfazerMovimento(origem, destino, pecaCapturada);
             throw new XadrezException("Rei não pode ser colocado em check.");
         }
-        
+
         PecasXadrez pecaAux = (PecasXadrez) tab.peca(destino);
 
+        //Promoção
+        promocao = null;
+        if (pecaAux instanceof Peao) {
+            if (destino.getLinha() == 0 && pecaAux.getCor() == Cores.BRANCAS || destino.getLinha() == 7 && pecaAux.getCor() == Cores.PRETAS) {
+                promocao = (PecasXadrez) tab.peca(destino);
+            }
+        }
         check = (testeCheck(oponente(jogadorVez)));
 
         if (testeCheckmate(oponente(jogadorVez))) {
@@ -109,6 +120,43 @@ public class PartidaXadrez {
         }
 
         return (PecasXadrez) pecaCapturada;
+    }
+
+    public PecasXadrez trocarPecaPromovida(String tipo) {
+        if (promocao == null) {
+            throw new IllegalStateException("Não há peça para ser promovida.");
+        }
+        if (!tipo.equals("B") && !tipo.equals("C") && !tipo.equals("D") && !tipo.equals("T")) {
+            return trocarPecaPromovida("D");
+        } 
+
+        Posicao pProm = promocao.getPosicao().posicaoTabuleiro();
+        pecasTabuleiro.remove(tab.removerPecas(pProm));
+        PecasXadrez p;
+
+        switch (tipo) {
+            case "B":
+                p = new Bispo(promocao.getCor(), tab);
+                tab.lugarPeca(p, pProm);
+                pecasTabuleiro.add(p);
+                break;
+            case "C":
+                p = new Cavalo(promocao.getCor(), tab);
+                tab.lugarPeca(p, pProm);
+                pecasTabuleiro.add(p);
+                break;
+            case "D":
+                p = new Dama(promocao.getCor(), tab);
+                tab.lugarPeca(p, pProm);
+                pecasTabuleiro.add(p);
+                break;
+            default:
+                p = new Torre(promocao.getCor(), tab);
+                tab.lugarPeca(p, pProm);
+                pecasTabuleiro.add(p);
+        }
+
+        return p;
     }
 
     private Pecas fazerMovimento(Posicao origem, Posicao destino) {

@@ -48,7 +48,18 @@ public class ProjetoXadrez {
                 if (pecaCapturada != null) {
                     pecas.add(pecaCapturada);
                 }
-                ViewProvisorio.imprimirPartida(partida, pecas);
+
+                if (partida.getPromocao() != null) {
+                    System.out.println("Peça para a promoçao (B, C, D, T):");
+                    String tipo = sc.nextLine().toUpperCase();
+
+                    while (!tipo.equals("B") && !tipo.equals("C") && !tipo.equals("D") && !tipo.equals("T")) {
+                        System.out.println("Peça inválida.");
+                        System.out.println("Peça para a promoçao (B, C, D, T):");
+                        tipo = sc.nextLine().toUpperCase();
+                    }
+                    partida.trocarPecaPromovida(tipo);
+                }
             } catch (XadrezException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
