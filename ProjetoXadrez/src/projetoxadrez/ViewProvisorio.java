@@ -46,8 +46,10 @@ public class ViewProvisorio {
             System.out.print("Aguardando jogador: ");
             if (partida.getJogadorVez() == Cores.BRANCAS) {
                 System.out.print(ANSI_PURPLE + partida.getJogadorVez() + ANSI_RESET);
+                System.out.println("");
             } else {
                 System.out.print(ANSI_BLUE + partida.getJogadorVez() + ANSI_RESET);
+                System.out.println("");
             }
             if (partida.isCheck()) {
                 System.out.println("CHECK!");

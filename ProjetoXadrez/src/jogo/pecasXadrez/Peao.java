@@ -5,6 +5,7 @@
 package jogo.pecasXadrez;
 
 import jogo.Cores;
+import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -15,8 +16,11 @@ import tabuleiro.Tabuleiro;
  */
 public class Peao extends PecasXadrez {
 
-    public Peao(Cores cor, Tabuleiro tab) {
+    private PartidaXadrez partida;
+
+    public Peao(Cores cor, Tabuleiro tab, PartidaXadrez partida) {
         super(cor, tab);
+        this.partida = partida;
     }
 
     public boolean podeMover(Posicao pos) {
@@ -27,54 +31,69 @@ public class Peao extends PecasXadrez {
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
-        Posicao p = new Posicao(pos.getLinha(), pos.getColuna());
+        //Posicao p = new Posicao(pos.getLinha(), pos.getColuna());
 
-        //primeiro movimento
-        if (getContagemMovimentos() == 0) {
-            if (getCor() == Cores.BRANCAS && podeMover(new Posicao(pos.getLinha() - 2, pos.getColuna())) && podeMover(new Posicao(pos.getLinha() - 1, pos.getColuna()))) {
-                b[pos.getLinha() - 2][pos.getColuna()] = true;
-            } else if (podeMover(new Posicao(pos.getLinha() + 2, pos.getColuna()))) {
-                b[pos.getLinha() + 2][pos.getColuna()] = true;
-            }
-        }
+        Posicao p = new Posicao(0, 0);
 
-        //mover em linha
         if (getCor() == Cores.BRANCAS) {
-            p.setLinha(pos.getLinha() - 1);
-            if (getTab().posicaoExiste(p) && podeMover(p)) {
-                b[pos.getLinha() - 1][pos.getColuna()] = true;
+            p.setValores(pos.getLinha() - 1, pos.getColuna());
+            if (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
+                b[p.getLinha()][p.getColuna()] = true;
+            }
+            p.setValores(pos.getLinha() - 2, pos.getColuna());
+            Posicao p2 = new Posicao(pos.getLinha() - 1, pos.getColuna());
+            if (getTab().posicaoExiste(p) && !getTab().temPeca(p) && getTab().posicaoExiste(p2) && !getTab().temPeca(p2) && getContagemMovimentos() == 0) {
+                b[p.getLinha()][p.getColuna()] = true;
+            }
+            p.setValores(pos.getLinha() - 1, pos.getColuna() - 1);
+            if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+                b[p.getLinha()][p.getColuna()] = true;
+            }
+            p.setValores(pos.getLinha() - 1, pos.getColuna() + 1);
+            if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+                b[p.getLinha()][p.getColuna()] = true;
+            }
+
+            //jogada especial en passant
+            if (pos.getLinha() == 3) {
+                Posicao left = new Posicao(pos.getLinha(), pos.getColuna() - 1);
+                if (getTab().posicaoExiste(left) && pecaOponente(left) && getTab().peca(left) == partida.getEnPassant()) {
+                    b[left.getLinha() - 1][left.getColuna()] = true;
+                }
+                Posicao right = new Posicao(pos.getLinha(), pos.getColuna() + 1);
+                if (getTab().posicaoExiste(right) && pecaOponente(right) && getTab().peca(right) == partida.getEnPassant()) {
+                    b[right.getLinha() - 1][right.getColuna()] = true;
+                }
             }
         } else {
-            p.setLinha(pos.getLinha() + 1);
-            if (getTab().posicaoExiste(p) && podeMover(p)) {
-                b[pos.getLinha() + 1][pos.getColuna()] = true;
+            p.setValores(pos.getLinha() + 1, pos.getColuna());
+            if (getTab().posicaoExiste(p) && !getTab().temPeca(p)) {
+                b[p.getLinha()][p.getColuna()] = true;
             }
-        }
-
-        //mover em diagonal
-        if (getCor() == Cores.BRANCAS) {
-            p.setLinha(pos.getLinha() - 1);
-
-            p.setColuna(pos.getColuna() - 1);
-            if (getTab().posicaoExiste(p) && !podeMover(p) && pecaOponente(p)) {
-                b[pos.getLinha() - 1][pos.getColuna() - 1] = true;
+            p.setValores(pos.getLinha() + 2, pos.getColuna());
+            Posicao p2 = new Posicao(pos.getLinha() + 1, pos.getColuna());
+            if (getTab().posicaoExiste(p) && !getTab().temPeca(p) && getTab().posicaoExiste(p2) && !getTab().temPeca(p2) && getContagemMovimentos() == 0) {
+                b[p.getLinha()][p.getColuna()] = true;
             }
-
-            p.setColuna(pos.getColuna() + 1);
-            if (getTab().posicaoExiste(p) && !podeMover(p) && pecaOponente(p)) {
-                b[pos.getLinha() - 1][pos.getColuna() + 1] = true;
+            p.setValores(pos.getLinha() + 1, pos.getColuna() - 1);
+            if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+                b[p.getLinha()][p.getColuna()] = true;
             }
-        } else {
-            p.setLinha(pos.getLinha() + 1);
-
-            p.setColuna(pos.getColuna() - 1);
-            if (getTab().posicaoExiste(p) && !podeMover(p) && pecaOponente(p)) {
-                b[pos.getLinha() - 1][pos.getColuna() - 1] = true;
+            p.setValores(pos.getLinha() + 1, pos.getColuna() + 1);
+            if (getTab().posicaoExiste(p) && pecaOponente(p)) {
+                b[p.getLinha()][p.getColuna()] = true;
             }
 
-            p.setColuna(pos.getColuna() + 1);
-            if (getTab().posicaoExiste(p) && !podeMover(p) && pecaOponente(p)) {
-                b[pos.getLinha() - 1][pos.getColuna() + 1] = true;
+            //jogada especial en passant
+            if (pos.getLinha() == 4) {
+                Posicao left = new Posicao(pos.getLinha(), pos.getColuna() - 1);
+                if (getTab().posicaoExiste(left) && pecaOponente(left) && getTab().peca(left) == partida.getEnPassant()) {
+                    b[left.getLinha() + 1][left.getColuna()] = true;
+                }
+                Posicao right = new Posicao(pos.getLinha(), pos.getColuna() + 1);
+                if (getTab().posicaoExiste(right) && pecaOponente(right) && getTab().peca(right) == partida.getEnPassant()) {
+                    b[right.getLinha() + 1][right.getColuna()] = true;
+                }
             }
         }
         return b;
