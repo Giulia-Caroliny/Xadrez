@@ -4,6 +4,7 @@
  */
 package jogo;
 
+import javax.swing.ImageIcon;
 import tabuleiro.Pecas;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -38,12 +39,14 @@ public abstract class PecasXadrez extends Pecas {
     public int getContagemMovimentos() {
         return contagemMovimentos;
     }
-    
-    protected void incrementoContagemMovimentos(){
+
+    protected void incrementoContagemMovimentos() {
         contagemMovimentos++;
     }
-    
-    protected void decrementoContagemMovimentos(){
+
+    protected void decrementoContagemMovimentos() {
         contagemMovimentos--;
     }
+
+    public abstract ImageIcon toImageIcon();
 }

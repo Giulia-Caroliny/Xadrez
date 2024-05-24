@@ -4,6 +4,7 @@
  */
 package jogo.pecasXadrez;
 
+import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
@@ -97,6 +98,25 @@ public class Peao extends PecasXadrez {
             }
         }
         return b;
+    }
+
+    /**
+     * Icon = Peao B -
+     * <a href="https://www.flaticon.com/br/icones-gratis/xadrez" >Xadrez ícones
+     * criados por Freepik - Flaticon</a>
+     * Peao P -
+     * <a href="https://www.flaticon.com/br/icones-gratis/xadrez" >Xadrez ícones
+     * criados por smashingstocks - Flaticon</a>
+     *
+     * @return ImageIcon - icone da peça
+     */
+    @Override
+    public ImageIcon toImageIcon() {
+        if (super.getCor() == Cores.BRANCAS) {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\peaoBranco.png"));
+        } else {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\peaoPreto.png"));
+        }
     }
 
     @Override

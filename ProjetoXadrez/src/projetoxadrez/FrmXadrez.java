@@ -4,11 +4,21 @@
  */
 package projetoxadrez;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import jogo.PartidaXadrez;
+import jogo.PecasXadrez;
+import jogo.pecasXadrez.Bispo;
+
 /**
  *
  * @author giuli
  */
 public class FrmXadrez extends javax.swing.JFrame {
+
+    PartidaXadrez partida = new PartidaXadrez();
+    List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
 
     /**
      * Creates new form FrmXadrez
@@ -27,69 +37,133 @@ public class FrmXadrez extends javax.swing.JFrame {
     private void initComponents() {
 
         pos10 = new javax.swing.JPanel();
+        lblPos10 = new javax.swing.JLabel();
         pos00 = new javax.swing.JPanel();
+        lblPos00 = new javax.swing.JLabel();
         pos20 = new javax.swing.JPanel();
+        lblPos20 = new javax.swing.JLabel();
         pos30 = new javax.swing.JPanel();
+        lblPos30 = new javax.swing.JLabel();
         pos50 = new javax.swing.JPanel();
+        lblPos50 = new javax.swing.JLabel();
         pos40 = new javax.swing.JPanel();
+        lblPos40 = new javax.swing.JLabel();
         pos60 = new javax.swing.JPanel();
+        lblPos60 = new javax.swing.JLabel();
         pos70 = new javax.swing.JPanel();
+        lblPos70 = new javax.swing.JLabel();
         pos11 = new javax.swing.JPanel();
+        lblPos11 = new javax.swing.JLabel();
         pos01 = new javax.swing.JPanel();
+        lblPos01 = new javax.swing.JLabel();
         pos21 = new javax.swing.JPanel();
+        lblPos21 = new javax.swing.JLabel();
         pos31 = new javax.swing.JPanel();
+        lblPos31 = new javax.swing.JLabel();
         pos51 = new javax.swing.JPanel();
+        lblPos51 = new javax.swing.JLabel();
         pos41 = new javax.swing.JPanel();
+        lblPos41 = new javax.swing.JLabel();
         pos61 = new javax.swing.JPanel();
+        lblPos61 = new javax.swing.JLabel();
         pos71 = new javax.swing.JPanel();
+        lblPos71 = new javax.swing.JLabel();
         pos12 = new javax.swing.JPanel();
+        lblPos12 = new javax.swing.JLabel();
         pos02 = new javax.swing.JPanel();
+        lblPos02 = new javax.swing.JLabel();
         pos22 = new javax.swing.JPanel();
+        lblPos22 = new javax.swing.JLabel();
         pos32 = new javax.swing.JPanel();
+        lblPos32 = new javax.swing.JLabel();
         pos52 = new javax.swing.JPanel();
+        lblPos52 = new javax.swing.JLabel();
         pos42 = new javax.swing.JPanel();
+        lblPos42 = new javax.swing.JLabel();
         pos62 = new javax.swing.JPanel();
+        lblPos62 = new javax.swing.JLabel();
         pos72 = new javax.swing.JPanel();
+        lblPos72 = new javax.swing.JLabel();
         pos13 = new javax.swing.JPanel();
+        lblPos13 = new javax.swing.JLabel();
         pos23 = new javax.swing.JPanel();
+        lblPos23 = new javax.swing.JLabel();
         pos33 = new javax.swing.JPanel();
+        lblPos33 = new javax.swing.JLabel();
         pos03 = new javax.swing.JPanel();
+        lblPos03 = new javax.swing.JLabel();
         pos53 = new javax.swing.JPanel();
+        lblPos53 = new javax.swing.JLabel();
         pos43 = new javax.swing.JPanel();
+        lblPos43 = new javax.swing.JLabel();
         pos63 = new javax.swing.JPanel();
+        lblPos63 = new javax.swing.JLabel();
         pos73 = new javax.swing.JPanel();
+        lblPos73 = new javax.swing.JLabel();
         pos14 = new javax.swing.JPanel();
+        lblPos14 = new javax.swing.JLabel();
         pos04 = new javax.swing.JPanel();
+        lblPos04 = new javax.swing.JLabel();
         pos24 = new javax.swing.JPanel();
+        lblPos24 = new javax.swing.JLabel();
         pos34 = new javax.swing.JPanel();
+        lblPos34 = new javax.swing.JLabel();
         pos54 = new javax.swing.JPanel();
+        lblPos54 = new javax.swing.JLabel();
         pos44 = new javax.swing.JPanel();
+        lblPos44 = new javax.swing.JLabel();
         pos64 = new javax.swing.JPanel();
+        lblPos64 = new javax.swing.JLabel();
         pos74 = new javax.swing.JPanel();
+        lblPos74 = new javax.swing.JLabel();
         pos15 = new javax.swing.JPanel();
+        lblPos15 = new javax.swing.JLabel();
         pos05 = new javax.swing.JPanel();
+        lblPos05 = new javax.swing.JLabel();
         pos25 = new javax.swing.JPanel();
+        lblPos25 = new javax.swing.JLabel();
         pos35 = new javax.swing.JPanel();
+        lblPos35 = new javax.swing.JLabel();
         pos55 = new javax.swing.JPanel();
+        lblPos55 = new javax.swing.JLabel();
         pos45 = new javax.swing.JPanel();
+        lblPos45 = new javax.swing.JLabel();
         pos65 = new javax.swing.JPanel();
+        lblPos65 = new javax.swing.JLabel();
         pos75 = new javax.swing.JPanel();
+        lblPos75 = new javax.swing.JLabel();
         pos16 = new javax.swing.JPanel();
+        lblPos16 = new javax.swing.JLabel();
         pos06 = new javax.swing.JPanel();
+        lblPos06 = new javax.swing.JLabel();
         pos26 = new javax.swing.JPanel();
+        lblPos26 = new javax.swing.JLabel();
         pos36 = new javax.swing.JPanel();
+        lblPos36 = new javax.swing.JLabel();
         pos56 = new javax.swing.JPanel();
+        lblPos56 = new javax.swing.JLabel();
         pos46 = new javax.swing.JPanel();
+        lblPos46 = new javax.swing.JLabel();
         pos66 = new javax.swing.JPanel();
+        lblPos66 = new javax.swing.JLabel();
         pos76 = new javax.swing.JPanel();
+        lblPos76 = new javax.swing.JLabel();
         pos17 = new javax.swing.JPanel();
+        lblPos17 = new javax.swing.JLabel();
         pos07 = new javax.swing.JPanel();
+        lblPos07 = new javax.swing.JLabel();
         pos27 = new javax.swing.JPanel();
+        lblPos27 = new javax.swing.JLabel();
         pos37 = new javax.swing.JPanel();
+        lblPos37 = new javax.swing.JLabel();
         pos57 = new javax.swing.JPanel();
+        lblPos57 = new javax.swing.JLabel();
         pos47 = new javax.swing.JPanel();
+        lblPos47 = new javax.swing.JLabel();
         pos67 = new javax.swing.JPanel();
+        lblPos67 = new javax.swing.JLabel();
         pos77 = new javax.swing.JPanel();
+        lblPos77 = new javax.swing.JLabel();
         lblPecas = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -101,16 +175,21 @@ public class FrmXadrez extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         pos10.setBackground(new java.awt.Color(204, 204, 204));
+        pos10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos10Layout = new javax.swing.GroupLayout(pos10);
         pos10.setLayout(pos10Layout);
         pos10Layout.setHorizontalGroup(
             pos10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos10Layout.setVerticalGroup(
             pos10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos10, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos10);
@@ -127,1003 +206,1313 @@ public class FrmXadrez extends javax.swing.JFrame {
         pos00.setLayout(pos00Layout);
         pos00Layout.setHorizontalGroup(
             pos00Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos00, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos00Layout.setVerticalGroup(
             pos00Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos00, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos00);
         pos00.setBounds(20, 20, 65, 65);
 
         pos20.setBackground(new java.awt.Color(204, 204, 204));
+        pos20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos20MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos20Layout = new javax.swing.GroupLayout(pos20);
         pos20.setLayout(pos20Layout);
         pos20Layout.setHorizontalGroup(
             pos20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos20Layout.setVerticalGroup(
             pos20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos20, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos20);
         pos20.setBounds(20, 160, 65, 65);
 
         pos30.setBackground(new java.awt.Color(204, 204, 204));
+        pos30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos30MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos30Layout = new javax.swing.GroupLayout(pos30);
         pos30.setLayout(pos30Layout);
         pos30Layout.setHorizontalGroup(
             pos30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos30Layout.setVerticalGroup(
             pos30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos30, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos30);
         pos30.setBounds(20, 230, 65, 65);
 
         pos50.setBackground(new java.awt.Color(204, 204, 204));
+        pos50.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos50MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos50Layout = new javax.swing.GroupLayout(pos50);
         pos50.setLayout(pos50Layout);
         pos50Layout.setHorizontalGroup(
             pos50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos50Layout.setVerticalGroup(
             pos50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos50, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos50);
         pos50.setBounds(20, 370, 65, 65);
 
         pos40.setBackground(new java.awt.Color(204, 204, 204));
+        pos40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos40MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos40Layout = new javax.swing.GroupLayout(pos40);
         pos40.setLayout(pos40Layout);
         pos40Layout.setHorizontalGroup(
             pos40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos40Layout.setVerticalGroup(
             pos40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos40, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos40);
         pos40.setBounds(20, 300, 65, 65);
 
         pos60.setBackground(new java.awt.Color(204, 204, 204));
+        pos60.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos60MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos60Layout = new javax.swing.GroupLayout(pos60);
         pos60.setLayout(pos60Layout);
         pos60Layout.setHorizontalGroup(
             pos60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos60, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos60Layout.setVerticalGroup(
             pos60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos60, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos60);
         pos60.setBounds(20, 440, 65, 65);
 
         pos70.setBackground(new java.awt.Color(204, 204, 204));
+        pos70.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos70MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos70Layout = new javax.swing.GroupLayout(pos70);
         pos70.setLayout(pos70Layout);
         pos70Layout.setHorizontalGroup(
             pos70Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos70, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos70Layout.setVerticalGroup(
             pos70Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos70, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos70);
         pos70.setBounds(20, 510, 65, 65);
 
         pos11.setBackground(new java.awt.Color(204, 204, 204));
+        pos11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos11MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos11Layout = new javax.swing.GroupLayout(pos11);
         pos11.setLayout(pos11Layout);
         pos11Layout.setHorizontalGroup(
             pos11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos11Layout.setVerticalGroup(
             pos11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos11, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos11);
         pos11.setBounds(90, 90, 65, 65);
 
         pos01.setBackground(new java.awt.Color(204, 204, 204));
+        pos01.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos01MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos01Layout = new javax.swing.GroupLayout(pos01);
         pos01.setLayout(pos01Layout);
         pos01Layout.setHorizontalGroup(
             pos01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos01, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos01Layout.setVerticalGroup(
             pos01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos01, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos01);
         pos01.setBounds(90, 20, 65, 65);
 
         pos21.setBackground(new java.awt.Color(204, 204, 204));
+        pos21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos21MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos21Layout = new javax.swing.GroupLayout(pos21);
         pos21.setLayout(pos21Layout);
         pos21Layout.setHorizontalGroup(
             pos21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos21Layout.setVerticalGroup(
             pos21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos21, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos21);
         pos21.setBounds(90, 160, 65, 65);
 
         pos31.setBackground(new java.awt.Color(204, 204, 204));
+        pos31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos31MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos31Layout = new javax.swing.GroupLayout(pos31);
         pos31.setLayout(pos31Layout);
         pos31Layout.setHorizontalGroup(
             pos31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos31Layout.setVerticalGroup(
             pos31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos31, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos31);
         pos31.setBounds(90, 230, 65, 65);
 
         pos51.setBackground(new java.awt.Color(204, 204, 204));
+        pos51.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos51MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos51Layout = new javax.swing.GroupLayout(pos51);
         pos51.setLayout(pos51Layout);
         pos51Layout.setHorizontalGroup(
             pos51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos51, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos51Layout.setVerticalGroup(
             pos51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos51, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos51);
         pos51.setBounds(90, 370, 65, 65);
 
         pos41.setBackground(new java.awt.Color(204, 204, 204));
+        pos41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos41MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos41Layout = new javax.swing.GroupLayout(pos41);
         pos41.setLayout(pos41Layout);
         pos41Layout.setHorizontalGroup(
             pos41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos41, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos41Layout.setVerticalGroup(
             pos41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos41, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos41);
         pos41.setBounds(90, 300, 65, 65);
 
         pos61.setBackground(new java.awt.Color(204, 204, 204));
+        pos61.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos61MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos61Layout = new javax.swing.GroupLayout(pos61);
         pos61.setLayout(pos61Layout);
         pos61Layout.setHorizontalGroup(
             pos61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos61, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos61Layout.setVerticalGroup(
             pos61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos61, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos61);
         pos61.setBounds(90, 440, 65, 65);
 
         pos71.setBackground(new java.awt.Color(204, 204, 204));
+        pos71.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos71MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos71Layout = new javax.swing.GroupLayout(pos71);
         pos71.setLayout(pos71Layout);
         pos71Layout.setHorizontalGroup(
             pos71Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos71, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos71Layout.setVerticalGroup(
             pos71Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos71, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos71);
         pos71.setBounds(90, 510, 65, 65);
 
         pos12.setBackground(new java.awt.Color(204, 204, 204));
+        pos12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos12Layout = new javax.swing.GroupLayout(pos12);
         pos12.setLayout(pos12Layout);
         pos12Layout.setHorizontalGroup(
             pos12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos12Layout.setVerticalGroup(
             pos12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos12, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos12);
         pos12.setBounds(160, 90, 65, 65);
 
         pos02.setBackground(new java.awt.Color(204, 204, 204));
+        pos02.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos02MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos02Layout = new javax.swing.GroupLayout(pos02);
         pos02.setLayout(pos02Layout);
         pos02Layout.setHorizontalGroup(
             pos02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos02, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos02Layout.setVerticalGroup(
             pos02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos02, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos02);
         pos02.setBounds(160, 20, 65, 65);
 
         pos22.setBackground(new java.awt.Color(204, 204, 204));
+        pos22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos22MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos22Layout = new javax.swing.GroupLayout(pos22);
         pos22.setLayout(pos22Layout);
         pos22Layout.setHorizontalGroup(
             pos22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos22Layout.setVerticalGroup(
             pos22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos22, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos22);
         pos22.setBounds(160, 160, 65, 65);
 
         pos32.setBackground(new java.awt.Color(204, 204, 204));
+        pos32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos32MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos32Layout = new javax.swing.GroupLayout(pos32);
         pos32.setLayout(pos32Layout);
         pos32Layout.setHorizontalGroup(
             pos32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos32Layout.setVerticalGroup(
             pos32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos32, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos32);
         pos32.setBounds(160, 230, 65, 65);
 
         pos52.setBackground(new java.awt.Color(204, 204, 204));
+        pos52.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos52MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos52Layout = new javax.swing.GroupLayout(pos52);
         pos52.setLayout(pos52Layout);
         pos52Layout.setHorizontalGroup(
             pos52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos52, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos52Layout.setVerticalGroup(
             pos52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos52, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos52);
         pos52.setBounds(160, 370, 65, 65);
 
         pos42.setBackground(new java.awt.Color(204, 204, 204));
+        pos42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos42MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos42Layout = new javax.swing.GroupLayout(pos42);
         pos42.setLayout(pos42Layout);
         pos42Layout.setHorizontalGroup(
             pos42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos42, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos42Layout.setVerticalGroup(
             pos42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos42, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos42);
         pos42.setBounds(160, 300, 65, 65);
 
         pos62.setBackground(new java.awt.Color(204, 204, 204));
+        pos62.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos62MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos62Layout = new javax.swing.GroupLayout(pos62);
         pos62.setLayout(pos62Layout);
         pos62Layout.setHorizontalGroup(
             pos62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos62, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos62Layout.setVerticalGroup(
             pos62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos62, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos62);
         pos62.setBounds(160, 440, 65, 65);
 
         pos72.setBackground(new java.awt.Color(204, 204, 204));
+        pos72.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos72MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos72Layout = new javax.swing.GroupLayout(pos72);
         pos72.setLayout(pos72Layout);
         pos72Layout.setHorizontalGroup(
             pos72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos72, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos72Layout.setVerticalGroup(
             pos72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos72, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos72);
         pos72.setBounds(160, 510, 65, 65);
 
         pos13.setBackground(new java.awt.Color(204, 204, 204));
+        pos13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos13MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos13Layout = new javax.swing.GroupLayout(pos13);
         pos13.setLayout(pos13Layout);
         pos13Layout.setHorizontalGroup(
             pos13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos13Layout.setVerticalGroup(
             pos13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos13, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos13);
         pos13.setBounds(230, 90, 65, 65);
 
         pos23.setBackground(new java.awt.Color(204, 204, 204));
+        pos23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos23MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos23Layout = new javax.swing.GroupLayout(pos23);
         pos23.setLayout(pos23Layout);
         pos23Layout.setHorizontalGroup(
             pos23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos23Layout.setVerticalGroup(
             pos23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos23, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos23);
         pos23.setBounds(230, 160, 65, 65);
 
         pos33.setBackground(new java.awt.Color(204, 204, 204));
+        pos33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos33MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos33Layout = new javax.swing.GroupLayout(pos33);
         pos33.setLayout(pos33Layout);
         pos33Layout.setHorizontalGroup(
             pos33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos33Layout.setVerticalGroup(
             pos33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos33, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos33);
         pos33.setBounds(230, 230, 65, 65);
 
         pos03.setBackground(new java.awt.Color(204, 204, 204));
+        pos03.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos03MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos03Layout = new javax.swing.GroupLayout(pos03);
         pos03.setLayout(pos03Layout);
         pos03Layout.setHorizontalGroup(
             pos03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos03, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos03Layout.setVerticalGroup(
             pos03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos03, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos03);
         pos03.setBounds(230, 20, 65, 65);
 
         pos53.setBackground(new java.awt.Color(204, 204, 204));
+        pos53.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos53MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos53Layout = new javax.swing.GroupLayout(pos53);
         pos53.setLayout(pos53Layout);
         pos53Layout.setHorizontalGroup(
             pos53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos53, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos53Layout.setVerticalGroup(
             pos53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos53, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos53);
         pos53.setBounds(230, 370, 65, 65);
 
         pos43.setBackground(new java.awt.Color(204, 204, 204));
+        pos43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos43MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos43Layout = new javax.swing.GroupLayout(pos43);
         pos43.setLayout(pos43Layout);
         pos43Layout.setHorizontalGroup(
             pos43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos43Layout.setVerticalGroup(
             pos43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos43, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos43);
         pos43.setBounds(230, 300, 65, 65);
 
         pos63.setBackground(new java.awt.Color(204, 204, 204));
+        pos63.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos63MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos63Layout = new javax.swing.GroupLayout(pos63);
         pos63.setLayout(pos63Layout);
         pos63Layout.setHorizontalGroup(
             pos63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos63, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos63Layout.setVerticalGroup(
             pos63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos63, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos63);
         pos63.setBounds(230, 440, 65, 65);
 
         pos73.setBackground(new java.awt.Color(204, 204, 204));
+        pos73.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos73MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos73Layout = new javax.swing.GroupLayout(pos73);
         pos73.setLayout(pos73Layout);
         pos73Layout.setHorizontalGroup(
             pos73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos73, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos73Layout.setVerticalGroup(
             pos73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos73, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos73);
         pos73.setBounds(230, 510, 65, 65);
 
         pos14.setBackground(new java.awt.Color(204, 204, 204));
+        pos14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos14MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos14Layout = new javax.swing.GroupLayout(pos14);
         pos14.setLayout(pos14Layout);
         pos14Layout.setHorizontalGroup(
             pos14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos14Layout.setVerticalGroup(
             pos14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos14, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos14);
         pos14.setBounds(300, 90, 65, 65);
 
         pos04.setBackground(new java.awt.Color(204, 204, 204));
+        pos04.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos04MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos04Layout = new javax.swing.GroupLayout(pos04);
         pos04.setLayout(pos04Layout);
         pos04Layout.setHorizontalGroup(
             pos04Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos04, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos04Layout.setVerticalGroup(
             pos04Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos04, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos04);
         pos04.setBounds(300, 20, 65, 65);
 
         pos24.setBackground(new java.awt.Color(204, 204, 204));
+        pos24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos24MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos24Layout = new javax.swing.GroupLayout(pos24);
         pos24.setLayout(pos24Layout);
         pos24Layout.setHorizontalGroup(
             pos24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos24Layout.setVerticalGroup(
             pos24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos24, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos24);
         pos24.setBounds(300, 160, 65, 65);
 
         pos34.setBackground(new java.awt.Color(204, 204, 204));
+        pos34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos34MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos34Layout = new javax.swing.GroupLayout(pos34);
         pos34.setLayout(pos34Layout);
         pos34Layout.setHorizontalGroup(
             pos34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos34Layout.setVerticalGroup(
             pos34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos34, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos34);
         pos34.setBounds(300, 230, 65, 65);
 
         pos54.setBackground(new java.awt.Color(204, 204, 204));
+        pos54.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos54MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos54Layout = new javax.swing.GroupLayout(pos54);
         pos54.setLayout(pos54Layout);
         pos54Layout.setHorizontalGroup(
             pos54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos54, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos54Layout.setVerticalGroup(
             pos54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos54, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos54);
         pos54.setBounds(300, 370, 65, 65);
 
         pos44.setBackground(new java.awt.Color(204, 204, 204));
+        pos44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos44MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos44Layout = new javax.swing.GroupLayout(pos44);
         pos44.setLayout(pos44Layout);
         pos44Layout.setHorizontalGroup(
             pos44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos44Layout.setVerticalGroup(
             pos44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos44, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos44);
         pos44.setBounds(300, 300, 65, 65);
 
         pos64.setBackground(new java.awt.Color(204, 204, 204));
+        pos64.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos64MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos64Layout = new javax.swing.GroupLayout(pos64);
         pos64.setLayout(pos64Layout);
         pos64Layout.setHorizontalGroup(
             pos64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos64, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos64Layout.setVerticalGroup(
             pos64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos64, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos64);
         pos64.setBounds(300, 440, 65, 65);
 
         pos74.setBackground(new java.awt.Color(204, 204, 204));
+        pos74.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos74MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos74Layout = new javax.swing.GroupLayout(pos74);
         pos74.setLayout(pos74Layout);
         pos74Layout.setHorizontalGroup(
             pos74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos74, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos74Layout.setVerticalGroup(
             pos74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos74, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos74);
         pos74.setBounds(300, 510, 65, 65);
 
         pos15.setBackground(new java.awt.Color(204, 204, 204));
+        pos15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos15MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos15Layout = new javax.swing.GroupLayout(pos15);
         pos15.setLayout(pos15Layout);
         pos15Layout.setHorizontalGroup(
             pos15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos15Layout.setVerticalGroup(
             pos15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos15, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos15);
         pos15.setBounds(370, 90, 65, 65);
 
         pos05.setBackground(new java.awt.Color(204, 204, 204));
+        pos05.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos05MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos05Layout = new javax.swing.GroupLayout(pos05);
         pos05.setLayout(pos05Layout);
         pos05Layout.setHorizontalGroup(
             pos05Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos05, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos05Layout.setVerticalGroup(
             pos05Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos05, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos05);
         pos05.setBounds(370, 20, 65, 65);
 
         pos25.setBackground(new java.awt.Color(204, 204, 204));
+        pos25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos25MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos25Layout = new javax.swing.GroupLayout(pos25);
         pos25.setLayout(pos25Layout);
         pos25Layout.setHorizontalGroup(
             pos25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos25Layout.setVerticalGroup(
             pos25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos25, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos25);
         pos25.setBounds(370, 160, 65, 65);
 
         pos35.setBackground(new java.awt.Color(204, 204, 204));
+        pos35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos35MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos35Layout = new javax.swing.GroupLayout(pos35);
         pos35.setLayout(pos35Layout);
         pos35Layout.setHorizontalGroup(
             pos35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos35Layout.setVerticalGroup(
             pos35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos35, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos35);
         pos35.setBounds(370, 230, 65, 65);
 
         pos55.setBackground(new java.awt.Color(204, 204, 204));
+        pos55.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos55MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos55Layout = new javax.swing.GroupLayout(pos55);
         pos55.setLayout(pos55Layout);
         pos55Layout.setHorizontalGroup(
             pos55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos55, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos55Layout.setVerticalGroup(
             pos55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos55, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos55);
         pos55.setBounds(370, 370, 65, 65);
 
         pos45.setBackground(new java.awt.Color(204, 204, 204));
+        pos45.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos45MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos45Layout = new javax.swing.GroupLayout(pos45);
         pos45.setLayout(pos45Layout);
         pos45Layout.setHorizontalGroup(
             pos45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos45Layout.setVerticalGroup(
             pos45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos45, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos45);
         pos45.setBounds(370, 300, 65, 65);
 
         pos65.setBackground(new java.awt.Color(204, 204, 204));
+        pos65.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos65MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos65Layout = new javax.swing.GroupLayout(pos65);
         pos65.setLayout(pos65Layout);
         pos65Layout.setHorizontalGroup(
             pos65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos65, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos65Layout.setVerticalGroup(
             pos65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos65, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos65);
         pos65.setBounds(370, 440, 65, 65);
 
         pos75.setBackground(new java.awt.Color(204, 204, 204));
+        pos75.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos75MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos75Layout = new javax.swing.GroupLayout(pos75);
         pos75.setLayout(pos75Layout);
         pos75Layout.setHorizontalGroup(
             pos75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos75, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos75Layout.setVerticalGroup(
             pos75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos75, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos75);
         pos75.setBounds(370, 510, 65, 65);
 
         pos16.setBackground(new java.awt.Color(204, 204, 204));
+        pos16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos16MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos16Layout = new javax.swing.GroupLayout(pos16);
         pos16.setLayout(pos16Layout);
         pos16Layout.setHorizontalGroup(
             pos16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos16Layout.setVerticalGroup(
             pos16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos16, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos16);
         pos16.setBounds(440, 90, 65, 65);
 
         pos06.setBackground(new java.awt.Color(204, 204, 204));
+        pos06.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos06MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos06Layout = new javax.swing.GroupLayout(pos06);
         pos06.setLayout(pos06Layout);
         pos06Layout.setHorizontalGroup(
             pos06Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos06, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos06Layout.setVerticalGroup(
             pos06Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos06, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos06);
         pos06.setBounds(440, 20, 65, 65);
 
         pos26.setBackground(new java.awt.Color(204, 204, 204));
+        pos26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos26MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos26Layout = new javax.swing.GroupLayout(pos26);
         pos26.setLayout(pos26Layout);
         pos26Layout.setHorizontalGroup(
             pos26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos26Layout.setVerticalGroup(
             pos26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos26, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos26);
         pos26.setBounds(440, 160, 65, 65);
 
         pos36.setBackground(new java.awt.Color(204, 204, 204));
+        pos36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos36MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos36Layout = new javax.swing.GroupLayout(pos36);
         pos36.setLayout(pos36Layout);
         pos36Layout.setHorizontalGroup(
             pos36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos36Layout.setVerticalGroup(
             pos36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos36, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos36);
         pos36.setBounds(440, 230, 65, 65);
 
         pos56.setBackground(new java.awt.Color(204, 204, 204));
+        pos56.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos56MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos56Layout = new javax.swing.GroupLayout(pos56);
         pos56.setLayout(pos56Layout);
         pos56Layout.setHorizontalGroup(
             pos56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos56, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos56Layout.setVerticalGroup(
             pos56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos56, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos56);
         pos56.setBounds(440, 370, 65, 65);
 
         pos46.setBackground(new java.awt.Color(204, 204, 204));
+        pos46.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos46MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos46Layout = new javax.swing.GroupLayout(pos46);
         pos46.setLayout(pos46Layout);
         pos46Layout.setHorizontalGroup(
             pos46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos46, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos46Layout.setVerticalGroup(
             pos46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos46, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos46);
         pos46.setBounds(440, 300, 65, 65);
 
         pos66.setBackground(new java.awt.Color(204, 204, 204));
+        pos66.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos66MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos66Layout = new javax.swing.GroupLayout(pos66);
         pos66.setLayout(pos66Layout);
         pos66Layout.setHorizontalGroup(
             pos66Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos66, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos66Layout.setVerticalGroup(
             pos66Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos66, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos66);
         pos66.setBounds(440, 440, 65, 65);
 
         pos76.setBackground(new java.awt.Color(204, 204, 204));
+        pos76.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos76MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos76Layout = new javax.swing.GroupLayout(pos76);
         pos76.setLayout(pos76Layout);
         pos76Layout.setHorizontalGroup(
             pos76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos76, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos76Layout.setVerticalGroup(
             pos76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos76, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos76);
         pos76.setBounds(440, 510, 65, 65);
 
         pos17.setBackground(new java.awt.Color(204, 204, 204));
+        pos17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos17MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos17Layout = new javax.swing.GroupLayout(pos17);
         pos17.setLayout(pos17Layout);
         pos17Layout.setHorizontalGroup(
             pos17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos17Layout.setVerticalGroup(
             pos17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos17, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos17);
         pos17.setBounds(510, 90, 65, 65);
 
         pos07.setBackground(new java.awt.Color(204, 204, 204));
+        pos07.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos07MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos07Layout = new javax.swing.GroupLayout(pos07);
         pos07.setLayout(pos07Layout);
         pos07Layout.setHorizontalGroup(
             pos07Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos07, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos07Layout.setVerticalGroup(
             pos07Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos07, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos07);
         pos07.setBounds(510, 20, 65, 65);
 
         pos27.setBackground(new java.awt.Color(204, 204, 204));
+        pos27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos27MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos27Layout = new javax.swing.GroupLayout(pos27);
         pos27.setLayout(pos27Layout);
         pos27Layout.setHorizontalGroup(
             pos27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos27Layout.setVerticalGroup(
             pos27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos27, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos27);
         pos27.setBounds(510, 160, 65, 65);
 
         pos37.setBackground(new java.awt.Color(204, 204, 204));
+        pos37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos37MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos37Layout = new javax.swing.GroupLayout(pos37);
         pos37.setLayout(pos37Layout);
         pos37Layout.setHorizontalGroup(
             pos37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos37, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos37Layout.setVerticalGroup(
             pos37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos37, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos37);
         pos37.setBounds(510, 230, 65, 65);
 
         pos57.setBackground(new java.awt.Color(204, 204, 204));
+        pos57.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos57MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos57Layout = new javax.swing.GroupLayout(pos57);
         pos57.setLayout(pos57Layout);
         pos57Layout.setHorizontalGroup(
             pos57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos57, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos57Layout.setVerticalGroup(
             pos57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos57, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos57);
         pos57.setBounds(510, 370, 65, 65);
 
         pos47.setBackground(new java.awt.Color(204, 204, 204));
+        pos47.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos47MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos47Layout = new javax.swing.GroupLayout(pos47);
         pos47.setLayout(pos47Layout);
         pos47Layout.setHorizontalGroup(
             pos47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos47, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos47Layout.setVerticalGroup(
             pos47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos47, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos47);
         pos47.setBounds(510, 300, 65, 65);
 
         pos67.setBackground(new java.awt.Color(204, 204, 204));
+        pos67.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos67MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos67Layout = new javax.swing.GroupLayout(pos67);
         pos67.setLayout(pos67Layout);
         pos67Layout.setHorizontalGroup(
             pos67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos67, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos67Layout.setVerticalGroup(
             pos67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos67, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos67);
         pos67.setBounds(510, 440, 65, 65);
 
         pos77.setBackground(new java.awt.Color(204, 204, 204));
+        pos77.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pos77MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pos77Layout = new javax.swing.GroupLayout(pos77);
         pos77.setLayout(pos77Layout);
         pos77Layout.setHorizontalGroup(
             pos77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos77, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
         pos77Layout.setVerticalGroup(
             pos77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addComponent(lblPos77, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(pos77);
@@ -1145,8 +1534,262 @@ public class FrmXadrez extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pos00MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos00MouseClicked
-        // TODO add your handling code here:
+        pos00.setBackground(Color.red);
+
+        lblPos00.setIcon(partida.getPecas()[0][0].toImageIcon());
     }//GEN-LAST:event_pos00MouseClicked
+
+    private void pos01MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos01MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos01MouseClicked
+
+    private void pos02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos02MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos02MouseClicked
+
+    private void pos03MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos03MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos03MouseClicked
+
+    private void pos04MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos04MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos04MouseClicked
+
+    private void pos05MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos05MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos05MouseClicked
+
+    private void pos06MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos06MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos06MouseClicked
+
+    private void pos07MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos07MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos07MouseClicked
+
+    private void pos10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos10MouseClicked
+
+    private void pos11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos11MouseClicked
+
+    private void pos12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos12MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos12MouseClicked
+
+    private void pos13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos13MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos13MouseClicked
+
+    private void pos14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos14MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos14MouseClicked
+
+    private void pos15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos15MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos15MouseClicked
+
+    private void pos16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos16MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos16MouseClicked
+
+    private void pos17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos17MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos17MouseClicked
+
+    private void pos20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos20MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos20MouseClicked
+
+    private void pos21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos21MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos21MouseClicked
+
+    private void pos22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos22MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos22MouseClicked
+
+    private void pos23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos23MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos23MouseClicked
+
+    private void pos24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos24MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos24MouseClicked
+
+    private void pos25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos25MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos25MouseClicked
+
+    private void pos26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos26MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos26MouseClicked
+
+    private void pos27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos27MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos27MouseClicked
+
+    private void pos30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos30MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos30MouseClicked
+
+    private void pos31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos31MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos31MouseClicked
+
+    private void pos32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos32MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos32MouseClicked
+
+    private void pos33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos33MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos33MouseClicked
+
+    private void pos34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos34MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos34MouseClicked
+
+    private void pos35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos35MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos35MouseClicked
+
+    private void pos36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos36MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos36MouseClicked
+
+    private void pos37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos37MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos37MouseClicked
+
+    private void pos40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos40MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos40MouseClicked
+
+    private void pos41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos41MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos41MouseClicked
+
+    private void pos42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos42MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos42MouseClicked
+
+    private void pos43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos43MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos43MouseClicked
+
+    private void pos44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos44MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos44MouseClicked
+
+    private void pos45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos45MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos45MouseClicked
+
+    private void pos46MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos46MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos46MouseClicked
+
+    private void pos47MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos47MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos47MouseClicked
+
+    private void pos50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos50MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos50MouseClicked
+
+    private void pos51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos51MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos51MouseClicked
+
+    private void pos52MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos52MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos52MouseClicked
+
+    private void pos53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos53MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos53MouseClicked
+
+    private void pos54MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos54MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos54MouseClicked
+
+    private void pos55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos55MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos55MouseClicked
+
+    private void pos56MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos56MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos56MouseClicked
+
+    private void pos57MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos57MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos57MouseClicked
+
+    private void pos60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos60MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos60MouseClicked
+
+    private void pos61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos61MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos61MouseClicked
+
+    private void pos62MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos62MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos62MouseClicked
+
+    private void pos63MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos63MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos63MouseClicked
+
+    private void pos64MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos64MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos64MouseClicked
+
+    private void pos65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos65MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos65MouseClicked
+
+    private void pos66MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos66MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos66MouseClicked
+
+    private void pos67MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos67MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos67MouseClicked
+
+    private void pos70MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos70MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos70MouseClicked
+
+    private void pos71MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos71MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos71MouseClicked
+
+    private void pos72MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos72MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos72MouseClicked
+
+    private void pos73MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos73MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos73MouseClicked
+
+    private void pos74MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos74MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos74MouseClicked
+
+    private void pos75MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos75MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos75MouseClicked
+
+    private void pos76MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos76MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos76MouseClicked
+
+    private void pos77MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos77MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pos77MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1188,6 +1831,70 @@ public class FrmXadrez extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblPecas;
+    private javax.swing.JLabel lblPos00;
+    private javax.swing.JLabel lblPos01;
+    private javax.swing.JLabel lblPos02;
+    private javax.swing.JLabel lblPos03;
+    private javax.swing.JLabel lblPos04;
+    private javax.swing.JLabel lblPos05;
+    private javax.swing.JLabel lblPos06;
+    private javax.swing.JLabel lblPos07;
+    private javax.swing.JLabel lblPos10;
+    private javax.swing.JLabel lblPos11;
+    private javax.swing.JLabel lblPos12;
+    private javax.swing.JLabel lblPos13;
+    private javax.swing.JLabel lblPos14;
+    private javax.swing.JLabel lblPos15;
+    private javax.swing.JLabel lblPos16;
+    private javax.swing.JLabel lblPos17;
+    private javax.swing.JLabel lblPos20;
+    private javax.swing.JLabel lblPos21;
+    private javax.swing.JLabel lblPos22;
+    private javax.swing.JLabel lblPos23;
+    private javax.swing.JLabel lblPos24;
+    private javax.swing.JLabel lblPos25;
+    private javax.swing.JLabel lblPos26;
+    private javax.swing.JLabel lblPos27;
+    private javax.swing.JLabel lblPos30;
+    private javax.swing.JLabel lblPos31;
+    private javax.swing.JLabel lblPos32;
+    private javax.swing.JLabel lblPos33;
+    private javax.swing.JLabel lblPos34;
+    private javax.swing.JLabel lblPos35;
+    private javax.swing.JLabel lblPos36;
+    private javax.swing.JLabel lblPos37;
+    private javax.swing.JLabel lblPos40;
+    private javax.swing.JLabel lblPos41;
+    private javax.swing.JLabel lblPos42;
+    private javax.swing.JLabel lblPos43;
+    private javax.swing.JLabel lblPos44;
+    private javax.swing.JLabel lblPos45;
+    private javax.swing.JLabel lblPos46;
+    private javax.swing.JLabel lblPos47;
+    private javax.swing.JLabel lblPos50;
+    private javax.swing.JLabel lblPos51;
+    private javax.swing.JLabel lblPos52;
+    private javax.swing.JLabel lblPos53;
+    private javax.swing.JLabel lblPos54;
+    private javax.swing.JLabel lblPos55;
+    private javax.swing.JLabel lblPos56;
+    private javax.swing.JLabel lblPos57;
+    private javax.swing.JLabel lblPos60;
+    private javax.swing.JLabel lblPos61;
+    private javax.swing.JLabel lblPos62;
+    private javax.swing.JLabel lblPos63;
+    private javax.swing.JLabel lblPos64;
+    private javax.swing.JLabel lblPos65;
+    private javax.swing.JLabel lblPos66;
+    private javax.swing.JLabel lblPos67;
+    private javax.swing.JLabel lblPos70;
+    private javax.swing.JLabel lblPos71;
+    private javax.swing.JLabel lblPos72;
+    private javax.swing.JLabel lblPos73;
+    private javax.swing.JLabel lblPos74;
+    private javax.swing.JLabel lblPos75;
+    private javax.swing.JLabel lblPos76;
+    private javax.swing.JLabel lblPos77;
     private javax.swing.JPanel pos00;
     private javax.swing.JPanel pos01;
     private javax.swing.JPanel pos02;
@@ -1253,4 +1960,8 @@ public class FrmXadrez extends javax.swing.JFrame {
     private javax.swing.JPanel pos76;
     private javax.swing.JPanel pos77;
     // End of variables declaration//GEN-END:variables
+
+    public static void imprimirPartida() {
+        
+    }
 }
