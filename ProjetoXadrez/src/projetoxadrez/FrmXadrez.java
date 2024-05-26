@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
+import jogo.PosicaoXadrez;
 
 /**
  *
@@ -1539,9 +1540,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pos00MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos00MouseClicked
-        pos00.setBackground(Color.red);
 
-        lblPos00.setIcon(partida.getPecas()[0][0].toImageIcon());
     }//GEN-LAST:event_pos00MouseClicked
 
     private void pos01MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos01MouseClicked
@@ -1573,7 +1572,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     }//GEN-LAST:event_pos07MouseClicked
 
     private void pos10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos10MouseClicked
-        // TODO add your handling code here:
+        imprimirMovimentosPossiveis(7, 'a');
     }//GEN-LAST:event_pos10MouseClicked
 
     private void pos11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos11MouseClicked
@@ -1733,7 +1732,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     }//GEN-LAST:event_pos57MouseClicked
 
     private void pos60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos60MouseClicked
-        // TODO add your handling code here:
+        imprimirMovimentosPossiveis(2, 'a');
     }//GEN-LAST:event_pos60MouseClicked
 
     private void pos61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos61MouseClicked
@@ -1966,15 +1965,29 @@ public class FrmXadrez extends javax.swing.JFrame {
     private static javax.swing.JPanel pos77;
     // End of variables declaration//GEN-END:variables
 
-    public static void jogo() {
+    private static void jogo() {
         while (!partida.isCheckmate()) {
 
         }
     }
 
-    public static void imprimirTabuleiro() {
+    private static void imprimirTabuleiro() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
+                if (partida.getPecas()[i][j] != null) {
+                    matrizL[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
+                }
+            }
+        }
+    }
+
+    private static void imprimirMovimentosPossiveis(int linha, char coluna) {
+        boolean[][] b = partida.movimentosPossiveisImprimir(new PosicaoXadrez(linha, coluna));
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (b[i][j]) {
+                    matrizJP[i][j].setBackground(Color.red);
+                }
                 if (partida.getPecas()[i][j] != null) {
                     matrizL[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
                 }
