@@ -7,9 +7,10 @@ package projetoxadrez;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
-import jogo.pecasXadrez.Bispo;
 
 /**
  *
@@ -17,14 +18,18 @@ import jogo.pecasXadrez.Bispo;
  */
 public class FrmXadrez extends javax.swing.JFrame {
 
-    PartidaXadrez partida = new PartidaXadrez();
-    List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
+    private static PartidaXadrez partida = new PartidaXadrez();
+    private static List<PecasXadrez> pecasCap = new ArrayList<PecasXadrez>();
+    private static JPanel[][] matrizJP = new JPanel[8][8];
+    private static JLabel[][] matrizL = new JLabel[8][8];
 
     /**
      * Creates new form FrmXadrez
      */
     public FrmXadrez() {
         initComponents();
+        atribuirPosicoes();
+        imprimirTabuleiro();
     }
 
     /**
@@ -1895,73 +1900,217 @@ public class FrmXadrez extends javax.swing.JFrame {
     private javax.swing.JLabel lblPos75;
     private javax.swing.JLabel lblPos76;
     private javax.swing.JLabel lblPos77;
-    private javax.swing.JPanel pos00;
-    private javax.swing.JPanel pos01;
-    private javax.swing.JPanel pos02;
-    private javax.swing.JPanel pos03;
-    private javax.swing.JPanel pos04;
-    private javax.swing.JPanel pos05;
-    private javax.swing.JPanel pos06;
-    private javax.swing.JPanel pos07;
-    private javax.swing.JPanel pos10;
-    private javax.swing.JPanel pos11;
-    private javax.swing.JPanel pos12;
-    private javax.swing.JPanel pos13;
-    private javax.swing.JPanel pos14;
-    private javax.swing.JPanel pos15;
-    private javax.swing.JPanel pos16;
-    private javax.swing.JPanel pos17;
-    private javax.swing.JPanel pos20;
-    private javax.swing.JPanel pos21;
-    private javax.swing.JPanel pos22;
-    private javax.swing.JPanel pos23;
-    private javax.swing.JPanel pos24;
-    private javax.swing.JPanel pos25;
-    private javax.swing.JPanel pos26;
-    private javax.swing.JPanel pos27;
-    private javax.swing.JPanel pos30;
-    private javax.swing.JPanel pos31;
-    private javax.swing.JPanel pos32;
-    private javax.swing.JPanel pos33;
-    private javax.swing.JPanel pos34;
-    private javax.swing.JPanel pos35;
-    private javax.swing.JPanel pos36;
-    private javax.swing.JPanel pos37;
-    private javax.swing.JPanel pos40;
-    private javax.swing.JPanel pos41;
-    private javax.swing.JPanel pos42;
-    private javax.swing.JPanel pos43;
-    private javax.swing.JPanel pos44;
-    private javax.swing.JPanel pos45;
-    private javax.swing.JPanel pos46;
-    private javax.swing.JPanel pos47;
-    private javax.swing.JPanel pos50;
-    private javax.swing.JPanel pos51;
-    private javax.swing.JPanel pos52;
-    private javax.swing.JPanel pos53;
-    private javax.swing.JPanel pos54;
-    private javax.swing.JPanel pos55;
-    private javax.swing.JPanel pos56;
-    private javax.swing.JPanel pos57;
-    private javax.swing.JPanel pos60;
-    private javax.swing.JPanel pos61;
-    private javax.swing.JPanel pos62;
-    private javax.swing.JPanel pos63;
-    private javax.swing.JPanel pos64;
-    private javax.swing.JPanel pos65;
-    private javax.swing.JPanel pos66;
-    private javax.swing.JPanel pos67;
-    private javax.swing.JPanel pos70;
-    private javax.swing.JPanel pos71;
-    private javax.swing.JPanel pos72;
-    private javax.swing.JPanel pos73;
-    private javax.swing.JPanel pos74;
-    private javax.swing.JPanel pos75;
-    private javax.swing.JPanel pos76;
-    private javax.swing.JPanel pos77;
+    private static javax.swing.JPanel pos00;
+    private static javax.swing.JPanel pos01;
+    private static javax.swing.JPanel pos02;
+    private static javax.swing.JPanel pos03;
+    private static javax.swing.JPanel pos04;
+    private static javax.swing.JPanel pos05;
+    private static javax.swing.JPanel pos06;
+    private static javax.swing.JPanel pos07;
+    private static javax.swing.JPanel pos10;
+    private static javax.swing.JPanel pos11;
+    private static javax.swing.JPanel pos12;
+    private static javax.swing.JPanel pos13;
+    private static javax.swing.JPanel pos14;
+    private static javax.swing.JPanel pos15;
+    private static javax.swing.JPanel pos16;
+    private static javax.swing.JPanel pos17;
+    private static javax.swing.JPanel pos20;
+    private static javax.swing.JPanel pos21;
+    private static javax.swing.JPanel pos22;
+    private static javax.swing.JPanel pos23;
+    private static javax.swing.JPanel pos24;
+    private static javax.swing.JPanel pos25;
+    private static javax.swing.JPanel pos26;
+    private static javax.swing.JPanel pos27;
+    private static javax.swing.JPanel pos30;
+    private static javax.swing.JPanel pos31;
+    private static javax.swing.JPanel pos32;
+    private static javax.swing.JPanel pos33;
+    private static javax.swing.JPanel pos34;
+    private static javax.swing.JPanel pos35;
+    private static javax.swing.JPanel pos36;
+    private static javax.swing.JPanel pos37;
+    private static javax.swing.JPanel pos40;
+    private static javax.swing.JPanel pos41;
+    private static javax.swing.JPanel pos42;
+    private static javax.swing.JPanel pos43;
+    private static javax.swing.JPanel pos44;
+    private static javax.swing.JPanel pos45;
+    private static javax.swing.JPanel pos46;
+    private static javax.swing.JPanel pos47;
+    private static javax.swing.JPanel pos50;
+    private static javax.swing.JPanel pos51;
+    private static javax.swing.JPanel pos52;
+    private static javax.swing.JPanel pos53;
+    private static javax.swing.JPanel pos54;
+    private static javax.swing.JPanel pos55;
+    private static javax.swing.JPanel pos56;
+    private static javax.swing.JPanel pos57;
+    private static javax.swing.JPanel pos60;
+    private static javax.swing.JPanel pos61;
+    private static javax.swing.JPanel pos62;
+    private static javax.swing.JPanel pos63;
+    private static javax.swing.JPanel pos64;
+    private static javax.swing.JPanel pos65;
+    private static javax.swing.JPanel pos66;
+    private static javax.swing.JPanel pos67;
+    private static javax.swing.JPanel pos70;
+    private static javax.swing.JPanel pos71;
+    private static javax.swing.JPanel pos72;
+    private static javax.swing.JPanel pos73;
+    private static javax.swing.JPanel pos74;
+    private static javax.swing.JPanel pos75;
+    private static javax.swing.JPanel pos76;
+    private static javax.swing.JPanel pos77;
     // End of variables declaration//GEN-END:variables
 
-    public static void imprimirPartida() {
-        
+    public static void jogo() {
+        while (!partida.isCheckmate()) {
+
+        }
+    }
+
+    public static void imprimirTabuleiro() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (partida.getPecas()[i][j] != null) {
+                    matrizL[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
+                }
+            }
+        }
+    }
+
+    private void atribuirPosicoes() {
+        matrizJP[0][0] = pos00;
+        matrizJP[0][1] = pos01;
+        matrizJP[0][2] = pos02;
+        matrizJP[0][3] = pos03;
+        matrizJP[0][4] = pos04;
+        matrizJP[0][5] = pos05;
+        matrizJP[0][6] = pos06;
+        matrizJP[0][7] = pos07;
+        matrizJP[1][0] = pos10;
+        matrizJP[1][1] = pos11;
+        matrizJP[1][2] = pos12;
+        matrizJP[1][3] = pos13;
+        matrizJP[1][4] = pos14;
+        matrizJP[1][5] = pos15;
+        matrizJP[1][6] = pos16;
+        matrizJP[1][7] = pos17;
+        matrizJP[2][0] = pos20;
+        matrizJP[2][1] = pos21;
+        matrizJP[2][2] = pos22;
+        matrizJP[2][3] = pos23;
+        matrizJP[2][4] = pos24;
+        matrizJP[2][5] = pos25;
+        matrizJP[2][6] = pos26;
+        matrizJP[2][7] = pos27;
+        matrizJP[3][0] = pos30;
+        matrizJP[3][1] = pos31;
+        matrizJP[3][2] = pos32;
+        matrizJP[3][3] = pos33;
+        matrizJP[3][4] = pos34;
+        matrizJP[3][5] = pos35;
+        matrizJP[3][6] = pos36;
+        matrizJP[3][7] = pos37;
+        matrizJP[4][0] = pos40;
+        matrizJP[4][1] = pos41;
+        matrizJP[4][2] = pos42;
+        matrizJP[4][3] = pos43;
+        matrizJP[4][4] = pos44;
+        matrizJP[4][5] = pos45;
+        matrizJP[4][6] = pos46;
+        matrizJP[4][7] = pos47;
+        matrizJP[5][0] = pos50;
+        matrizJP[5][1] = pos51;
+        matrizJP[5][2] = pos52;
+        matrizJP[5][3] = pos53;
+        matrizJP[5][4] = pos54;
+        matrizJP[5][5] = pos55;
+        matrizJP[5][6] = pos56;
+        matrizJP[5][7] = pos57;
+        matrizJP[6][0] = pos60;
+        matrizJP[6][1] = pos61;
+        matrizJP[6][2] = pos62;
+        matrizJP[6][3] = pos63;
+        matrizJP[6][4] = pos64;
+        matrizJP[6][5] = pos65;
+        matrizJP[6][6] = pos66;
+        matrizJP[6][7] = pos67;
+        matrizJP[7][0] = pos70;
+        matrizJP[7][1] = pos71;
+        matrizJP[7][2] = pos72;
+        matrizJP[7][3] = pos73;
+        matrizJP[7][4] = pos74;
+        matrizJP[7][5] = pos75;
+        matrizJP[7][6] = pos76;
+        matrizJP[7][7] = pos77;
+
+        matrizL[0][0] = lblPos00;
+        matrizL[0][1] = lblPos01;
+        matrizL[0][2] = lblPos02;
+        matrizL[0][3] = lblPos03;
+        matrizL[0][4] = lblPos04;
+        matrizL[0][5] = lblPos05;
+        matrizL[0][6] = lblPos06;
+        matrizL[0][7] = lblPos07;
+        matrizL[1][0] = lblPos10;
+        matrizL[1][1] = lblPos11;
+        matrizL[1][2] = lblPos12;
+        matrizL[1][3] = lblPos13;
+        matrizL[1][4] = lblPos14;
+        matrizL[1][5] = lblPos15;
+        matrizL[1][6] = lblPos16;
+        matrizL[1][7] = lblPos17;
+        matrizL[2][0] = lblPos20;
+        matrizL[2][1] = lblPos21;
+        matrizL[2][2] = lblPos22;
+        matrizL[2][3] = lblPos23;
+        matrizL[2][4] = lblPos24;
+        matrizL[2][5] = lblPos25;
+        matrizL[2][6] = lblPos26;
+        matrizL[2][7] = lblPos27;
+        matrizL[3][0] = lblPos30;
+        matrizL[3][1] = lblPos31;
+        matrizL[3][2] = lblPos32;
+        matrizL[3][3] = lblPos33;
+        matrizL[3][4] = lblPos34;
+        matrizL[3][5] = lblPos35;
+        matrizL[3][6] = lblPos36;
+        matrizL[3][7] = lblPos37;
+        matrizL[4][0] = lblPos40;
+        matrizL[4][1] = lblPos41;
+        matrizL[4][2] = lblPos42;
+        matrizL[4][3] = lblPos43;
+        matrizL[4][4] = lblPos44;
+        matrizL[4][5] = lblPos45;
+        matrizL[4][6] = lblPos46;
+        matrizL[4][7] = lblPos47;
+        matrizL[5][0] = lblPos50;
+        matrizL[5][1] = lblPos51;
+        matrizL[5][2] = lblPos52;
+        matrizL[5][3] = lblPos53;
+        matrizL[5][4] = lblPos54;
+        matrizL[5][5] = lblPos55;
+        matrizL[5][6] = lblPos56;
+        matrizL[5][7] = lblPos57;
+        matrizL[6][0] = lblPos60;
+        matrizL[6][1] = lblPos61;
+        matrizL[6][2] = lblPos62;
+        matrizL[6][3] = lblPos63;
+        matrizL[6][4] = lblPos64;
+        matrizL[6][5] = lblPos65;
+        matrizL[6][6] = lblPos66;
+        matrizL[6][7] = lblPos67;
+        matrizL[7][0] = lblPos70;
+        matrizL[7][1] = lblPos71;
+        matrizL[7][2] = lblPos72;
+        matrizL[7][3] = lblPos73;
+        matrizL[7][4] = lblPos74;
+        matrizL[7][5] = lblPos75;
+        matrizL[7][6] = lblPos76;
+        matrizL[7][7] = lblPos77;
     }
 }
