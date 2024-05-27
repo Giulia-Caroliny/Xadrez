@@ -77,15 +77,13 @@ public class PartidaXadrez {
         return pecaAux;
     }
 
-    public boolean[][] movimentosPossiveisImprimir(PosicaoXadrez posOrigem) {
-        validarPosicaoOrigem(posOrigem.posicaoTabuleiro());
-        return tab.peca(posOrigem.posicaoTabuleiro()).movimentosPossiveis();
+    public boolean[][] movimentosPossiveisImprimir(Posicao posOrigem) {
+        validarPosicaoOrigem(posOrigem);
+        return tab.peca(posOrigem).movimentosPossiveis();
     }
 
-    public PecasXadrez movimentarPeca(PosicaoXadrez posOrigem, PosicaoXadrez posDestino) {
-        Posicao origem = posOrigem.posicaoTabuleiro();
-        Posicao destino = posDestino.posicaoTabuleiro();
-
+    public PecasXadrez movimentarPeca(Posicao origem, Posicao destino) {
+        
         validarPosicaoOrigem(origem);
         validarPosicaoDestino(origem, destino);
         Pecas pecaCapturada = fazerMovimento(origem, destino);
@@ -130,7 +128,8 @@ public class PartidaXadrez {
             return trocarPecaPromovida("D");
         } 
 
-        Posicao pProm = promocao.getPosicao().posicaoTabuleiro();
+        Posicao pProm = promocao.getPosicao();
+        
         pecasTabuleiro.remove(tab.removerPecas(pProm));
         PecasXadrez p;
 
@@ -286,7 +285,7 @@ public class PartidaXadrez {
         for (Pecas p : lista) {
             boolean[][] bol = p.movimentosPossiveis();
 
-            if (bol[rei.getPosicao().posicaoTabuleiro().getLinha()][rei.getPosicao().posicaoTabuleiro().getColuna()]) {
+            if (bol[rei.getPosicao().getLinha()][rei.getPosicao().getColuna()]) {
                 return true;
             }
         }
@@ -307,7 +306,7 @@ public class PartidaXadrez {
                 for (int j = 0; j < tab.getColunas(); j++) {
 
                     if (bol[i][j]) {
-                        Posicao origem = ((PecasXadrez) p).getPosicao().posicaoTabuleiro();
+                        Posicao origem = ((PecasXadrez) p).getPosicao();
                         Posicao destino = new Posicao(i, j);
                         Pecas pecaCapturada = fazerMovimento(origem, destino);
                         boolean deuRuim = testeCheck(cor);
@@ -323,7 +322,7 @@ public class PartidaXadrez {
     }
 
     private void lugarNovaPeca(char coluna, int linha, PecasXadrez pecas) {
-        tab.lugarPeca(pecas, new PosicaoXadrez(linha, coluna).posicaoTabuleiro());
+        tab.lugarPeca(pecas, new Posicao(linha, coluna));
         pecasTabuleiro.add(pecas);
     }
 

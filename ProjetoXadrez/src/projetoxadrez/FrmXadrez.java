@@ -11,7 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
-import jogo.PosicaoXadrez;
+import tabuleiro.Posicao;
+//import jogo.PosicaoXadrez;
 
 /**
  *
@@ -1981,8 +1982,8 @@ public class FrmXadrez extends javax.swing.JFrame {
         }
     }
 
-    private static void imprimirMovimentosPossiveis(int linha, char coluna) {
-        boolean[][] b = partida.movimentosPossiveisImprimir(new PosicaoXadrez(linha, coluna));
+    private static void imprimirMovimentosPossiveis(int linha, int coluna) {
+        boolean[][] b = partida.movimentosPossiveisImprimir(new Posicao(linha, coluna));
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (b[i][j]) {

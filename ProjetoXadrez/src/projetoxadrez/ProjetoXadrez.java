@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
-import jogo.PosicaoXadrez;
+//import jogo.PosicaoXadrez;
 import tabuleiro.TabuleiroException;
 import tabuleiro.XadrezException;
 
@@ -32,7 +32,7 @@ public class ProjetoXadrez {
 
         while (!partida.isCheckmate()) {
             try {
-
+                /*
                 ViewProvisorio.imprimirPartida(partida, pecas);
                 System.out.println();
 
@@ -61,7 +61,7 @@ public class ProjetoXadrez {
                         tipo = sc.nextLine().toUpperCase();
                     }
                     partida.trocarPecaPromovida(tipo);
-                }
+                }*/
             } catch (XadrezException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
