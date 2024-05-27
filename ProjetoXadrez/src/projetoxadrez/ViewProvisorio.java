@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import jogo.Cores;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
-//import jogo.PosicaoXadrez;
+import jogo.PosicaoXadrez;
 
 /**
  *
@@ -25,7 +25,7 @@ public class ViewProvisorio {
 
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 
-    /*public static PosicaoXadrez lerPosicaoJogador(Scanner sc) {
+    public static PosicaoXadrez lerPosicaoJogador(Scanner sc) {
         try {
             String aux = sc.nextLine();
             char coluna = aux.charAt(0);
@@ -34,7 +34,7 @@ public class ViewProvisorio {
         } catch (RuntimeException e) {
             throw new InputMismatchException("Erro ao instanciar posição. Posições válidas estão entre a1 e h8");
         }
-    }*/
+    }
 
     public static void imprimirPartida(PartidaXadrez partida, List<PecasXadrez> pecas) {
         imprimirTabuleiro(partida.getPecas());

@@ -7,8 +7,10 @@ package projetoxadrez;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import jogo.Cores;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
@@ -32,6 +34,7 @@ public class FrmXadrez extends javax.swing.JFrame {
         initComponents();
         atribuirPosicoes();
         imprimirTabuleiro();
+        imprimirPecasCapturadas();
     }
 
     /**
@@ -172,6 +175,8 @@ public class FrmXadrez extends javax.swing.JFrame {
         pos77 = new javax.swing.JPanel();
         lblPos77 = new javax.swing.JLabel();
         lblPecas = new javax.swing.JLabel();
+        lblPecasCapP = new javax.swing.JLabel();
+        lblPecasCapB = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -1528,6 +1533,10 @@ public class FrmXadrez extends javax.swing.JFrame {
         lblPecas.setText("Peças Capturadas:");
         getContentPane().add(lblPecas);
         lblPecas.setBounds(610, 30, 120, 16);
+        getContentPane().add(lblPecasCapP);
+        lblPecasCapP.setBounds(610, 110, 190, 30);
+        getContentPane().add(lblPecasCapB);
+        lblPecasCapB.setBounds(610, 60, 190, 30);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -1836,6 +1845,8 @@ public class FrmXadrez extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblPecas;
+    private static javax.swing.JLabel lblPecasCapB;
+    private static javax.swing.JLabel lblPecasCapP;
     private javax.swing.JLabel lblPos00;
     private javax.swing.JLabel lblPos01;
     private javax.swing.JLabel lblPos02;
@@ -1994,6 +2005,14 @@ public class FrmXadrez extends javax.swing.JFrame {
                 }
             }
         }
+    }
+    
+    private static void imprimirPecasCapturadas(){
+        List<PecasXadrez> pecasBrancas = pecasCap.stream().filter(x -> x.getCor() == Cores.BRANCAS).collect(Collectors.toList());
+        List<PecasXadrez> pecasPretas = pecasCap.stream().filter(x -> x.getCor() == Cores.PRETAS).collect(Collectors.toList());
+                
+        lblPecasCapB.setText("Brancas: " + pecasBrancas);
+        lblPecasCapP.setText("Pretas: " + pecasPretas);
     }
 
     private void atribuirPosicoes() {

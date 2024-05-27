@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
-//import jogo.PosicaoXadrez;
+import jogo.PosicaoXadrez;
+import tabuleiro.Posicao;
 import tabuleiro.TabuleiroException;
 import tabuleiro.XadrezException;
 
@@ -32,20 +33,20 @@ public class ProjetoXadrez {
 
         while (!partida.isCheckmate()) {
             try {
-                /*
+                
                 ViewProvisorio.imprimirPartida(partida, pecas);
                 System.out.println();
 
                 System.out.println("Coordenadas de origem:");
-                PosicaoXadrez origem = ViewProvisorio.lerPosicaoJogador(sc);
-
+                PosicaoXadrez Oorigem = ViewProvisorio.lerPosicaoJogador(sc);
+                Posicao origem = new Posicao(0, 0);
                 boolean[][] b = partida.movimentosPossiveisImprimir(origem);
 
                 ViewProvisorio.imprimirTabuleiro(partida.getPecas(), b);
 
                 System.out.println("Coordenadas de destino:");
-                PosicaoXadrez destino = ViewProvisorio.lerPosicaoJogador(sc);
-
+                PosicaoXadrez Ddestino = ViewProvisorio.lerPosicaoJogador(sc);
+                Posicao destino = new Posicao(0, 0);
                 PecasXadrez pecaCapturada = partida.movimentarPeca(origem, destino);
                 if (pecaCapturada != null) {
                     pecas.add(pecaCapturada);
@@ -61,7 +62,7 @@ public class ProjetoXadrez {
                         tipo = sc.nextLine().toUpperCase();
                     }
                     partida.trocarPecaPromovida(tipo);
-                }*/
+                }
             } catch (XadrezException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
