@@ -27,7 +27,18 @@ public abstract class PecasXadrez extends Pecas {
         return cor;
     }
 
-    public PosicaoXadrez getPosicao() {
+    public Posicao getPosicao() {
+        return pos;
+    }
+
+    /**
+     * Método para pegar a posição Posicao no padrão PosicaoXadrez
+     *
+     * @return PosicaoXadrez - posição convertida
+     * @deprecated Utilize {@link #getPosicao()}
+     */
+    @Deprecated
+    public PosicaoXadrez getPosicaoXadrez() {
         return PosicaoXadrez.posicaoXadrez(pos);
     }
 

@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
-import jogo.PosicaoXadrez;
+import tabuleiro.Posicao;
 
 /**
  *
@@ -1572,7 +1572,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     }//GEN-LAST:event_pos07MouseClicked
 
     private void pos10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos10MouseClicked
-        imprimirMovimentosPossiveis(7, 'a');
+        imprimirMovimentosPossiveis(1, 0);
     }//GEN-LAST:event_pos10MouseClicked
 
     private void pos11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos11MouseClicked
@@ -1732,7 +1732,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     }//GEN-LAST:event_pos57MouseClicked
 
     private void pos60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos60MouseClicked
-        imprimirMovimentosPossiveis(2, 'a');
+        imprimirMovimentosPossiveis(6, 0);
     }//GEN-LAST:event_pos60MouseClicked
 
     private void pos61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos61MouseClicked
@@ -1981,8 +1981,8 @@ public class FrmXadrez extends javax.swing.JFrame {
         }
     }
 
-    private static void imprimirMovimentosPossiveis(int linha, char coluna) {
-        boolean[][] b = partida.movimentosPossiveisImprimir(new PosicaoXadrez(linha, coluna));
+    private static void imprimirMovimentosPossiveis(int linha, int coluna) {
+        boolean[][] b = partida.movimentosPossiveisImprimir(new Posicao(linha, coluna));
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (b[i][j]) {
