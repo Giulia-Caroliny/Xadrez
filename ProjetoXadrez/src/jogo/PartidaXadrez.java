@@ -77,6 +77,16 @@ public class PartidaXadrez {
         return pecaAux;
     }
 
+    public boolean validarAtribuicaoOrigem(Posicao posOrigem) {
+        validarPosicaoOrigem(posOrigem);
+        return true;
+    }
+    
+    public boolean validarAtribuicaoDestino(Posicao posOrigem, Posicao posDestino) {
+        validarPosicaoDestino(posOrigem, posDestino);
+        return true;
+    }
+    
     public boolean[][] movimentosPossiveisImprimir(Posicao posOrigem) {
         validarPosicaoOrigem(posOrigem);
         return tab.peca(posOrigem).movimentosPossiveis();
@@ -328,49 +338,49 @@ public class PartidaXadrez {
 
     private void iniciarPartida() {
         //torres
-        lugarNovaPeca(0, 0, new Torre(Cores.BRANCAS, tab));
-        lugarNovaPeca(7, 0, new Torre(Cores.BRANCAS, tab));
-        lugarNovaPeca(0, 7, new Torre(Cores.PRETAS, tab));
-        lugarNovaPeca(7, 7, new Torre(Cores.PRETAS, tab));
+        lugarNovaPeca(0, 7, new Torre(Cores.BRANCAS, tab));
+        lugarNovaPeca(7, 7, new Torre(Cores.BRANCAS, tab));
+        lugarNovaPeca(0, 0, new Torre(Cores.PRETAS, tab));
+        lugarNovaPeca(7, 0, new Torre(Cores.PRETAS, tab));
 
         //reis
-        lugarNovaPeca(4, 0, new Rei(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(4, 7, new Rei(Cores.PRETAS, tab, this));
+        lugarNovaPeca(4, 7, new Rei(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(4, 0, new Rei(Cores.PRETAS, tab, this));
 
         //peões
-        lugarNovaPeca(0, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(1, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(2, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(3, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(4, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(5, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(7, 1, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(0, 6, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(1, 6, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(2, 6, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(3, 6, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(4, 6, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(5, 6, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(6, 6, new Peao(Cores.BRANCAS, tab, this));
+        lugarNovaPeca(7, 6, new Peao(Cores.BRANCAS, tab, this));
 
-        lugarNovaPeca(0, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(2, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(3, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(4, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(5, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(6, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(7, 6, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(0, 1, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(1, 1, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(2, 1, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(3, 1, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(4, 1, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(5, 1, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(6, 1, new Peao(Cores.PRETAS, tab, this));
+        lugarNovaPeca(7, 1, new Peao(Cores.PRETAS, tab, this));
 
         //bispos
-        lugarNovaPeca(2, 0, new Bispo(Cores.BRANCAS, tab));
-        lugarNovaPeca(5, 0, new Bispo(Cores.BRANCAS, tab));
-        lugarNovaPeca(2, 7, new Bispo(Cores.PRETAS, tab));
-        lugarNovaPeca(5, 7, new Bispo(Cores.PRETAS, tab));
+        lugarNovaPeca(2, 7, new Bispo(Cores.BRANCAS, tab));
+        lugarNovaPeca(5, 7, new Bispo(Cores.BRANCAS, tab));
+        lugarNovaPeca(2, 0, new Bispo(Cores.PRETAS, tab));
+        lugarNovaPeca(5, 0, new Bispo(Cores.PRETAS, tab));
 
         //cavalos
-        lugarNovaPeca(1, 0, new Cavalo(Cores.BRANCAS, tab));
-        lugarNovaPeca(6, 0, new Cavalo(Cores.BRANCAS, tab));
-        lugarNovaPeca(1, 7, new Cavalo(Cores.PRETAS, tab));
-        lugarNovaPeca(6, 7, new Cavalo(Cores.PRETAS, tab));
+        lugarNovaPeca(1, 7, new Cavalo(Cores.BRANCAS, tab));
+        lugarNovaPeca(6, 7, new Cavalo(Cores.BRANCAS, tab));
+        lugarNovaPeca(1, 0, new Cavalo(Cores.PRETAS, tab));
+        lugarNovaPeca(6, 0, new Cavalo(Cores.PRETAS, tab));
 
         //damas
-        lugarNovaPeca(3, 0, new Dama(Cores.BRANCAS, tab));
-        lugarNovaPeca(3, 7, new Dama(Cores.PRETAS, tab));
+        lugarNovaPeca(3, 7, new Dama(Cores.BRANCAS, tab));
+        lugarNovaPeca(3, 0, new Dama(Cores.PRETAS, tab));
     }
 
 }
