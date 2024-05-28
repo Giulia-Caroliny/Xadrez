@@ -76,6 +76,16 @@ public class PartidaXadrez {
         }
         return pecaAux;
     }
+    
+    public boolean validarAtribuicaoOrigem(Posicao posOrigem) {
+        validarPosicaoOrigem(posOrigem);
+        return true;
+    }
+
+    public boolean validarAtribuicaoDestino(Posicao posOrigem, Posicao posDestino) {
+        validarPosicaoDestino(posOrigem, posDestino);
+        return true;
+    }
 
     public boolean[][] movimentosPossiveisImprimir(Posicao posOrigem) {
         validarPosicaoOrigem(posOrigem);
@@ -99,9 +109,7 @@ public class PartidaXadrez {
         return tab.peca(posOrigem.posicaoTabuleiro()).movimentosPossiveis();
     }
 
-    public PecasXadrez movimentarPeca(Posicao posOrigem, Posicao posDestino) {
-        Posicao origem = posOrigem;
-        Posicao destino = posDestino;
+    public PecasXadrez movimentarPeca(Posicao origem, Posicao destino) {
 
         validarPosicaoOrigem(origem);
         validarPosicaoDestino(origem, destino);

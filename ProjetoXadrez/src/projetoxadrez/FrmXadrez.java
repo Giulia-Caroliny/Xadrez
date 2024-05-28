@@ -7,8 +7,10 @@ package projetoxadrez;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import jogo.Cores;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
@@ -23,6 +25,8 @@ public class FrmXadrez extends javax.swing.JFrame {
     private static List<PecasXadrez> pecasCap = new ArrayList<PecasXadrez>();
     private static JPanel[][] matrizJP = new JPanel[8][8];
     private static JLabel[][] matrizL = new JLabel[8][8];
+    private static Posicao origem = null;
+    private static Posicao destino = null;
 
     /**
      * Creates new form FrmXadrez
@@ -31,6 +35,7 @@ public class FrmXadrez extends javax.swing.JFrame {
         initComponents();
         atribuirPosicoes();
         imprimirTabuleiro();
+        imprimirPecasCapturadas();
     }
 
     /**
@@ -171,6 +176,8 @@ public class FrmXadrez extends javax.swing.JFrame {
         pos77 = new javax.swing.JPanel();
         lblPos77 = new javax.swing.JLabel();
         lblPecas = new javax.swing.JLabel();
+        lblPecasCapP = new javax.swing.JLabel();
+        lblPecasCapB = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -1527,6 +1534,10 @@ public class FrmXadrez extends javax.swing.JFrame {
         lblPecas.setText("Peças Capturadas:");
         getContentPane().add(lblPecas);
         lblPecas.setBounds(610, 30, 120, 16);
+        getContentPane().add(lblPecasCapP);
+        lblPecasCapP.setBounds(610, 110, 190, 30);
+        getContentPane().add(lblPecasCapB);
+        lblPecasCapB.setBounds(610, 60, 190, 30);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -1540,259 +1551,259 @@ public class FrmXadrez extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pos00MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos00MouseClicked
-
+        jogo(0, 0);
     }//GEN-LAST:event_pos00MouseClicked
 
     private void pos01MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos01MouseClicked
-        // TODO add your handling code here:
+        jogo(0, 1);
     }//GEN-LAST:event_pos01MouseClicked
 
     private void pos02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos02MouseClicked
-        // TODO add your handling code here:
+        jogo(0, 2);
     }//GEN-LAST:event_pos02MouseClicked
 
     private void pos03MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos03MouseClicked
-        // TODO add your handling code here:
+        jogo(0, 3);
     }//GEN-LAST:event_pos03MouseClicked
 
     private void pos04MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos04MouseClicked
-        // TODO add your handling code here:
+        jogo(0, 4);
     }//GEN-LAST:event_pos04MouseClicked
 
     private void pos05MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos05MouseClicked
-        // TODO add your handling code here:
+        jogo(0, 5);
     }//GEN-LAST:event_pos05MouseClicked
 
     private void pos06MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos06MouseClicked
-        // TODO add your handling code here:
+        jogo(0, 6);
     }//GEN-LAST:event_pos06MouseClicked
 
     private void pos07MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos07MouseClicked
-        // TODO add your handling code here:
+        jogo(0, 7);
     }//GEN-LAST:event_pos07MouseClicked
 
     private void pos10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos10MouseClicked
-        imprimirMovimentosPossiveis(1, 0);
+        jogo(1, 0);
     }//GEN-LAST:event_pos10MouseClicked
 
     private void pos11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos11MouseClicked
-        // TODO add your handling code here:
+        jogo(1, 1);
     }//GEN-LAST:event_pos11MouseClicked
 
     private void pos12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos12MouseClicked
-        // TODO add your handling code here:
+        jogo(1, 2);
     }//GEN-LAST:event_pos12MouseClicked
 
     private void pos13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos13MouseClicked
-        // TODO add your handling code here:
+        jogo(1, 3);
     }//GEN-LAST:event_pos13MouseClicked
 
     private void pos14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos14MouseClicked
-        // TODO add your handling code here:
+        jogo(1, 4);
     }//GEN-LAST:event_pos14MouseClicked
 
     private void pos15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos15MouseClicked
-        // TODO add your handling code here:
+        jogo(1, 5);
     }//GEN-LAST:event_pos15MouseClicked
 
     private void pos16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos16MouseClicked
-        // TODO add your handling code here:
+        jogo(1, 6);
     }//GEN-LAST:event_pos16MouseClicked
 
     private void pos17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos17MouseClicked
-        // TODO add your handling code here:
+        jogo(1, 7);
     }//GEN-LAST:event_pos17MouseClicked
 
     private void pos20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos20MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 0);
     }//GEN-LAST:event_pos20MouseClicked
 
     private void pos21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos21MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 1);
     }//GEN-LAST:event_pos21MouseClicked
 
     private void pos22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos22MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 2);
     }//GEN-LAST:event_pos22MouseClicked
 
     private void pos23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos23MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 3);
     }//GEN-LAST:event_pos23MouseClicked
 
     private void pos24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos24MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 4);
     }//GEN-LAST:event_pos24MouseClicked
 
     private void pos25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos25MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 5);
     }//GEN-LAST:event_pos25MouseClicked
 
     private void pos26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos26MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 6);
     }//GEN-LAST:event_pos26MouseClicked
 
     private void pos27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos27MouseClicked
-        // TODO add your handling code here:
+        jogo(2, 7);
     }//GEN-LAST:event_pos27MouseClicked
 
     private void pos30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos30MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 0);
     }//GEN-LAST:event_pos30MouseClicked
 
     private void pos31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos31MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 1);
     }//GEN-LAST:event_pos31MouseClicked
 
     private void pos32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos32MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 2);
     }//GEN-LAST:event_pos32MouseClicked
 
     private void pos33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos33MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 3);
     }//GEN-LAST:event_pos33MouseClicked
 
     private void pos34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos34MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 4);
     }//GEN-LAST:event_pos34MouseClicked
 
     private void pos35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos35MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 5);
     }//GEN-LAST:event_pos35MouseClicked
 
     private void pos36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos36MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 6);
     }//GEN-LAST:event_pos36MouseClicked
 
     private void pos37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos37MouseClicked
-        // TODO add your handling code here:
+        jogo(3, 7);
     }//GEN-LAST:event_pos37MouseClicked
 
     private void pos40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos40MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 0);
     }//GEN-LAST:event_pos40MouseClicked
 
     private void pos41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos41MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 1);
     }//GEN-LAST:event_pos41MouseClicked
 
     private void pos42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos42MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 2);
     }//GEN-LAST:event_pos42MouseClicked
 
     private void pos43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos43MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 3);
     }//GEN-LAST:event_pos43MouseClicked
 
     private void pos44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos44MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 4);
     }//GEN-LAST:event_pos44MouseClicked
 
     private void pos45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos45MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 5);
     }//GEN-LAST:event_pos45MouseClicked
 
     private void pos46MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos46MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 6);
     }//GEN-LAST:event_pos46MouseClicked
 
     private void pos47MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos47MouseClicked
-        // TODO add your handling code here:
+        jogo(4, 7);
     }//GEN-LAST:event_pos47MouseClicked
 
     private void pos50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos50MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 0);
     }//GEN-LAST:event_pos50MouseClicked
 
     private void pos51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos51MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 1);
     }//GEN-LAST:event_pos51MouseClicked
 
     private void pos52MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos52MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 2);
     }//GEN-LAST:event_pos52MouseClicked
 
     private void pos53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos53MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 3);
     }//GEN-LAST:event_pos53MouseClicked
 
     private void pos54MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos54MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 4);
     }//GEN-LAST:event_pos54MouseClicked
 
     private void pos55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos55MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 5);
     }//GEN-LAST:event_pos55MouseClicked
 
     private void pos56MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos56MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 6);
     }//GEN-LAST:event_pos56MouseClicked
 
     private void pos57MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos57MouseClicked
-        // TODO add your handling code here:
+        jogo(5, 7);
     }//GEN-LAST:event_pos57MouseClicked
 
     private void pos60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos60MouseClicked
-        imprimirMovimentosPossiveis(6, 0);
+        jogo(6, 0);
     }//GEN-LAST:event_pos60MouseClicked
 
     private void pos61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos61MouseClicked
-        // TODO add your handling code here:
+        jogo(6, 1);
     }//GEN-LAST:event_pos61MouseClicked
 
     private void pos62MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos62MouseClicked
-        // TODO add your handling code here:
+        jogo(6, 2);
     }//GEN-LAST:event_pos62MouseClicked
 
     private void pos63MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos63MouseClicked
-        // TODO add your handling code here:
+        jogo(6, 3);
     }//GEN-LAST:event_pos63MouseClicked
 
     private void pos64MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos64MouseClicked
-        // TODO add your handling code here:
+        jogo(6, 4);
     }//GEN-LAST:event_pos64MouseClicked
 
     private void pos65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos65MouseClicked
-        // TODO add your handling code here:
+        jogo(6, 5);
     }//GEN-LAST:event_pos65MouseClicked
 
     private void pos66MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos66MouseClicked
-        // TODO add your handling code here:
+        jogo(6, 6);
     }//GEN-LAST:event_pos66MouseClicked
 
     private void pos67MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos67MouseClicked
-        // TODO add your handling code here:
+        jogo(6, 7);
     }//GEN-LAST:event_pos67MouseClicked
 
     private void pos70MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos70MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 0);
     }//GEN-LAST:event_pos70MouseClicked
 
     private void pos71MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos71MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 1);
     }//GEN-LAST:event_pos71MouseClicked
 
     private void pos72MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos72MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 2);
     }//GEN-LAST:event_pos72MouseClicked
 
     private void pos73MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos73MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 3);
     }//GEN-LAST:event_pos73MouseClicked
 
     private void pos74MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos74MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 4);
     }//GEN-LAST:event_pos74MouseClicked
 
     private void pos75MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos75MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 5);
     }//GEN-LAST:event_pos75MouseClicked
 
     private void pos76MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos76MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 6);
     }//GEN-LAST:event_pos76MouseClicked
 
     private void pos77MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos77MouseClicked
-        // TODO add your handling code here:
+        jogo(7, 7);
     }//GEN-LAST:event_pos77MouseClicked
 
     /**
@@ -1835,6 +1846,8 @@ public class FrmXadrez extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblPecas;
+    private static javax.swing.JLabel lblPecasCapB;
+    private static javax.swing.JLabel lblPecasCapP;
     private javax.swing.JLabel lblPos00;
     private javax.swing.JLabel lblPos01;
     private javax.swing.JLabel lblPos02;
@@ -1965,9 +1978,27 @@ public class FrmXadrez extends javax.swing.JFrame {
     private static javax.swing.JPanel pos77;
     // End of variables declaration//GEN-END:variables
 
-    private static void jogo() {
-        while (!partida.isCheckmate()) {
+    private static void jogo(int linha, int coluna) {
+        if (origem == null) {
+            if (partida.validarAtribuicaoOrigem(new Posicao(linha, coluna))) {
+                origem = new Posicao(linha, coluna);
+                imprimirMovimentosPossiveis(origem.getLinha(), origem.getColuna());
+            }
+        } else if (destino == null) {
+            if (partida.validarAtribuicaoDestino(origem, new Posicao(linha, coluna))) {
+                destino = new Posicao(linha, coluna);
+                PecasXadrez aux = partida.movimentarPeca(origem, destino);
 
+                if (aux != null) {
+                    pecasCap.add(aux);
+                    imprimirPecasCapturadas();
+                }
+
+                origem = null;
+                destino = null;
+
+                imprimirTabuleiro();
+            }
         }
     }
 
@@ -1976,7 +2007,10 @@ public class FrmXadrez extends javax.swing.JFrame {
             for (int j = 0; j < 8; j++) {
                 if (partida.getPecas()[i][j] != null) {
                     matrizL[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
+                } else {
+                    matrizL[i][j].setIcon(null);
                 }
+                matrizJP[i][j].setBackground(new Color(204, 204, 204));
             }
         }
     }
@@ -1991,6 +2025,21 @@ public class FrmXadrez extends javax.swing.JFrame {
                 if (partida.getPecas()[i][j] != null) {
                     matrizL[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
                 }
+            }
+        }
+    }
+
+    private static void imprimirPecasCapturadas() {
+        if (!pecasCap.isEmpty()) {
+            List<PecasXadrez> pecasBrancas = pecasCap.stream().filter(x -> x.getCor() == Cores.BRANCAS).collect(Collectors.toList());
+            List<PecasXadrez> pecasPretas = pecasCap.stream().filter(x -> x.getCor() == Cores.PRETAS).collect(Collectors.toList());
+
+            if (!pecasBrancas.isEmpty()) {
+                lblPecasCapB.setText("Brancas: " + pecasBrancas);
+            }
+
+            if (!pecasPretas.isEmpty()) {
+                lblPecasCapP.setText("Pretas: " + pecasPretas);
             }
         }
     }
