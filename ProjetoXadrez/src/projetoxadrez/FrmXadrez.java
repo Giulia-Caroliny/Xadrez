@@ -27,6 +27,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     private static JLabel[][] matrizL = new JLabel[8][8];
     private static Posicao origem = null;
     private static Posicao destino = null;
+    FrmPromocao promo = new FrmPromocao();
 
     /**
      * Creates new form FrmXadrez
@@ -36,6 +37,7 @@ public class FrmXadrez extends javax.swing.JFrame {
         atribuirPosicoes();
         imprimirTabuleiro();
         imprimirPecasCapturadas();
+        promo.setVisible(true);
     }
 
     /**
