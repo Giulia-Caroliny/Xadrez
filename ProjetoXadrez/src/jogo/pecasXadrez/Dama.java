@@ -4,6 +4,7 @@
  */
 package jogo.pecasXadrez;
 
+import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
@@ -69,7 +70,7 @@ public class Dama extends PecasXadrez {
         if (getTab().posicaoExiste(p) && pecaOponente(p)) {
             b[p.getLinha()][p.getColuna()] = true;
         }
-        
+
         //acima
         p.setLinha(pos.getLinha() - 1);
         p.setColuna(pos.getColuna());
@@ -113,6 +114,21 @@ public class Dama extends PecasXadrez {
         }
 
         return b;
+    }
+
+    /**
+     * Icon - <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez
+     * ícones criados por deemakdaksina - Flaticon</a>
+     *
+     * @return ImageIcon - icone da peça
+     */
+    @Override
+    public ImageIcon toImageIcon() {
+        if (super.getCor() == Cores.BRANCAS) {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\rainhaBranca.png"));
+        } else {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\rainhaPreta.png"));
+        }
     }
 
     @Override

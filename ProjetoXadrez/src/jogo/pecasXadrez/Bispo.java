@@ -4,6 +4,7 @@
  */
 package jogo.pecasXadrez;
 
+import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
@@ -71,6 +72,21 @@ public class Bispo extends PecasXadrez {
         }
 
         return b;
+    }
+
+    /**
+     * Icon - <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez
+     * ícones criados por smalllikeart - Flaticon</a>
+     *
+     * @return ImageIcon - icone da peça
+     */
+    @Override
+    public ImageIcon toImageIcon() {
+        if (super.getCor() == Cores.BRANCAS) {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\bispoBranco.png"));
+        } else {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\bispoPreto.png"));
+        }
     }
 
     @Override

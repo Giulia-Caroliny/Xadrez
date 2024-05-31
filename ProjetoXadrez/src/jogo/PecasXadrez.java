@@ -4,6 +4,7 @@
  */
 package jogo;
 
+import javax.swing.ImageIcon;
 import tabuleiro.Pecas;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -26,7 +27,18 @@ public abstract class PecasXadrez extends Pecas {
         return cor;
     }
 
-    public PosicaoXadrez getPosicao() {
+    public Posicao getPosicao() {
+        return pos;
+    }
+
+    /**
+     * Método para pegar a posição Posicao no padrão PosicaoXadrez
+     *
+     * @return PosicaoXadrez - posição convertida
+     * @deprecated Utilize {@link #getPosicao()}
+     */
+    @Deprecated
+    public PosicaoXadrez getPosicaoXadrez() {
         return PosicaoXadrez.posicaoXadrez(pos);
     }
 
@@ -38,12 +50,14 @@ public abstract class PecasXadrez extends Pecas {
     public int getContagemMovimentos() {
         return contagemMovimentos;
     }
-    
-    protected void incrementoContagemMovimentos(){
+
+    protected void incrementoContagemMovimentos() {
         contagemMovimentos++;
     }
-    
-    protected void decrementoContagemMovimentos(){
+
+    protected void decrementoContagemMovimentos() {
         contagemMovimentos--;
     }
+
+    public abstract ImageIcon toImageIcon();
 }

@@ -4,6 +4,7 @@
  */
 package jogo.pecasXadrez;
 
+import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
@@ -65,6 +66,25 @@ public class Torre extends PecasXadrez {
         }
 
         return b;
+    }
+
+    /**
+     * Icon = Torre B -
+     * <a href="https://www.flaticon.com/br/icones-gratis/xadrez" >Xadrez ícones
+     * criados por Freepik - Flaticon</a>
+     * Torre P -
+     * <a href="https://www.flaticon.com/br/icones-gratis/torre" >Torre ícones
+     * criados por riajulislam - Flaticon</a>
+     *
+     * @return ImageIcon - icone da peça
+     */
+    @Override
+    public ImageIcon toImageIcon() {
+        if (super.getCor() == Cores.BRANCAS) {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\torreBranca.png"));
+        } else {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\torrePreta.png"));
+        }
     }
 
     @Override

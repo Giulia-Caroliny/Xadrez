@@ -28,25 +28,25 @@ public class ProjetoXadrez {
         PartidaXadrez partida = new PartidaXadrez();
         List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
 
-        FrmXadrez xad = new FrmXadrez();
+        FrmXadrez1 xad = new FrmXadrez1();
         xad.setVisible(true);
         
         while (!partida.isCheckmate()) {
             try {
-
+                
                 ViewProvisorio.imprimirPartida(partida, pecas);
                 System.out.println();
 
                 System.out.println("Coordenadas de origem:");
                 PosicaoXadrez origem = ViewProvisorio.lerPosicaoJogador(sc);
-
+                //Posicao origem = new Posicao(sc.nextInt(), sc.nextInt());
                 boolean[][] b = partida.movimentosPossiveisImprimir(origem);
 
                 ViewProvisorio.imprimirTabuleiro(partida.getPecas(), b);
 
                 System.out.println("Coordenadas de destino:");
                 PosicaoXadrez destino = ViewProvisorio.lerPosicaoJogador(sc);
-
+                //Posicao destino = new Posicao(sc.nextInt(), sc.nextInt());
                 PecasXadrez pecaCapturada = partida.movimentarPeca(origem, destino);
                 if (pecaCapturada != null) {
                     pecas.add(pecaCapturada);

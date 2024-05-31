@@ -10,7 +10,9 @@ import tabuleiro.XadrezException;
 /**
  *
  * @author giuli
+ * @deprecated 
  */
+@Deprecated
 public class PosicaoXadrez {
 
     private int linha;

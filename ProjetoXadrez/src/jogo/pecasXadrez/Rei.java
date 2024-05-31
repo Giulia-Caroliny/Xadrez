@@ -4,6 +4,7 @@
  */
 package jogo.pecasXadrez;
 
+import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
@@ -32,7 +33,7 @@ public class Rei extends PecasXadrez {
         PecasXadrez p = (PecasXadrez) getTab().peca(pos);
         return p != null && p instanceof Torre && p.getCor() == getCor() && p.getContagemMovimentos() == 0;
     }
-    
+
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
@@ -109,6 +110,25 @@ public class Rei extends PecasXadrez {
         }
 
         return b;
+    }
+
+    /**
+     * Icon = Rei B -
+     * <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez ícones
+     * criados por smalllikeart - Flaticon</a>
+     * Rei P -
+     * <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez ícones
+     * criados por Freepik - Flaticon</a>
+     *
+     * @return ImageIcon - icone da peça
+     */
+    @Override
+    public ImageIcon toImageIcon() {
+        if (super.getCor() == Cores.BRANCAS) {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\reiBranco.png"));
+        } else {
+            return new ImageIcon(this.getClass().getResource(".\\imagens\\reiPreto.png"));
+        }
     }
 
     @Override

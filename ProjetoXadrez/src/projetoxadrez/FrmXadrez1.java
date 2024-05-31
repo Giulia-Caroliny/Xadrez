@@ -7,29 +7,40 @@ package projetoxadrez;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.JLabel;
+import jogo.Cores;
 import jogo.PartidaXadrez;
+import jogo.PecasXadrez;
+import tabuleiro.Posicao;
 
 /**
  *
  * @author giuli
  */
-public class FrmXadrez extends javax.swing.JFrame {
+public class FrmXadrez1 extends javax.swing.JFrame {
 
     private static PartidaXadrez partida = new PartidaXadrez();
     private static JButton[][] pos;
+    private static List<PecasXadrez> pecasCap = new ArrayList<PecasXadrez>();
+    private static Posicao origem = null;
+    private static Posicao destino = null;
+    private static FrmPromocao promo = new FrmPromocao();
 
     /**
      * Creates new form FrmXadrez
      */
-    public FrmXadrez() {
+    public FrmXadrez1() {
         setTitle("Xadrez");
-        setSize(850, 650);
+        //setSize(850, 650);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
-
         iniciarTab();
 
         setVisible(true);
@@ -58,8 +69,8 @@ public class FrmXadrez extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(782, 566));
-        setPreferredSize(new java.awt.Dimension(900, 660));
+        setMinimumSize(new java.awt.Dimension(900, 660));
+        setSize(new java.awt.Dimension(900, 660));
         getContentPane().setLayout(null);
 
         javax.swing.GroupLayout tabLayout = new javax.swing.GroupLayout(tab);
@@ -193,20 +204,23 @@ public class FrmXadrez extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmXadrez.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmXadrez1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmXadrez.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmXadrez1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmXadrez.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmXadrez1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmXadrez.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmXadrez1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmXadrez().setVisible(true);
+                new FrmXadrez1().setVisible(true);
             }
         });
     }
@@ -242,7 +256,7 @@ public class FrmXadrez extends javax.swing.JFrame {
                 }
 
                 if (partida.getPecas()[i][j] != null) {
-                    //button.setIcon(partida.getPecas()[i][j].toImageIcon());
+                    button.setIcon(partida.getPecas()[i][j].toImageIcon());
                 }
                 button.setName("pos-" + i + "-" + j);
 
@@ -257,8 +271,7 @@ public class FrmXadrez extends javax.swing.JFrame {
                         int l = Integer.parseInt(posi[1]);
                         int c = Integer.parseInt(posi[2]);
 
-                        System.out.println(l + "" + c);
-
+                        jogo(l, c);
                     }
                 });
                 pos[i][j] = button;
@@ -266,5 +279,99 @@ public class FrmXadrez extends javax.swing.JFrame {
             }
         }
         add(tab);
+    }
+
+    private static void jogo(int linha, int coluna) {
+        if (origem == null) {
+            if (partida.validarAtribuicaoOrigem(new Posicao(linha, coluna))) {
+                origem = new Posicao(linha, coluna);
+                imprimirMovimentosPossiveis(origem.getLinha(), origem.getColuna());
+            }
+        } else if (destino == null) {
+            if (partida.validarAtribuicaoDestino(origem, new Posicao(linha, coluna))) {
+                destino = new Posicao(linha, coluna);
+                PecasXadrez aux = partida.movimentarPeca(origem, destino);
+
+                if (aux != null) {
+                    pecasCap.add(aux);
+                    imprimirPecasCapturadas();
+                }
+
+                origem = null;
+                destino = null;
+
+                imprimirTabuleiro();
+            }
+
+            if (partida.getPromocao() != null) {
+                promo.setVisible(true);
+            }
+        }
+    }
+
+    protected static void promover(String pecaPromo) {
+        while (!pecaPromo.equals("B") && !pecaPromo.equals("C") && !pecaPromo.equals("D") && !pecaPromo.equals("T")) {
+            promo.setVisible(true);
+        }
+
+        partida.trocarPecaPromovida(pecaPromo);
+        imprimirTabuleiro();
+    }
+
+    private static void imprimirTabuleiro() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if ((i + j) % 2 == 0) {
+                    pos[i][j].setBackground(Color.WHITE);
+                } else {
+                    pos[i][j].setBackground(Color.GRAY);
+                }
+
+                if (partida.getPecas()[i][j] != null) {
+                    if (partida.getJogadorVez() != partida.getPecas()[i][j].getCor()) {
+                        pos[i][j].setEnabled(false);
+                    } else {
+                        pos[i][j].setEnabled(true);
+                    }
+                    pos[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
+                } else {
+                    pos[i][j].setIcon(null);
+                    pos[i][j].setEnabled(false);
+                }
+            }
+        }
+    }
+
+    private static void imprimirMovimentosPossiveis(int linha, int coluna) {
+        boolean[][] b = partida.movimentosPossiveisImprimir(new Posicao(linha, coluna));
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (b[i][j]) {
+                    pos[i][j].setBackground(Color.red);
+                    pos[i][j].setEnabled(true);
+                }
+                if (partida.getPecas()[i][j] != null) {
+                    pos[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
+                }
+            }
+        }
+    }
+
+    private static void imprimirPecasCapturadas() {
+        if (!pecasCap.isEmpty()) {
+            List<PecasXadrez> pecasBrancas = pecasCap.stream().filter(x -> x.getCor() == Cores.BRANCAS).collect(Collectors.toList());
+            List<PecasXadrez> pecasPretas = pecasCap.stream().filter(x -> x.getCor() == Cores.PRETAS).collect(Collectors.toList());
+
+            if (!pecasBrancas.isEmpty()) {
+                //lblPecasCapB.setText("Brancas: " + pecasBrancas);
+            }
+
+            if (!pecasPretas.isEmpty()) {
+                for (PecasXadrez p : pecasPretas) {
+                    //pretas.add(new JLabel().setIcon(p.toImageIcon()));
+                }
+                //lblPecasCapP.setText("Pretas: " + pecasPretas);
+            }
+        }
     }
 }
