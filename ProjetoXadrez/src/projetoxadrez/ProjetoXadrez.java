@@ -28,6 +28,9 @@ public class ProjetoXadrez {
         PartidaXadrez partida = new PartidaXadrez();
         List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
 
+        FrmXadrez xad = new FrmXadrez();
+        xad.setVisible(true);
+        
         while (!partida.isCheckmate()) {
             try {
 

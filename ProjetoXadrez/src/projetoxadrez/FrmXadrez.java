@@ -4,17 +4,35 @@
  */
 package projetoxadrez;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import jogo.PartidaXadrez;
+
 /**
  *
  * @author giuli
  */
 public class FrmXadrez extends javax.swing.JFrame {
 
+    private static PartidaXadrez partida = new PartidaXadrez();
+    private static JButton[][] pos;
+
     /**
      * Creates new form FrmXadrez
      */
     public FrmXadrez() {
+        setTitle("Xadrez");
+        setSize(850, 650);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
+
+        iniciarTab();
+
+        setVisible(true);
     }
 
     /**
@@ -26,1112 +44,126 @@ public class FrmXadrez extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pos10 = new javax.swing.JPanel();
-        pos00 = new javax.swing.JPanel();
-        pos20 = new javax.swing.JPanel();
-        pos30 = new javax.swing.JPanel();
-        pos50 = new javax.swing.JPanel();
-        pos40 = new javax.swing.JPanel();
-        pos60 = new javax.swing.JPanel();
-        pos70 = new javax.swing.JPanel();
-        pos11 = new javax.swing.JPanel();
-        pos01 = new javax.swing.JPanel();
-        pos21 = new javax.swing.JPanel();
-        pos31 = new javax.swing.JPanel();
-        pos51 = new javax.swing.JPanel();
-        pos41 = new javax.swing.JPanel();
-        pos61 = new javax.swing.JPanel();
-        pos71 = new javax.swing.JPanel();
-        pos12 = new javax.swing.JPanel();
-        pos02 = new javax.swing.JPanel();
-        pos22 = new javax.swing.JPanel();
-        pos32 = new javax.swing.JPanel();
-        pos52 = new javax.swing.JPanel();
-        pos42 = new javax.swing.JPanel();
-        pos62 = new javax.swing.JPanel();
-        pos72 = new javax.swing.JPanel();
-        pos13 = new javax.swing.JPanel();
-        pos23 = new javax.swing.JPanel();
-        pos33 = new javax.swing.JPanel();
-        pos03 = new javax.swing.JPanel();
-        pos53 = new javax.swing.JPanel();
-        pos43 = new javax.swing.JPanel();
-        pos63 = new javax.swing.JPanel();
-        pos73 = new javax.swing.JPanel();
-        pos14 = new javax.swing.JPanel();
-        pos04 = new javax.swing.JPanel();
-        pos24 = new javax.swing.JPanel();
-        pos34 = new javax.swing.JPanel();
-        pos54 = new javax.swing.JPanel();
-        pos44 = new javax.swing.JPanel();
-        pos64 = new javax.swing.JPanel();
-        pos74 = new javax.swing.JPanel();
-        pos15 = new javax.swing.JPanel();
-        pos05 = new javax.swing.JPanel();
-        pos25 = new javax.swing.JPanel();
-        pos35 = new javax.swing.JPanel();
-        pos55 = new javax.swing.JPanel();
-        pos45 = new javax.swing.JPanel();
-        pos65 = new javax.swing.JPanel();
-        pos75 = new javax.swing.JPanel();
-        pos16 = new javax.swing.JPanel();
-        pos06 = new javax.swing.JPanel();
-        pos26 = new javax.swing.JPanel();
-        pos36 = new javax.swing.JPanel();
-        pos56 = new javax.swing.JPanel();
-        pos46 = new javax.swing.JPanel();
-        pos66 = new javax.swing.JPanel();
-        pos76 = new javax.swing.JPanel();
-        pos17 = new javax.swing.JPanel();
-        pos07 = new javax.swing.JPanel();
-        pos27 = new javax.swing.JPanel();
-        pos37 = new javax.swing.JPanel();
-        pos57 = new javax.swing.JPanel();
-        pos47 = new javax.swing.JPanel();
-        pos67 = new javax.swing.JPanel();
-        pos77 = new javax.swing.JPanel();
-        lblPecas = new javax.swing.JLabel();
+        tab = new javax.swing.JPanel();
+        pretas = new javax.swing.JPanel();
+        brancas = new javax.swing.JPanel();
+        jogadorVez = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        pecasP = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pecasB = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(782, 566));
-        setPreferredSize(new java.awt.Dimension(850, 650));
+        setPreferredSize(new java.awt.Dimension(900, 660));
         getContentPane().setLayout(null);
 
-        pos10.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos10Layout = new javax.swing.GroupLayout(pos10);
-        pos10.setLayout(pos10Layout);
-        pos10Layout.setHorizontalGroup(
-            pos10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos10Layout.setVerticalGroup(
-            pos10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos10);
-        pos10.setBounds(20, 90, 65, 65);
-
-        pos00.setBackground(new java.awt.Color(204, 204, 204));
-        pos00.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pos00MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pos00Layout = new javax.swing.GroupLayout(pos00);
-        pos00.setLayout(pos00Layout);
-        pos00Layout.setHorizontalGroup(
-            pos00Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos00Layout.setVerticalGroup(
-            pos00Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos00);
-        pos00.setBounds(20, 20, 65, 65);
-
-        pos20.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos20Layout = new javax.swing.GroupLayout(pos20);
-        pos20.setLayout(pos20Layout);
-        pos20Layout.setHorizontalGroup(
-            pos20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos20Layout.setVerticalGroup(
-            pos20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos20);
-        pos20.setBounds(20, 160, 65, 65);
-
-        pos30.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos30Layout = new javax.swing.GroupLayout(pos30);
-        pos30.setLayout(pos30Layout);
-        pos30Layout.setHorizontalGroup(
-            pos30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos30Layout.setVerticalGroup(
-            pos30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos30);
-        pos30.setBounds(20, 230, 65, 65);
-
-        pos50.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos50Layout = new javax.swing.GroupLayout(pos50);
-        pos50.setLayout(pos50Layout);
-        pos50Layout.setHorizontalGroup(
-            pos50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos50Layout.setVerticalGroup(
-            pos50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos50);
-        pos50.setBounds(20, 370, 65, 65);
-
-        pos40.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos40Layout = new javax.swing.GroupLayout(pos40);
-        pos40.setLayout(pos40Layout);
-        pos40Layout.setHorizontalGroup(
-            pos40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos40Layout.setVerticalGroup(
-            pos40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos40);
-        pos40.setBounds(20, 300, 65, 65);
-
-        pos60.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos60Layout = new javax.swing.GroupLayout(pos60);
-        pos60.setLayout(pos60Layout);
-        pos60Layout.setHorizontalGroup(
-            pos60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos60Layout.setVerticalGroup(
-            pos60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos60);
-        pos60.setBounds(20, 440, 65, 65);
-
-        pos70.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos70Layout = new javax.swing.GroupLayout(pos70);
-        pos70.setLayout(pos70Layout);
-        pos70Layout.setHorizontalGroup(
-            pos70Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos70Layout.setVerticalGroup(
-            pos70Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos70);
-        pos70.setBounds(20, 510, 65, 65);
-
-        pos11.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos11Layout = new javax.swing.GroupLayout(pos11);
-        pos11.setLayout(pos11Layout);
-        pos11Layout.setHorizontalGroup(
-            pos11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos11Layout.setVerticalGroup(
-            pos11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos11);
-        pos11.setBounds(90, 90, 65, 65);
-
-        pos01.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos01Layout = new javax.swing.GroupLayout(pos01);
-        pos01.setLayout(pos01Layout);
-        pos01Layout.setHorizontalGroup(
-            pos01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos01Layout.setVerticalGroup(
-            pos01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos01);
-        pos01.setBounds(90, 20, 65, 65);
-
-        pos21.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos21Layout = new javax.swing.GroupLayout(pos21);
-        pos21.setLayout(pos21Layout);
-        pos21Layout.setHorizontalGroup(
-            pos21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos21Layout.setVerticalGroup(
-            pos21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos21);
-        pos21.setBounds(90, 160, 65, 65);
-
-        pos31.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos31Layout = new javax.swing.GroupLayout(pos31);
-        pos31.setLayout(pos31Layout);
-        pos31Layout.setHorizontalGroup(
-            pos31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos31Layout.setVerticalGroup(
-            pos31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos31);
-        pos31.setBounds(90, 230, 65, 65);
-
-        pos51.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos51Layout = new javax.swing.GroupLayout(pos51);
-        pos51.setLayout(pos51Layout);
-        pos51Layout.setHorizontalGroup(
-            pos51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos51Layout.setVerticalGroup(
-            pos51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos51);
-        pos51.setBounds(90, 370, 65, 65);
-
-        pos41.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos41Layout = new javax.swing.GroupLayout(pos41);
-        pos41.setLayout(pos41Layout);
-        pos41Layout.setHorizontalGroup(
-            pos41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos41Layout.setVerticalGroup(
-            pos41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos41);
-        pos41.setBounds(90, 300, 65, 65);
-
-        pos61.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos61Layout = new javax.swing.GroupLayout(pos61);
-        pos61.setLayout(pos61Layout);
-        pos61Layout.setHorizontalGroup(
-            pos61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos61Layout.setVerticalGroup(
-            pos61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos61);
-        pos61.setBounds(90, 440, 65, 65);
-
-        pos71.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos71Layout = new javax.swing.GroupLayout(pos71);
-        pos71.setLayout(pos71Layout);
-        pos71Layout.setHorizontalGroup(
-            pos71Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos71Layout.setVerticalGroup(
-            pos71Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos71);
-        pos71.setBounds(90, 510, 65, 65);
-
-        pos12.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos12Layout = new javax.swing.GroupLayout(pos12);
-        pos12.setLayout(pos12Layout);
-        pos12Layout.setHorizontalGroup(
-            pos12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos12Layout.setVerticalGroup(
-            pos12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos12);
-        pos12.setBounds(160, 90, 65, 65);
-
-        pos02.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos02Layout = new javax.swing.GroupLayout(pos02);
-        pos02.setLayout(pos02Layout);
-        pos02Layout.setHorizontalGroup(
-            pos02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos02Layout.setVerticalGroup(
-            pos02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos02);
-        pos02.setBounds(160, 20, 65, 65);
-
-        pos22.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos22Layout = new javax.swing.GroupLayout(pos22);
-        pos22.setLayout(pos22Layout);
-        pos22Layout.setHorizontalGroup(
-            pos22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos22Layout.setVerticalGroup(
-            pos22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos22);
-        pos22.setBounds(160, 160, 65, 65);
-
-        pos32.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos32Layout = new javax.swing.GroupLayout(pos32);
-        pos32.setLayout(pos32Layout);
-        pos32Layout.setHorizontalGroup(
-            pos32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos32Layout.setVerticalGroup(
-            pos32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos32);
-        pos32.setBounds(160, 230, 65, 65);
-
-        pos52.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos52Layout = new javax.swing.GroupLayout(pos52);
-        pos52.setLayout(pos52Layout);
-        pos52Layout.setHorizontalGroup(
-            pos52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos52Layout.setVerticalGroup(
-            pos52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos52);
-        pos52.setBounds(160, 370, 65, 65);
-
-        pos42.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos42Layout = new javax.swing.GroupLayout(pos42);
-        pos42.setLayout(pos42Layout);
-        pos42Layout.setHorizontalGroup(
-            pos42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos42Layout.setVerticalGroup(
-            pos42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos42);
-        pos42.setBounds(160, 300, 65, 65);
-
-        pos62.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos62Layout = new javax.swing.GroupLayout(pos62);
-        pos62.setLayout(pos62Layout);
-        pos62Layout.setHorizontalGroup(
-            pos62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos62Layout.setVerticalGroup(
-            pos62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos62);
-        pos62.setBounds(160, 440, 65, 65);
-
-        pos72.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos72Layout = new javax.swing.GroupLayout(pos72);
-        pos72.setLayout(pos72Layout);
-        pos72Layout.setHorizontalGroup(
-            pos72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos72Layout.setVerticalGroup(
-            pos72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos72);
-        pos72.setBounds(160, 510, 65, 65);
-
-        pos13.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos13Layout = new javax.swing.GroupLayout(pos13);
-        pos13.setLayout(pos13Layout);
-        pos13Layout.setHorizontalGroup(
-            pos13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos13Layout.setVerticalGroup(
-            pos13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos13);
-        pos13.setBounds(230, 90, 65, 65);
-
-        pos23.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos23Layout = new javax.swing.GroupLayout(pos23);
-        pos23.setLayout(pos23Layout);
-        pos23Layout.setHorizontalGroup(
-            pos23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos23Layout.setVerticalGroup(
-            pos23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos23);
-        pos23.setBounds(230, 160, 65, 65);
-
-        pos33.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos33Layout = new javax.swing.GroupLayout(pos33);
-        pos33.setLayout(pos33Layout);
-        pos33Layout.setHorizontalGroup(
-            pos33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos33Layout.setVerticalGroup(
-            pos33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos33);
-        pos33.setBounds(230, 230, 65, 65);
-
-        pos03.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos03Layout = new javax.swing.GroupLayout(pos03);
-        pos03.setLayout(pos03Layout);
-        pos03Layout.setHorizontalGroup(
-            pos03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos03Layout.setVerticalGroup(
-            pos03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos03);
-        pos03.setBounds(230, 20, 65, 65);
-
-        pos53.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos53Layout = new javax.swing.GroupLayout(pos53);
-        pos53.setLayout(pos53Layout);
-        pos53Layout.setHorizontalGroup(
-            pos53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos53Layout.setVerticalGroup(
-            pos53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos53);
-        pos53.setBounds(230, 370, 65, 65);
-
-        pos43.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos43Layout = new javax.swing.GroupLayout(pos43);
-        pos43.setLayout(pos43Layout);
-        pos43Layout.setHorizontalGroup(
-            pos43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        javax.swing.GroupLayout tabLayout = new javax.swing.GroupLayout(tab);
+        tab.setLayout(tabLayout);
+        tabLayout.setHorizontalGroup(
+            tabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-        pos43Layout.setVerticalGroup(
-            pos43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        tabLayout.setVerticalGroup(
+            tabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pos43);
-        pos43.setBounds(230, 300, 65, 65);
+        getContentPane().add(tab);
+        tab.setBounds(0, 0, 600, 600);
 
-        pos63.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos63Layout = new javax.swing.GroupLayout(pos63);
-        pos63.setLayout(pos63Layout);
-        pos63Layout.setHorizontalGroup(
-            pos63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos63Layout.setVerticalGroup(
-            pos63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos63);
-        pos63.setBounds(230, 440, 65, 65);
-
-        pos73.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos73Layout = new javax.swing.GroupLayout(pos73);
-        pos73.setLayout(pos73Layout);
-        pos73Layout.setHorizontalGroup(
-            pos73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos73Layout.setVerticalGroup(
-            pos73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos73);
-        pos73.setBounds(230, 510, 65, 65);
-
-        pos14.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos14Layout = new javax.swing.GroupLayout(pos14);
-        pos14.setLayout(pos14Layout);
-        pos14Layout.setHorizontalGroup(
-            pos14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos14Layout.setVerticalGroup(
-            pos14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos14);
-        pos14.setBounds(300, 90, 65, 65);
-
-        pos04.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos04Layout = new javax.swing.GroupLayout(pos04);
-        pos04.setLayout(pos04Layout);
-        pos04Layout.setHorizontalGroup(
-            pos04Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos04Layout.setVerticalGroup(
-            pos04Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos04);
-        pos04.setBounds(300, 20, 65, 65);
-
-        pos24.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos24Layout = new javax.swing.GroupLayout(pos24);
-        pos24.setLayout(pos24Layout);
-        pos24Layout.setHorizontalGroup(
-            pos24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos24Layout.setVerticalGroup(
-            pos24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos24);
-        pos24.setBounds(300, 160, 65, 65);
-
-        pos34.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos34Layout = new javax.swing.GroupLayout(pos34);
-        pos34.setLayout(pos34Layout);
-        pos34Layout.setHorizontalGroup(
-            pos34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos34Layout.setVerticalGroup(
-            pos34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos34);
-        pos34.setBounds(300, 230, 65, 65);
-
-        pos54.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos54Layout = new javax.swing.GroupLayout(pos54);
-        pos54.setLayout(pos54Layout);
-        pos54Layout.setHorizontalGroup(
-            pos54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos54Layout.setVerticalGroup(
-            pos54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos54);
-        pos54.setBounds(300, 370, 65, 65);
-
-        pos44.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos44Layout = new javax.swing.GroupLayout(pos44);
-        pos44.setLayout(pos44Layout);
-        pos44Layout.setHorizontalGroup(
-            pos44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos44Layout.setVerticalGroup(
-            pos44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos44);
-        pos44.setBounds(300, 300, 65, 65);
-
-        pos64.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos64Layout = new javax.swing.GroupLayout(pos64);
-        pos64.setLayout(pos64Layout);
-        pos64Layout.setHorizontalGroup(
-            pos64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos64Layout.setVerticalGroup(
-            pos64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos64);
-        pos64.setBounds(300, 440, 65, 65);
-
-        pos74.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos74Layout = new javax.swing.GroupLayout(pos74);
-        pos74.setLayout(pos74Layout);
-        pos74Layout.setHorizontalGroup(
-            pos74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos74Layout.setVerticalGroup(
-            pos74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos74);
-        pos74.setBounds(300, 510, 65, 65);
-
-        pos15.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos15Layout = new javax.swing.GroupLayout(pos15);
-        pos15.setLayout(pos15Layout);
-        pos15Layout.setHorizontalGroup(
-            pos15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos15Layout.setVerticalGroup(
-            pos15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos15);
-        pos15.setBounds(370, 90, 65, 65);
-
-        pos05.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos05Layout = new javax.swing.GroupLayout(pos05);
-        pos05.setLayout(pos05Layout);
-        pos05Layout.setHorizontalGroup(
-            pos05Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos05Layout.setVerticalGroup(
-            pos05Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos05);
-        pos05.setBounds(370, 20, 65, 65);
-
-        pos25.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos25Layout = new javax.swing.GroupLayout(pos25);
-        pos25.setLayout(pos25Layout);
-        pos25Layout.setHorizontalGroup(
-            pos25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos25Layout.setVerticalGroup(
-            pos25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos25);
-        pos25.setBounds(370, 160, 65, 65);
-
-        pos35.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos35Layout = new javax.swing.GroupLayout(pos35);
-        pos35.setLayout(pos35Layout);
-        pos35Layout.setHorizontalGroup(
-            pos35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos35Layout.setVerticalGroup(
-            pos35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos35);
-        pos35.setBounds(370, 230, 65, 65);
-
-        pos55.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos55Layout = new javax.swing.GroupLayout(pos55);
-        pos55.setLayout(pos55Layout);
-        pos55Layout.setHorizontalGroup(
-            pos55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos55Layout.setVerticalGroup(
-            pos55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos55);
-        pos55.setBounds(370, 370, 65, 65);
-
-        pos45.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos45Layout = new javax.swing.GroupLayout(pos45);
-        pos45.setLayout(pos45Layout);
-        pos45Layout.setHorizontalGroup(
-            pos45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos45Layout.setVerticalGroup(
-            pos45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos45);
-        pos45.setBounds(370, 300, 65, 65);
-
-        pos65.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos65Layout = new javax.swing.GroupLayout(pos65);
-        pos65.setLayout(pos65Layout);
-        pos65Layout.setHorizontalGroup(
-            pos65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos65Layout.setVerticalGroup(
-            pos65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos65);
-        pos65.setBounds(370, 440, 65, 65);
-
-        pos75.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos75Layout = new javax.swing.GroupLayout(pos75);
-        pos75.setLayout(pos75Layout);
-        pos75Layout.setHorizontalGroup(
-            pos75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos75Layout.setVerticalGroup(
-            pos75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos75);
-        pos75.setBounds(370, 510, 65, 65);
-
-        pos16.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos16Layout = new javax.swing.GroupLayout(pos16);
-        pos16.setLayout(pos16Layout);
-        pos16Layout.setHorizontalGroup(
-            pos16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos16Layout.setVerticalGroup(
-            pos16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos16);
-        pos16.setBounds(440, 90, 65, 65);
-
-        pos06.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos06Layout = new javax.swing.GroupLayout(pos06);
-        pos06.setLayout(pos06Layout);
-        pos06Layout.setHorizontalGroup(
-            pos06Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos06Layout.setVerticalGroup(
-            pos06Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos06);
-        pos06.setBounds(440, 20, 65, 65);
-
-        pos26.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos26Layout = new javax.swing.GroupLayout(pos26);
-        pos26.setLayout(pos26Layout);
-        pos26Layout.setHorizontalGroup(
-            pos26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos26Layout.setVerticalGroup(
-            pos26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos26);
-        pos26.setBounds(440, 160, 65, 65);
-
-        pos36.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos36Layout = new javax.swing.GroupLayout(pos36);
-        pos36.setLayout(pos36Layout);
-        pos36Layout.setHorizontalGroup(
-            pos36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos36Layout.setVerticalGroup(
-            pos36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos36);
-        pos36.setBounds(440, 230, 65, 65);
-
-        pos56.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos56Layout = new javax.swing.GroupLayout(pos56);
-        pos56.setLayout(pos56Layout);
-        pos56Layout.setHorizontalGroup(
-            pos56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos56Layout.setVerticalGroup(
-            pos56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos56);
-        pos56.setBounds(440, 370, 65, 65);
-
-        pos46.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos46Layout = new javax.swing.GroupLayout(pos46);
-        pos46.setLayout(pos46Layout);
-        pos46Layout.setHorizontalGroup(
-            pos46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos46Layout.setVerticalGroup(
-            pos46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos46);
-        pos46.setBounds(440, 300, 65, 65);
-
-        pos66.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos66Layout = new javax.swing.GroupLayout(pos66);
-        pos66.setLayout(pos66Layout);
-        pos66Layout.setHorizontalGroup(
-            pos66Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos66Layout.setVerticalGroup(
-            pos66Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos66);
-        pos66.setBounds(440, 440, 65, 65);
-
-        pos76.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos76Layout = new javax.swing.GroupLayout(pos76);
-        pos76.setLayout(pos76Layout);
-        pos76Layout.setHorizontalGroup(
-            pos76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos76Layout.setVerticalGroup(
-            pos76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        javax.swing.GroupLayout pretasLayout = new javax.swing.GroupLayout(pretas);
+        pretas.setLayout(pretasLayout);
+        pretasLayout.setHorizontalGroup(
+            pretasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
-
-        getContentPane().add(pos76);
-        pos76.setBounds(440, 510, 65, 65);
-
-        pos17.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos17Layout = new javax.swing.GroupLayout(pos17);
-        pos17.setLayout(pos17Layout);
-        pos17Layout.setHorizontalGroup(
-            pos17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos17Layout.setVerticalGroup(
-            pos17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pos17);
-        pos17.setBounds(510, 90, 65, 65);
-
-        pos07.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos07Layout = new javax.swing.GroupLayout(pos07);
-        pos07.setLayout(pos07Layout);
-        pos07Layout.setHorizontalGroup(
-            pos07Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos07Layout.setVerticalGroup(
-            pos07Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        pretasLayout.setVerticalGroup(
+            pretasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 225, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pos07);
-        pos07.setBounds(510, 20, 65, 65);
+        getContentPane().add(pretas);
+        pretas.setBounds(600, 50, 290, 225);
 
-        pos27.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos27Layout = new javax.swing.GroupLayout(pos27);
-        pos27.setLayout(pos27Layout);
-        pos27Layout.setHorizontalGroup(
-            pos27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        javax.swing.GroupLayout brancasLayout = new javax.swing.GroupLayout(brancas);
+        brancas.setLayout(brancasLayout);
+        brancasLayout.setHorizontalGroup(
+            brancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
-        pos27Layout.setVerticalGroup(
-            pos27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        brancasLayout.setVerticalGroup(
+            brancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pos27);
-        pos27.setBounds(510, 160, 65, 65);
+        getContentPane().add(brancas);
+        brancas.setBounds(600, 375, 290, 230);
 
-        pos37.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        javax.swing.GroupLayout pos37Layout = new javax.swing.GroupLayout(pos37);
-        pos37.setLayout(pos37Layout);
-        pos37Layout.setHorizontalGroup(
-            pos37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        javax.swing.GroupLayout jogadorVezLayout = new javax.swing.GroupLayout(jogadorVez);
+        jogadorVez.setLayout(jogadorVezLayout);
+        jogadorVezLayout.setHorizontalGroup(
+            jogadorVezLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
         );
-        pos37Layout.setVerticalGroup(
-            pos37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        jogadorVezLayout.setVerticalGroup(
+            jogadorVezLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
-
-        getContentPane().add(pos37);
-        pos37.setBounds(510, 230, 65, 65);
 
-        pos57.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos57Layout = new javax.swing.GroupLayout(pos57);
-        pos57.setLayout(pos57Layout);
-        pos57Layout.setHorizontalGroup(
-            pos57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos57Layout.setVerticalGroup(
-            pos57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
+        getContentPane().add(jogadorVez);
+        jogadorVez.setBounds(600, 275, 290, 50);
 
-        getContentPane().add(pos57);
-        pos57.setBounds(510, 370, 65, 65);
+        pecasP.setBackground(java.awt.Color.lightGray);
+        pecasP.setToolTipText("");
 
-        pos47.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Peças capturadas:");
 
-        javax.swing.GroupLayout pos47Layout = new javax.swing.GroupLayout(pos47);
-        pos47.setLayout(pos47Layout);
-        pos47Layout.setHorizontalGroup(
-            pos47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        javax.swing.GroupLayout pecasPLayout = new javax.swing.GroupLayout(pecasP);
+        pecasP.setLayout(pecasPLayout);
+        pecasPLayout.setHorizontalGroup(
+            pecasPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
         );
-        pos47Layout.setVerticalGroup(
-            pos47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        pecasPLayout.setVerticalGroup(
+            pecasPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pos47);
-        pos47.setBounds(510, 300, 65, 65);
+        getContentPane().add(pecasP);
+        pecasP.setBounds(600, 0, 290, 32);
 
-        pos67.setBackground(new java.awt.Color(204, 204, 204));
+        pecasB.setBackground(java.awt.Color.white);
 
-        javax.swing.GroupLayout pos67Layout = new javax.swing.GroupLayout(pos67);
-        pos67.setLayout(pos67Layout);
-        pos67Layout.setHorizontalGroup(
-            pos67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
-        pos67Layout.setVerticalGroup(
-            pos67Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
-        );
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Peças capturadas:");
 
-        getContentPane().add(pos67);
-        pos67.setBounds(510, 440, 65, 65);
-
-        pos77.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pos77Layout = new javax.swing.GroupLayout(pos77);
-        pos77.setLayout(pos77Layout);
-        pos77Layout.setHorizontalGroup(
-            pos77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        javax.swing.GroupLayout pecasBLayout = new javax.swing.GroupLayout(pecasB);
+        pecasB.setLayout(pecasBLayout);
+        pecasBLayout.setHorizontalGroup(
+            pecasBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pecasBLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        pos77Layout.setVerticalGroup(
-            pos77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+        pecasBLayout.setVerticalGroup(
+            pecasBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pecasBLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
-
-        getContentPane().add(pos77);
-        pos77.setBounds(510, 510, 65, 65);
 
-        lblPecas.setText("Peças Capturadas:");
-        getContentPane().add(lblPecas);
-        lblPecas.setBounds(610, 30, 120, 16);
+        getContentPane().add(pecasB);
+        pecasB.setBounds(600, 325, 290, 48);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -1143,10 +175,6 @@ public class FrmXadrez extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void pos00MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos00MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pos00MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1184,73 +212,59 @@ public class FrmXadrez extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel brancas;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel lblPecas;
-    private javax.swing.JPanel pos00;
-    private javax.swing.JPanel pos01;
-    private javax.swing.JPanel pos02;
-    private javax.swing.JPanel pos03;
-    private javax.swing.JPanel pos04;
-    private javax.swing.JPanel pos05;
-    private javax.swing.JPanel pos06;
-    private javax.swing.JPanel pos07;
-    private javax.swing.JPanel pos10;
-    private javax.swing.JPanel pos11;
-    private javax.swing.JPanel pos12;
-    private javax.swing.JPanel pos13;
-    private javax.swing.JPanel pos14;
-    private javax.swing.JPanel pos15;
-    private javax.swing.JPanel pos16;
-    private javax.swing.JPanel pos17;
-    private javax.swing.JPanel pos20;
-    private javax.swing.JPanel pos21;
-    private javax.swing.JPanel pos22;
-    private javax.swing.JPanel pos23;
-    private javax.swing.JPanel pos24;
-    private javax.swing.JPanel pos25;
-    private javax.swing.JPanel pos26;
-    private javax.swing.JPanel pos27;
-    private javax.swing.JPanel pos30;
-    private javax.swing.JPanel pos31;
-    private javax.swing.JPanel pos32;
-    private javax.swing.JPanel pos33;
-    private javax.swing.JPanel pos34;
-    private javax.swing.JPanel pos35;
-    private javax.swing.JPanel pos36;
-    private javax.swing.JPanel pos37;
-    private javax.swing.JPanel pos40;
-    private javax.swing.JPanel pos41;
-    private javax.swing.JPanel pos42;
-    private javax.swing.JPanel pos43;
-    private javax.swing.JPanel pos44;
-    private javax.swing.JPanel pos45;
-    private javax.swing.JPanel pos46;
-    private javax.swing.JPanel pos47;
-    private javax.swing.JPanel pos50;
-    private javax.swing.JPanel pos51;
-    private javax.swing.JPanel pos52;
-    private javax.swing.JPanel pos53;
-    private javax.swing.JPanel pos54;
-    private javax.swing.JPanel pos55;
-    private javax.swing.JPanel pos56;
-    private javax.swing.JPanel pos57;
-    private javax.swing.JPanel pos60;
-    private javax.swing.JPanel pos61;
-    private javax.swing.JPanel pos62;
-    private javax.swing.JPanel pos63;
-    private javax.swing.JPanel pos64;
-    private javax.swing.JPanel pos65;
-    private javax.swing.JPanel pos66;
-    private javax.swing.JPanel pos67;
-    private javax.swing.JPanel pos70;
-    private javax.swing.JPanel pos71;
-    private javax.swing.JPanel pos72;
-    private javax.swing.JPanel pos73;
-    private javax.swing.JPanel pos74;
-    private javax.swing.JPanel pos75;
-    private javax.swing.JPanel pos76;
-    private javax.swing.JPanel pos77;
+    private javax.swing.JPanel jogadorVez;
+    private javax.swing.JPanel pecasB;
+    private javax.swing.JPanel pecasP;
+    private javax.swing.JPanel pretas;
+    private javax.swing.JPanel tab;
     // End of variables declaration//GEN-END:variables
+
+    private void iniciarTab() {
+        tab.setSize(600, 600);
+        tab.setLayout(new GridLayout(8, 8));
+        pos = new JButton[8][8];
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                JButton button = new JButton();
+                button.setPreferredSize(new Dimension(40, 40));
+                if ((i + j) % 2 == 0) {
+                    button.setBackground(Color.WHITE);
+                } else {
+                    button.setBackground(Color.GRAY);
+                }
+
+                if (partida.getPecas()[i][j] != null) {
+                    //button.setIcon(partida.getPecas()[i][j].toImageIcon());
+                }
+                button.setName("pos-" + i + "-" + j);
+
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JButton clickedButton = (JButton) e.getSource();
+                        String pos = clickedButton.getName();
+
+                        String[] posi = pos.split("-");
+
+                        int l = Integer.parseInt(posi[1]);
+                        int c = Integer.parseInt(posi[2]);
+
+                        System.out.println(l + "" + c);
+
+                    }
+                });
+                pos[i][j] = button;
+                tab.add(button);
+            }
+        }
+        add(tab);
+    }
 }
