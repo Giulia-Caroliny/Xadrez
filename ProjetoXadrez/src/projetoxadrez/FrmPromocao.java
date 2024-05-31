@@ -34,11 +34,14 @@ public class FrmPromocao extends javax.swing.JFrame {
         lblTexto = new javax.swing.JLabel();
         lblPromo = new javax.swing.JLabel();
         lblPeao = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btnPromover = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(340, 200));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(330, 230));
         getContentPane().setLayout(null);
 
+        pPormo.setPreferredSize(new java.awt.Dimension(320, 220));
         pPormo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pPormoMouseEntered(evt);
@@ -51,6 +54,16 @@ public class FrmPromocao extends javax.swing.JFrame {
 
         lblPeao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogo/pecasXadrez/imagens/peaoBranco.png"))); // NOI18N
 
+        jLabel1.setText("==>");
+
+        btnPromover.setText("Promover");
+        btnPromover.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        btnPromover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pPormoLayout = new javax.swing.GroupLayout(pPormo);
         pPormo.setLayout(pPormoLayout);
         pPormoLayout.setHorizontalGroup(
@@ -58,16 +71,24 @@ public class FrmPromocao extends javax.swing.JFrame {
             .addGroup(pPormoLayout.createSequentialGroup()
                 .addGroup(pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pPormoLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lblTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pPormoLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(lblTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30))
+                            .addGroup(pPormoLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(lblPeao, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxPecaPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pPormoLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(lblPeao, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxPecaPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGap(112, 112, 112)
+                        .addComponent(btnPromover, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pPormoLayout.setVerticalGroup(
             pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,15 +97,23 @@ public class FrmPromocao extends javax.swing.JFrame {
                 .addGroup(pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTexto)
                     .addComponent(cbxPecaPromo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPeao, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addGroup(pPormoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(pPormoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPeao, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pPormoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(44, 44, 44)
+                        .addComponent(btnPromover)
+                        .addGap(22, 22, 22))))
         );
 
         getContentPane().add(pPormo);
-        pPormo.setBounds(0, 0, 340, 170);
+        pPormo.setBounds(0, 0, 320, 200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -109,6 +138,28 @@ public class FrmPromocao extends javax.swing.JFrame {
                 throw new AssertionError();
         }
     }//GEN-LAST:event_pPormoMouseEntered
+
+    private void btnPromoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromoverActionPerformed
+        String promocao = cbxPecaPromo.getSelectedItem().toString();
+        switch (promocao) {
+            case "Cavalo":
+                promocao = "C";
+                        break;
+            case "Torre":
+                promocao = "T";
+                        break;
+            case "Bispo":
+                promocao = "B";
+                        break;
+            case "Dama":
+                promocao = "D";
+                        break;
+            default:
+                throw new AssertionError();
+        }
+        FrmXadrez.promover(promocao);
+        this.dispose();
+    }//GEN-LAST:event_btnPromoverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +197,9 @@ public class FrmPromocao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPromover;
     private javax.swing.JComboBox<String> cbxPecaPromo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPeao;
     private javax.swing.JLabel lblPromo;
     private javax.swing.JLabel lblTexto;

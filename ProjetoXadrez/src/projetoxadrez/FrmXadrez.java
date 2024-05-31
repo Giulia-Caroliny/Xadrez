@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import jogo.Cores;
 import jogo.PartidaXadrez;
@@ -27,7 +28,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     private static JLabel[][] matrizL = new JLabel[8][8];
     private static Posicao origem = null;
     private static Posicao destino = null;
-    FrmPromocao promo = new FrmPromocao();
+    private static FrmPromocao promo = new FrmPromocao();
 
     /**
      * Creates new form FrmXadrez
@@ -37,7 +38,6 @@ public class FrmXadrez extends javax.swing.JFrame {
         atribuirPosicoes();
         imprimirTabuleiro();
         imprimirPecasCapturadas();
-        promo.setVisible(true);
     }
 
     /**
@@ -2001,7 +2001,20 @@ public class FrmXadrez extends javax.swing.JFrame {
 
                 imprimirTabuleiro();
             }
+
+            if (partida.getPromocao() != null) {
+                promo.setVisible(true);
+            }
         }
+    }
+
+    protected static void promover(String pecaPromo) {
+        while (!pecaPromo.equals("B") && !pecaPromo.equals("C") && !pecaPromo.equals("D") && !pecaPromo.equals("T")) {
+            promo.setVisible(true);
+        }
+
+        partida.trocarPecaPromovida(pecaPromo);
+        imprimirTabuleiro();
     }
 
     private static void imprimirTabuleiro() {
