@@ -42,6 +42,7 @@ public class FrmXadrez extends javax.swing.JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
         iniciarTab();
+        imprimirTabuleiro();
 
         setVisible(true);
     }
@@ -149,7 +150,7 @@ public class FrmXadrez extends javax.swing.JFrame {
         );
 
         getContentPane().add(pecasP);
-        pecasP.setBounds(600, 0, 290, 0);
+        pecasP.setBounds(600, 0, 290, 50);
 
         pecasB.setBackground(java.awt.Color.white);
 
@@ -174,7 +175,7 @@ public class FrmXadrez extends javax.swing.JFrame {
         );
 
         getContentPane().add(pecasB);
-        pecasB.setBounds(600, 325, 290, 0);
+        pecasB.setBounds(600, 325, 290, 48);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -212,13 +213,6 @@ public class FrmXadrez extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmXadrez.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -285,14 +279,28 @@ public class FrmXadrez extends javax.swing.JFrame {
         add(tab);
     }
 
-    private static void jogo(int linha, int coluna) {
-        if (origem == null) {
-            if (partida.validarAtribuicaoOrigem(new Posicao(linha, coluna))) {
+    private static void verificarPeca(int linha, int coluna) {
+        if (partida.getPecas()[linha][coluna] != null) {
+            if (partida.getPecas()[linha][coluna].getCor() == partida.getJogadorVez()) {
+
+                origem = null;
+
+                vAOrigem(linha, coluna);
+            }
+        } else {
+            vADestino(linha, coluna);
+        }
+    }
+    private static void vAOrigem(int linha, int coluna){
+        if (partida.validarAtribuicaoOrigem(new Posicao(linha, coluna))) {
                 origem = new Posicao(linha, coluna);
+                imprimirTabuleiro();
                 imprimirMovimentosPossiveis(origem.getLinha(), origem.getColuna());
             }
-        } else if (destino == null) {
-            if (partida.validarAtribuicaoDestino(origem, new Posicao(linha, coluna))) {
+    }
+    
+    private static void vADestino(int linha, int coluna){
+        if (partida.validarAtribuicaoDestino(origem, new Posicao(linha, coluna))) {
                 destino = new Posicao(linha, coluna);
                 PecasXadrez aux = partida.movimentarPeca(origem, destino);
 
@@ -310,6 +318,13 @@ public class FrmXadrez extends javax.swing.JFrame {
             if (partida.getPromocao() != null) {
                 promo.setVisible(true);
             }
+    }
+    
+    private static void jogo(int linha, int coluna) {
+        if (origem == null) {
+            vAOrigem(linha, coluna);
+        } else if (destino == null) {
+            verificarPeca(linha, coluna);
         }
     }
 
@@ -351,11 +366,19 @@ public class FrmXadrez extends javax.swing.JFrame {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (b[i][j]) {
-                    pos[i][j].setBackground(Color.red);
+                    if (partida.getJogadorVez() == Cores.BRANCAS) {
+                        pos[i][j].setBackground(new Color(175, 238, 238));
+                    } else {
+                        pos[i][j].setBackground(new Color(144, 238, 144));
+
+                    }
                     pos[i][j].setEnabled(true);
                 }
                 if (partida.getPecas()[i][j] != null) {
                     pos[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
+                    if (partida.getPecas()[i][j].getCor() == partida.getJogadorVez()) {
+                        pos[i][j].setEnabled(true);
+                    }
                 }
             }
         }
