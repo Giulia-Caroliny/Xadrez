@@ -5,21 +5,16 @@
 package projetoxadrez;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Label;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import jogo.Cores;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
@@ -66,12 +61,12 @@ public class FrmXadrez extends javax.swing.JFrame {
         tab = new javax.swing.JPanel();
         pretas = new javax.swing.JPanel();
         brancas = new javax.swing.JPanel();
-        jogadorVez = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         pecasP = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pecasB = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        text = new javax.swing.JScrollPane();
+        info = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -123,22 +118,6 @@ public class FrmXadrez extends javax.swing.JFrame {
         getContentPane().add(brancas);
         brancas.setBounds(600, 375, 290, 230);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        javax.swing.GroupLayout jogadorVezLayout = new javax.swing.GroupLayout(jogadorVez);
-        jogadorVez.setLayout(jogadorVezLayout);
-        jogadorVezLayout.setHorizontalGroup(
-            jogadorVezLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-        );
-        jogadorVezLayout.setVerticalGroup(
-            jogadorVezLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jogadorVez);
-        jogadorVez.setBounds(600, 275, 290, 50);
-
         pecasP.setBackground(java.awt.Color.lightGray);
         pecasP.setToolTipText("");
 
@@ -169,20 +148,30 @@ public class FrmXadrez extends javax.swing.JFrame {
         pecasBLayout.setHorizontalGroup(
             pecasBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pecasBLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
         pecasBLayout.setVerticalGroup(
             pecasBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pecasBLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(pecasB);
-        pecasB.setBounds(600, 325, 290, 48);
+        pecasB.setBounds(600, 333, 290, 40);
+
+        text.setBorder(null);
+        text.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        text.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        info.setEditable(false);
+        info.setBackground(new java.awt.Color(242, 242, 242));
+        info.setBorder(null);
+        info.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        text.setViewportView(info);
+
+        getContentPane().add(text);
+        text.setBounds(600, 265, 290, 70);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -232,17 +221,17 @@ public class FrmXadrez extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel brancas;
+    private static javax.swing.JTextPane info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jogadorVez;
     private javax.swing.JPanel pecasB;
     private javax.swing.JPanel pecasP;
     private javax.swing.JPanel pretas;
     private javax.swing.JPanel tab;
+    private static javax.swing.JScrollPane text;
     // End of variables declaration//GEN-END:variables
 
     private void iniciarTab() {
@@ -342,6 +331,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     }
 
     private static void vADestino(int linha, int coluna) {
+
         if (partida.validarAtribuicaoDestino(origem, new Posicao(linha, coluna))) {
             destino = new Posicao(linha, coluna);
             PecasXadrez aux = partida.movimentarPeca(origem, destino);
@@ -363,10 +353,18 @@ public class FrmXadrez extends javax.swing.JFrame {
     }
 
     private static void jogo(int linha, int coluna) {
-        if (origem == null) {
-            vAOrigem(linha, coluna);
-        } else if (destino == null) {
-            verificarPeca(linha, coluna);
+        try {
+            if (origem == null) {
+                vAOrigem(linha, coluna);
+            } else if (destino == null) {
+                verificarPeca(linha, coluna);
+            }
+        } catch (Exception e) {
+            origem = null;
+            destino = null;
+
+            info.setText(e.getMessage());
+            info.setBackground(Color.red);
         }
     }
 
@@ -401,6 +399,12 @@ public class FrmXadrez extends javax.swing.JFrame {
                 }
             }
         }
+        if (partida.getJogadorVez() == Cores.BRANCAS) {
+            info.setText("Vez das peças Brancas");
+        } else {
+            info.setText("Vez das peças Pretas");
+        }
+        info.setBackground(new Color(230, 230, 230));
     }
 
     private static void imprimirMovimentosPossiveis(int linha, int coluna) {
