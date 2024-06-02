@@ -68,8 +68,8 @@ public class FrmXadrez extends javax.swing.JFrame {
         text = new javax.swing.JScrollPane();
         info = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        novoJogo = new javax.swing.JMenu();
+        sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(900, 660));
@@ -165,7 +165,6 @@ public class FrmXadrez extends javax.swing.JFrame {
         text.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         info.setEditable(false);
-        info.setBackground(new java.awt.Color(242, 242, 242));
         info.setBorder(null);
         info.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         text.setViewportView(info);
@@ -173,16 +172,40 @@ public class FrmXadrez extends javax.swing.JFrame {
         getContentPane().add(text);
         text.setBounds(600, 265, 290, 70);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        novoJogo.setText("Novo Jogo");
+        novoJogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                novoJogoMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(novoJogo);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        sair.setText("Sair");
+        sair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sairMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(sair);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_sairMouseClicked
+
+    private void novoJogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoJogoMouseClicked
+        partida = new PartidaXadrez();
+        pecasCap = new ArrayList<PecasXadrez>();
+        origem = null;
+        destino = null;
+
+        imprimirTabuleiro();
+        imprimirPecasCapturadas();
+    }//GEN-LAST:event_novoJogoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -224,12 +247,12 @@ public class FrmXadrez extends javax.swing.JFrame {
     private static javax.swing.JTextPane info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu novoJogo;
     private javax.swing.JPanel pecasB;
     private javax.swing.JPanel pecasP;
     private javax.swing.JPanel pretas;
+    private javax.swing.JMenu sair;
     private javax.swing.JPanel tab;
     private static javax.swing.JScrollPane text;
     // End of variables declaration//GEN-END:variables
@@ -401,11 +424,14 @@ public class FrmXadrez extends javax.swing.JFrame {
                 }
             }
         }
-        if (partida.isCheck()) {
-            Posicao rei = partida.reiCheck(partida.getJogadorVez());
+        if (partida.isCheck() && !partida.isCheckmate()) {
+            Posicao rei = partida.getReis(partida.getJogadorVez()).getPosicao();
             pos[rei.getLinha()][rei.getColuna()].setBackground(Color.red);
         }
         if (partida.isCheckmate()) {
+            Posicao rei = partida.reiCheck(partida.getJogadorVez());
+            pos[rei.getLinha()][rei.getColuna()].setBackground(Color.red);
+            
             for (PecasXadrez p : partida.getPecasCheckmate()) {
                 pos[p.getPosicao().getLinha()][p.getPosicao().getColuna()].setBackground(Color.red);
             }
@@ -447,7 +473,6 @@ public class FrmXadrez extends javax.swing.JFrame {
     }
 
     private static void imprimirPecasCapturadas() {
-
         if (!pecasCap.isEmpty()) {
             List<PecasXadrez> pecasBrancas = pecasCap.stream().filter(x -> x.getCor() == Cores.BRANCAS).collect(Collectors.toList());
             List<PecasXadrez> pecasPretas = pecasCap.stream().filter(x -> x.getCor() == Cores.PRETAS).collect(Collectors.toList());
@@ -466,6 +491,7 @@ public class FrmXadrez extends javax.swing.JFrame {
                     }
                 }
             }
+
             if (!pecasPretas.isEmpty()) {
                 List<ImageIcon> pecasIcon = pecasPretas.stream().map(x -> new ImageIcon(x.toImageIcon().getImage().getScaledInstance(45, 45, 1))).collect(Collectors.toList());
 
@@ -478,6 +504,13 @@ public class FrmXadrez extends javax.swing.JFrame {
                             pos++;
                         }
                     }
+                }
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 4; j++) {
+                    capP[i][j].setIcon(null);
+                    capB[i][j].setIcon(null);
                 }
             }
         }
