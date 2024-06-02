@@ -5,16 +5,21 @@
 package projetoxadrez;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import jogo.Cores;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
@@ -28,6 +33,8 @@ public class FrmXadrez extends javax.swing.JFrame {
 
     private static PartidaXadrez partida = new PartidaXadrez();
     private static JButton[][] pos;
+    private static JLabel[][] capP;
+    private static JLabel[][] capB;
     private static List<PecasXadrez> pecasCap = new ArrayList<PecasXadrez>();
     private static Posicao origem = null;
     private static Posicao destino = null;
@@ -38,10 +45,10 @@ public class FrmXadrez extends javax.swing.JFrame {
      */
     public FrmXadrez() {
         setTitle("Xadrez");
-        //setSize(850, 650);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
         iniciarTab();
+        iniciarPecasCap();
         imprimirTabuleiro();
 
         setVisible(true);
@@ -96,11 +103,11 @@ public class FrmXadrez extends javax.swing.JFrame {
         );
         pretasLayout.setVerticalGroup(
             pretasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
 
         getContentPane().add(pretas);
-        pretas.setBounds(600, 50, 290, 225);
+        pretas.setBounds(600, 55, 290, 220);
 
         javax.swing.GroupLayout brancasLayout = new javax.swing.GroupLayout(brancas);
         brancas.setLayout(brancasLayout);
@@ -224,7 +231,7 @@ public class FrmXadrez extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel brancas;
+    private static javax.swing.JPanel brancas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -279,6 +286,38 @@ public class FrmXadrez extends javax.swing.JFrame {
         add(tab);
     }
 
+    private void iniciarPecasCap() {
+        pretas.setSize(290, 225);
+        pretas.setLayout(new GridLayout(5, 4));
+        capP = new JLabel[5][4];
+
+        brancas.setSize(290, 225);
+        brancas.setLayout(new GridLayout(5, 4));
+        capB = new JLabel[5][4];
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                JLabel icon = new JLabel();
+                icon.setPreferredSize(new Dimension(50, 56));
+
+                capP[i][j] = icon;
+                pretas.add(icon);
+            }
+        }
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                JLabel icon = new JLabel();
+                icon.setPreferredSize(new Dimension(50, 56));
+
+                capB[i][j] = icon;
+                brancas.add(icon);
+            }
+        }
+        add(pretas);
+        add(brancas);
+    }
+
     private static void verificarPeca(int linha, int coluna) {
         if (partida.getPecas()[linha][coluna] != null) {
             if (partida.getPecas()[linha][coluna].getCor() == partida.getJogadorVez()) {
@@ -286,40 +325,43 @@ public class FrmXadrez extends javax.swing.JFrame {
                 origem = null;
 
                 vAOrigem(linha, coluna);
+            } else {
+                vADestino(linha, coluna);
             }
         } else {
             vADestino(linha, coluna);
         }
     }
-    private static void vAOrigem(int linha, int coluna){
+
+    private static void vAOrigem(int linha, int coluna) {
         if (partida.validarAtribuicaoOrigem(new Posicao(linha, coluna))) {
-                origem = new Posicao(linha, coluna);
-                imprimirTabuleiro();
-                imprimirMovimentosPossiveis(origem.getLinha(), origem.getColuna());
-            }
+            origem = new Posicao(linha, coluna);
+            imprimirTabuleiro();
+            imprimirMovimentosPossiveis(origem.getLinha(), origem.getColuna());
+        }
     }
-    
-    private static void vADestino(int linha, int coluna){
+
+    private static void vADestino(int linha, int coluna) {
         if (partida.validarAtribuicaoDestino(origem, new Posicao(linha, coluna))) {
-                destino = new Posicao(linha, coluna);
-                PecasXadrez aux = partida.movimentarPeca(origem, destino);
+            destino = new Posicao(linha, coluna);
+            PecasXadrez aux = partida.movimentarPeca(origem, destino);
 
-                if (aux != null) {
-                    pecasCap.add(aux);
-                    imprimirPecasCapturadas();
-                }
-
-                origem = null;
-                destino = null;
-
-                imprimirTabuleiro();
+            if (aux != null) {
+                pecasCap.add(aux);
+                imprimirPecasCapturadas();
             }
 
-            if (partida.getPromocao() != null) {
-                promo.setVisible(true);
-            }
+            origem = null;
+            destino = null;
+
+            imprimirTabuleiro();
+        }
+
+        if (partida.getPromocao() != null) {
+            promo.setVisible(true);
+        }
     }
-    
+
     private static void jogo(int linha, int coluna) {
         if (origem == null) {
             vAOrigem(linha, coluna);
@@ -385,20 +427,40 @@ public class FrmXadrez extends javax.swing.JFrame {
     }
 
     private static void imprimirPecasCapturadas() {
+
         if (!pecasCap.isEmpty()) {
             List<PecasXadrez> pecasBrancas = pecasCap.stream().filter(x -> x.getCor() == Cores.BRANCAS).collect(Collectors.toList());
             List<PecasXadrez> pecasPretas = pecasCap.stream().filter(x -> x.getCor() == Cores.PRETAS).collect(Collectors.toList());
 
             if (!pecasBrancas.isEmpty()) {
-                //lblPecasCapB.setText("Brancas: " + pecasBrancas);
-            }
+                List<ImageIcon> pecasIcon = pecasBrancas.stream().map(x -> new ImageIcon(x.toImageIcon().getImage().getScaledInstance(45, 45, 1))).collect(Collectors.toList());
 
-            if (!pecasPretas.isEmpty()) {
-                for (PecasXadrez p : pecasPretas) {
-                    //pretas.add(new JLabel().setIcon(p.toImageIcon()));
+                int pos = 0;
+
+                for (int i = 0; i < 5; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        if (pos < pecasIcon.size()) {
+                            capB[i][j].setIcon(pecasIcon.get(pos));
+                            pos++;
+                        }
+                    }
                 }
-                //lblPecasCapP.setText("Pretas: " + pecasPretas);
+            }
+            if (!pecasPretas.isEmpty()) {
+                List<ImageIcon> pecasIcon = pecasPretas.stream().map(x -> new ImageIcon(x.toImageIcon().getImage().getScaledInstance(45, 45, 1))).collect(Collectors.toList());
+
+                int pos = 0;
+
+                for (int i = 0; i < 5; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        if (pos < pecasIcon.size()) {
+                            capP[i][j].setIcon(pecasIcon.get(pos));
+                            pos++;
+                        }
+                    }
+                }
             }
         }
     }
+
 }
