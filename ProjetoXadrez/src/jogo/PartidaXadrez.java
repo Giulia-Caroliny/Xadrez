@@ -5,7 +5,9 @@
 package jogo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import jogo.pecasXadrez.Bispo;
 import jogo.pecasXadrez.Cavalo;
@@ -34,6 +36,7 @@ public class PartidaXadrez {
 
     private List<Pecas> pecasTabuleiro = new ArrayList<Pecas>();
     private List<Pecas> pecasCapturadas = new ArrayList<Pecas>();
+    private Set<PecasXadrez> pecasCheckmate = new HashSet<PecasXadrez>();
 
     public PartidaXadrez() {
         tab = new Tabuleiro(8, 8);
@@ -66,6 +69,10 @@ public class PartidaXadrez {
         return promocao;
     }
 
+    public Set<PecasXadrez> getPecasCheckmate() {
+        return pecasCheckmate;
+    }
+
     public PecasXadrez[][] getPecas() {
         PecasXadrez[][] pecaAux = new PecasXadrez[tab.getLinhas()][tab.getColunas()];
 
@@ -76,7 +83,7 @@ public class PartidaXadrez {
         }
         return pecaAux;
     }
-    
+
     public boolean validarAtribuicaoOrigem(Posicao posOrigem) {
         validarPosicaoOrigem(posOrigem);
         return true;
@@ -338,12 +345,16 @@ public class PartidaXadrez {
         turno++;
         jogadorVez = (jogadorVez == Cores.BRANCAS) ? Cores.PRETAS : Cores.BRANCAS;
     }
+    
+    public Posicao reiCheck(Cores cor){
+        return getReis(oponente(cor)).getPosicao();
+    }
 
     private Cores oponente(Cores cor) {
         return (cor == Cores.BRANCAS) ? Cores.PRETAS : Cores.BRANCAS;
     }
 
-    private PecasXadrez getReis(Cores cor) {
+    public PecasXadrez getReis(Cores cor) {
         List<Pecas> lista = pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == cor).collect(Collectors.toList());
 
         for (Pecas p : lista) {
@@ -377,7 +388,7 @@ public class PartidaXadrez {
         if (!testeCheck(cor)) {
             return false;
         }
-
+        pecasCheckmate.clear();
         List<Pecas> lista = pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == cor).collect(Collectors.toList());
 
         for (Pecas p : lista) {
@@ -396,11 +407,29 @@ public class PartidaXadrez {
                         if (!deuRuim) {
                             return false;
                         }
+                        pecasEnvolvidas(cor);
                     }
                 }
             }
         }
         return true;
+    }
+
+    private void pecasEnvolvidas(Cores cor) {
+        List<Pecas> lista = pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == oponente(cor)).collect(Collectors.toList());
+        boolean[][] rei = getReis(cor).movimentosPossiveis();
+
+        for (Pecas p : lista) {
+            boolean[][] bol = p.movimentosPossiveis();
+
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (bol[i][j] && rei[i][j]) {
+                        pecasCheckmate.add((PecasXadrez) p);
+                    }
+                }
+            }
+        }
     }
 
     private void lugarNovaPeca(int linha, int coluna, PecasXadrez pecas) {
@@ -454,15 +483,15 @@ public class PartidaXadrez {
 
         //bispos
         lugarNovaPeca(7, 2, new Bispo(Cores.BRANCAS, tab));
-        lugarNovaPeca(7, 6, new Bispo(Cores.BRANCAS, tab));
+        lugarNovaPeca(7, 5, new Bispo(Cores.BRANCAS, tab));
         lugarNovaPeca(0, 2, new Bispo(Cores.PRETAS, tab));
-        lugarNovaPeca(0, 6, new Bispo(Cores.PRETAS, tab));
+        lugarNovaPeca(0, 5, new Bispo(Cores.PRETAS, tab));
 
         //cavalos
         lugarNovaPeca(7, 1, new Cavalo(Cores.BRANCAS, tab));
-        lugarNovaPeca(7, 5, new Cavalo(Cores.BRANCAS, tab));
+        lugarNovaPeca(7, 6, new Cavalo(Cores.BRANCAS, tab));
         lugarNovaPeca(0, 1, new Cavalo(Cores.PRETAS, tab));
-        lugarNovaPeca(0, 5, new Cavalo(Cores.PRETAS, tab));
+        lugarNovaPeca(0, 6, new Cavalo(Cores.PRETAS, tab));
 
         //damas
         lugarNovaPeca(7, 3, new Dama(Cores.BRANCAS, tab));

@@ -354,10 +354,12 @@ public class FrmXadrez extends javax.swing.JFrame {
 
     private static void jogo(int linha, int coluna) {
         try {
-            if (origem == null) {
-                vAOrigem(linha, coluna);
-            } else if (destino == null) {
-                verificarPeca(linha, coluna);
+            if (!partida.isCheckmate()) {
+                if (origem == null) {
+                    vAOrigem(linha, coluna);
+                } else if (destino == null) {
+                    verificarPeca(linha, coluna);
+                }
             }
         } catch (Exception e) {
             origem = null;
@@ -399,7 +401,21 @@ public class FrmXadrez extends javax.swing.JFrame {
                 }
             }
         }
-        if (partida.getJogadorVez() == Cores.BRANCAS) {
+        if (partida.isCheck()) {
+            Posicao rei = partida.reiCheck(partida.getJogadorVez());
+            pos[rei.getLinha()][rei.getColuna()].setBackground(Color.red);
+        }
+        if (partida.isCheckmate()) {
+            for (PecasXadrez p : partida.getPecasCheckmate()) {
+                pos[p.getPosicao().getLinha()][p.getPosicao().getColuna()].setBackground(Color.red);
+            }
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    pos[i][j].setEnabled(true);
+                }
+            }
+            info.setText("Checkmate!!!");
+        } else if (partida.getJogadorVez() == Cores.BRANCAS) {
             info.setText("Vez das peças Brancas");
         } else {
             info.setText("Vez das peças Pretas");
