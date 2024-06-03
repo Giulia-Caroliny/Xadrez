@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package projetoxadrez;
+package view;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -38,7 +38,6 @@ public class FrmPromocao extends javax.swing.JFrame {
         btnPromover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(330, 230));
         getContentPane().setLayout(null);
 
         pPormo.setPreferredSize(new java.awt.Dimension(320, 220));

@@ -4,9 +4,11 @@
  */
 package projetoxadrez;
 
+import view.FrmXadrez;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
 import jogo.PosicaoXadrez;
@@ -24,29 +26,40 @@ public class ProjetoXadrez {
      */
     public static void main(String[] args) {
 
+        String[] op = {"Terminal", "Janela"};
+        int x = JOptionPane.showOptionDialog(null, "Onde vai jogar?", "Iniciar jogo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[1]);
+
+        switch (x) {
+            case 0:
+                terminal();
+                break;
+            case 1:
+                janela();
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    private static void terminal() {
         Scanner sc = new Scanner(System.in);
         PartidaXadrez partida = new PartidaXadrez();
         List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
 
-        FrmXadrez xad = new FrmXadrez();
-        xad.setVisible(true);
-        
         while (!partida.isCheckmate()) {
             try {
-                
+
                 ViewProvisorio.imprimirPartida(partida, pecas);
                 System.out.println();
 
                 System.out.println("Coordenadas de origem:");
                 PosicaoXadrez origem = ViewProvisorio.lerPosicaoJogador(sc);
-                //Posicao origem = new Posicao(sc.nextInt(), sc.nextInt());
                 boolean[][] b = partida.movimentosPossiveisImprimir(origem);
 
                 ViewProvisorio.imprimirTabuleiro(partida.getPecas(), b);
 
                 System.out.println("Coordenadas de destino:");
                 PosicaoXadrez destino = ViewProvisorio.lerPosicaoJogador(sc);
-                //Posicao destino = new Posicao(sc.nextInt(), sc.nextInt());
                 PecasXadrez pecaCapturada = partida.movimentarPeca(origem, destino);
                 if (pecaCapturada != null) {
                     pecas.add(pecaCapturada);
@@ -71,5 +84,10 @@ public class ProjetoXadrez {
                 sc.nextLine();
             }
         }
+    }
+
+    private static void janela() {
+        FrmXadrez xad = new FrmXadrez();
+        xad.setVisible(true);
     }
 }
