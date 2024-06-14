@@ -345,8 +345,8 @@ public class PartidaXadrez {
         turno++;
         jogadorVez = (jogadorVez == Cores.BRANCAS) ? Cores.PRETAS : Cores.BRANCAS;
     }
-    
-    public Posicao reiCheck(Cores cor){
+
+    public Posicao reiCheck(Cores cor) {
         return getReis(oponente(cor)).getPosicao();
     }
 
@@ -416,18 +416,54 @@ public class PartidaXadrez {
     }
 
     private void pecasEnvolvidas(Cores cor) {
-        List<Pecas> lista = pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == oponente(cor)).collect(Collectors.toList());
-        boolean[][] rei = getReis(cor).movimentosPossiveis();
+        List<PecasXadrez> oponente = (List<PecasXadrez>) (List<?>) pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == oponente(cor)).collect(Collectors.toList());
+        List<PecasXadrez> lista = (List<PecasXadrez>) (List<?>) pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == cor).collect(Collectors.toList());
 
-        for (Pecas p : lista) {
-            boolean[][] bol = p.movimentosPossiveis();
+        boolean[][] reiMov = getReis(cor).movimentosPossiveis();
+        Posicao reiPos = getReis(cor).getPosicao();
 
-            for (int i = 0; i < 8; i++) {
-                for (int j = 0; j < 8; j++) {
-                    if (bol[i][j] && rei[i][j]) {
-                        pecasCheckmate.add((PecasXadrez) p);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (reiMov[i][j]) {
+                    Pecas aux = fazerMovimento(reiPos, new Posicao(i, j));
+
+                    for (PecasXadrez p : oponente) {
+                        if (p.getPosicao() != null) {
+                            boolean[][] bol = p.movimentosPossiveis();
+
+                            for (int k = 0; k < 8; k++) {
+                                for (int l = 0; l < 8; l++) {
+                                    if (bol[k][l] && k == i && l == j) {
+                                        pecasCheckmate.add(p);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    desfazerMovimento(reiPos, new Posicao(i, j), aux);
+                }
+            }
+        }
+
+        for (PecasXadrez pe : lista) {
+            if (pe != getReis(cor)) {
+                Posicao pos = pe.getPosicao();
+                Pecas pec = tab.removerPecas(pe.getPosicao());
+                for (PecasXadrez p : oponente) {
+                    boolean[][] bol = p.movimentosPossiveis();
+
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 8; j++) {
+                            if (bol[i][j] && reiMov[i][j]) {
+                                pecasCheckmate.add(p);
+                            }
+                            if (bol[i][j] && i == reiPos.getLinha() && j == reiPos.getColuna()) {
+                                pecasCheckmate.add(p);
+                            }
+                        }
                     }
                 }
+                tab.lugarPeca(pec, pos);
             }
         }
     }
@@ -463,23 +499,10 @@ public class PartidaXadrez {
         lugarNovaPeca(0, 4, new Rei(Cores.PRETAS, tab, this));
 
         //peões
-        lugarNovaPeca(6, 0, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 1, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 2, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 3, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 4, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 5, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 6, new Peao(Cores.BRANCAS, tab, this));
-        lugarNovaPeca(6, 7, new Peao(Cores.BRANCAS, tab, this));
-
-        lugarNovaPeca(1, 0, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 1, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 2, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 3, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 4, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 5, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 6, new Peao(Cores.PRETAS, tab, this));
-        lugarNovaPeca(1, 7, new Peao(Cores.PRETAS, tab, this));
+        for (int i = 0; i < 8; i++) {
+            lugarNovaPeca(6, i, new Peao(Cores.BRANCAS, tab, this));
+            lugarNovaPeca(1, i, new Peao(Cores.PRETAS, tab, this));
+        }
 
         //bispos
         lugarNovaPeca(7, 2, new Bispo(Cores.BRANCAS, tab));
@@ -494,8 +517,7 @@ public class PartidaXadrez {
         lugarNovaPeca(0, 6, new Cavalo(Cores.PRETAS, tab));
 
         //damas
-        lugarNovaPeca(7, 3, new Dama(Cores.BRANCAS, tab));
         lugarNovaPeca(0, 3, new Dama(Cores.PRETAS, tab));
+        lugarNovaPeca(7, 3, new Dama(Cores.BRANCAS, tab));
     }
-
 }

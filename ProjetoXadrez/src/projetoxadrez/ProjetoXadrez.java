@@ -4,6 +4,7 @@
  */
 package projetoxadrez;
 
+import view.ViewProvisorio;
 import view.FrmXadrez;
 import java.util.ArrayList;
 import java.util.List;
