@@ -416,58 +416,69 @@ public class PartidaXadrez {
     }
 
     private void pecasEnvolvidas(Cores cor) {
-        List<PecasXadrez> oponente = (List<PecasXadrez>) (List<?>) pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == oponente(cor)).collect(Collectors.toList());
-        List<PecasXadrez> lista = (List<PecasXadrez>) (List<?>) pecasTabuleiro.stream().filter(x -> ((PecasXadrez) x).getCor() == cor).collect(Collectors.toList());
+        List<PecasXadrez> oponente = pecasTabuleiro.stream()
+                .filter(x -> x instanceof PecasXadrez && ((PecasXadrez) x).getCor() == oponente(cor))
+                .map(x -> (PecasXadrez) x)
+                .collect(Collectors.toList());
+
+        List<PecasXadrez> lista = pecasTabuleiro.stream()
+                .filter(x -> x instanceof PecasXadrez && ((PecasXadrez) x).getCor() == cor)
+                .map(x -> (PecasXadrez) x)
+                .collect(Collectors.toList());
 
         boolean[][] reiMov = getReis(cor).movimentosPossiveis();
         Posicao reiPos = getReis(cor).getPosicao();
 
+        verificarMovimentosRei(oponente, reiMov, reiPos);
+        verificarMovimentosPecas(lista, reiMov, reiPos, oponente, cor);
+    }
+
+    private void verificarMovimentosRei(List<PecasXadrez> oponente, boolean[][] reiMov, Posicao reiPos) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (reiMov[i][j]) {
                     Pecas aux = fazerMovimento(reiPos, new Posicao(i, j));
-
-                    for (PecasXadrez p : oponente) {
-                        if (p.getPosicao() != null) {
-                            boolean[][] bol = p.movimentosPossiveis();
-
-                            for (int k = 0; k < 8; k++) {
-                                for (int l = 0; l < 8; l++) {
-                                    if (bol[k][l] && k == i && l == j) {
-                                        pecasCheckmate.add(p);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    verificarAmeacas(oponente, new Posicao(i, j));
                     desfazerMovimento(reiPos, new Posicao(i, j), aux);
                 }
             }
         }
+    }
 
+    private void verificarMovimentosPecas(List<PecasXadrez> lista, boolean[][] reiMov, Posicao reiPos, List<PecasXadrez> oponente, Cores cor) {
         for (PecasXadrez pe : lista) {
-            if (pe != getReis(cor)) {
+            if (!(pe instanceof Rei)) {
                 Posicao pos = pe.getPosicao();
                 Pecas pec = tab.removerPecas(pe.getPosicao());
-                for (PecasXadrez p : oponente) {
-                    boolean[][] bol = p.movimentosPossiveis();
-
-                    for (int i = 0; i < 8; i++) {
-                        for (int j = 0; j < 8; j++) {
-                            if (bol[i][j] && reiMov[i][j]) {
-                                pecasCheckmate.add(p);
-                            }
-                            if (bol[i][j] && i == reiPos.getLinha() && j == reiPos.getColuna()) {
-                                pecasCheckmate.add(p);
-                            }
-                        }
-                    }
-                }
+                verificarAmeacas(oponente, reiMov, reiPos);
                 tab.lugarPeca(pec, pos);
             }
         }
     }
 
+    private void verificarAmeacas(List<PecasXadrez> oponente, Posicao pos) {
+        for (PecasXadrez p : oponente) {
+            if (p.getPosicao() != null) {
+                boolean[][] bol = p.movimentosPossiveis();
+                if (bol[pos.getLinha()][pos.getColuna()]) {
+                    pecasCheckmate.add(p);
+                }
+            }
+        }
+    }
+
+    private void verificarAmeacas(List<PecasXadrez> oponente, boolean[][] reiMov, Posicao reiPos) {
+        for (PecasXadrez p : oponente) {
+            boolean[][] bol = p.movimentosPossiveis();
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (bol[i][j] && (reiMov[i][j] || (i == reiPos.getLinha() && j == reiPos.getColuna()))) {
+                        pecasCheckmate.add(p);
+                    }
+                }
+            }
+        }
+    }
     private void lugarNovaPeca(int linha, int coluna, PecasXadrez pecas) {
         tab.lugarPeca(pecas, new Posicao(linha, coluna));
         pecasTabuleiro.add(pecas);
