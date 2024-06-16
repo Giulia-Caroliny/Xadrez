@@ -403,6 +403,13 @@ public class FrmXadrez extends javax.swing.JFrame {
     }
 
     private static void imprimirTabuleiro() {
+        atualizarCoresDoTabuleiro();
+        atualizarIconesEDisponibilidadeDasPecas();
+        atualizarInformacoesDoJogo();
+        destacarCheckECheckmate();
+    }
+
+    private static void atualizarCoresDoTabuleiro() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if ((i + j) % 2 == 0) {
@@ -410,41 +417,52 @@ public class FrmXadrez extends javax.swing.JFrame {
                 } else {
                     pos[i][j].setBackground(Color.GRAY);
                 }
+            }
+        }
+    }
 
+    private static void atualizarIconesEDisponibilidadeDasPecas() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (partida.getPecas()[i][j] != null) {
-                    if (partida.getJogadorVez() != partida.getPecas()[i][j].getCor()) {
-                        pos[i][j].setEnabled(false);
-                    } else {
-                        pos[i][j].setEnabled(true);
-                    }
                     pos[i][j].setIcon(partida.getPecas()[i][j].toImageIcon());
+                    pos[i][j].setEnabled(partida.getJogadorVez() == partida.getPecas()[i][j].getCor());
                 } else {
                     pos[i][j].setIcon(null);
                     pos[i][j].setEnabled(false);
                 }
             }
         }
+    }
+
+    private static void destacarCheckECheckmate() {
         if (partida.isCheck() && !partida.isCheckmate()) {
             Posicao rei = partida.getReis(partida.getJogadorVez()).getPosicao();
-            pos[rei.getLinha()][rei.getColuna()].setBackground(Color.red);
-        }
-        if (partida.isCheckmate()) {
+            pos[rei.getLinha()][rei.getColuna()].setBackground(Color.RED);
+        } else if (partida.isCheckmate()) {
             Posicao rei = partida.reiCheck(partida.getJogadorVez());
-            pos[rei.getLinha()][rei.getColuna()].setBackground(Color.red);
-            
+            pos[rei.getLinha()][rei.getColuna()].setBackground(Color.RED);
+
             for (PecasXadrez p : partida.getPecasCheckmate()) {
-                pos[p.getPosicao().getLinha()][p.getPosicao().getColuna()].setBackground(Color.red);
+                pos[p.getPosicao().getLinha()][p.getPosicao().getColuna()].setBackground(Color.RED);
             }
+
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
-                    pos[i][j].setEnabled(true);
+                    pos[i][j].setEnabled(false);
                 }
             }
             info.setText("Checkmate!!!");
-        } else if (partida.getJogadorVez() == Cores.BRANCAS) {
-            info.setText("Vez das peças Brancas");
-        } else {
-            info.setText("Vez das peças Pretas");
+        }
+    }
+
+    private static void atualizarInformacoesDoJogo() {
+        if (!partida.isCheckmate()) {
+            if (partida.getJogadorVez() == Cores.BRANCAS) {
+                info.setText("Vez das peças Brancas");
+            } else {
+                info.setText("Vez das peças Pretas");
+            }
         }
         info.setBackground(new Color(230, 230, 230));
     }
