@@ -38,6 +38,8 @@ public class FrmPromocao extends javax.swing.JFrame {
         btnPromover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(330, 230));
+        setSize(new java.awt.Dimension(330, 230));
         getContentPane().setLayout(null);
 
         pPormo.setPreferredSize(new java.awt.Dimension(320, 220));

@@ -449,7 +449,7 @@ public class FrmXadrez extends javax.swing.JFrame {
 
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
-                    pos[i][j].setEnabled(false);
+                    pos[i][j].setEnabled(true);
                 }
             }
             info.setText("Checkmate!!!");

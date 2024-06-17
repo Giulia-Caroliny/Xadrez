@@ -16,10 +16,25 @@ import tabuleiro.Tabuleiro;
  */
 public class Torre extends PecasXadrez {
 
+    /**
+     * Construtor - Parâmetros: Cores e Tabuleiro
+     *
+     * @param cor Cores - cor da peça
+     * @param tab Tabuleiro - linhas, colunas e matriz de peças posicionadas no
+     * tabuleiro
+     */
     public Torre(Cores cor, Tabuleiro tab) {
         super(cor, tab);
     }
 
+    /**
+     * Método sobrescrito para descobrir os movimentos possíveis de uma peça.
+     * Avalia todos os movimentos da peça e as posições resultantes do
+     * movimento.
+     *
+     * @return boolean[][] - matriz de booleanos, true na posição resultante de
+     * algum de seus movimentos, false, se não há movimento que chegue à posição
+     */
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
@@ -69,7 +84,8 @@ public class Torre extends PecasXadrez {
     }
 
     /**
-     * Icon = Torre B -
+     * Método sobrescrito - localizar e retornar o Icone referente a peça Icon =
+     * Torre B -
      * <a href="https://www.flaticon.com/br/icones-gratis/xadrez" >Xadrez ícones
      * criados por Freepik - Flaticon</a>
      * Torre P -
@@ -80,10 +96,22 @@ public class Torre extends PecasXadrez {
      */
     @Override
     public ImageIcon toImageIcon() {
-        if (super.getCor() == Cores.BRANCAS) {
-            return new ImageIcon(this.getClass().getResource(".\\imagens\\torreBranca.png"));
-        } else {
-            return new ImageIcon(this.getClass().getResource(".\\imagens\\torrePreta.png"));
+        try {
+            if (super.getCor() == Cores.BRANCAS) {
+                return new ImageIcon(this.getClass().getResource(".\\imagens\\torreBranca.png"));
+            } else {
+                return new ImageIcon(this.getClass().getResource(".\\imagens\\torrePreta.png"));
+            }
+        } catch (Exception a) {
+            try {
+                if (super.getCor() == Cores.BRANCAS) {
+                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\torreBranca.png");
+                } else {
+                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\torrePreta.png");
+                }
+            } catch (Exception e) {
+                return null;
+            }
         }
     }
 

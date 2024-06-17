@@ -19,21 +19,55 @@ public class Rei extends PecasXadrez {
 
     private PartidaXadrez partida;
 
+    /**
+     * Construtor - Parâmetros: Cores, Tabuleiro e PartidaXadrez
+     *
+     * @param cor Cores - cor da peça
+     * @param tab Tabuleiro - linhas, colunas e matriz de peças posicionadas no
+     * tabuleiro
+     * @param partida PartidaXadrez - partida de xadrez atual
+     */
     public Rei(Cores cor, Tabuleiro tab, PartidaXadrez partida) {
         super(cor, tab);
         this.partida = partida;
     }
 
+    /**
+     * Método para verificar se a peça pode mover para a posição informada.
+     * Verifica se não há peça na posição informada ou, caso tenha peça, se a
+     * peça é do oponente.
+     *
+     * @param pos Posicao - posição a ser verificada, posição de destino da peça
+     * @return boolean - true or false, se a peça pode se mover ou não para a
+     * posição informada, respectivamente
+     */
     public boolean podeMover(Posicao pos) {
         PecasXadrez pe = (PecasXadrez) getTab().peca(pos);
         return pe == null || pe.getCor() != getCor();
     }
 
+    /**
+     * Método para verificar se o rei e a torre estão aptos a realizar o
+     * movimento de Roque. Verifica se as peças estão posicionadas no lugar, as
+     * peças são instancias, são aliadas e a contagem de movimentos é 0.
+     *
+     * @param pos Posicao - posição de destino do movimento de Roque
+     * @return boolean - true or false, se está apto ou não a realizar o
+     * movimento de Roque, respectivamente
+     */
     public boolean testeTorreRoque(Posicao pos) {
         PecasXadrez p = (PecasXadrez) getTab().peca(pos);
         return p != null && p instanceof Torre && p.getCor() == getCor() && p.getContagemMovimentos() == 0;
     }
 
+    /**
+     * Método sobrescrito para descobrir os movimentos possíveis de uma peça.
+     * Avalia todos os movimentos da peça e as posições resultantes do
+     * movimento.
+     *
+     * @return boolean[][] - matriz de booleanos, true na posição resultante de
+     * algum de seus movimentos, false, se não há movimento que chegue à posição
+     */
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
@@ -113,7 +147,8 @@ public class Rei extends PecasXadrez {
     }
 
     /**
-     * Icon = Rei B -
+     * Método sobrescrito - localizar e retornar o Icone referente a peça Icon =
+     * Rei B -
      * <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez ícones
      * criados por smalllikeart - Flaticon</a>
      * Rei P -
@@ -124,10 +159,22 @@ public class Rei extends PecasXadrez {
      */
     @Override
     public ImageIcon toImageIcon() {
-        if (super.getCor() == Cores.BRANCAS) {
-            return new ImageIcon(this.getClass().getResource(".\\imagens\\reiBranco.png"));
-        } else {
-            return new ImageIcon(this.getClass().getResource(".\\imagens\\reiPreto.png"));
+        try {
+            if (super.getCor() == Cores.BRANCAS) {
+                return new ImageIcon(this.getClass().getResource(".\\imagens\\reiBranco.png"));
+            } else {
+                return new ImageIcon(this.getClass().getResource(".\\imagens\\reiPreto.png"));
+            }
+        } catch (Exception a) {
+            try {
+                if (super.getCor() == Cores.BRANCAS) {
+                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\reiBranco.png");
+                } else {
+                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\reiPreto.png");
+                }
+            } catch (Exception e) {
+                return null;
+            }
         }
     }
 

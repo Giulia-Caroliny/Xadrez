@@ -16,10 +16,25 @@ import tabuleiro.Tabuleiro;
  */
 public class Bispo extends PecasXadrez {
 
+    /**
+     * Construtor - Parâmetros: Cores e Tabuleiro
+     *
+     * @param cor Cores - cor da peça
+     * @param tab Tabuleiro - linhas, colunas e matriz de peças posicionadas no
+     * tabuleiro
+     */
     public Bispo(Cores cor, Tabuleiro tab) {
         super(cor, tab);
     }
 
+    /**
+     * Método sobrescrito para descobrir os movimentos possíveis de uma peça.
+     * Avalia todos os movimentos da peça e as posições resultantes do
+     * movimento.
+     *
+     * @return boolean[][] - matriz de booleanos, true na posição resultante de
+     * algum de seus movimentos, false, se não há movimento que chegue à posição
+     */
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
@@ -75,17 +90,30 @@ public class Bispo extends PecasXadrez {
     }
 
     /**
-     * Icon - <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez
-     * ícones criados por smalllikeart - Flaticon</a>
+     * Método sobrescrito - localizar e retornar o Icone referente a peça Icon -
+     * <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez ícones
+     * criados por smalllikeart - Flaticon</a>
      *
      * @return ImageIcon - icone da peça
      */
     @Override
     public ImageIcon toImageIcon() {
-        if (super.getCor() == Cores.BRANCAS) {
-            return new ImageIcon(this.getClass().getResource(".\\imagens\\bispoBranco.png"));
-        } else {
-            return new ImageIcon(this.getClass().getResource(".\\imagens\\bispoPreto.png"));
+        try {
+            if (super.getCor() == Cores.BRANCAS) {
+                return new ImageIcon(this.getClass().getResource(".\\imagens\\bispoBranco.png"));
+            } else {
+                return new ImageIcon(this.getClass().getResource(".\\imagens\\bispoPreto.png"));
+            }
+        } catch (Exception a) {
+            try {
+                if (super.getCor() == Cores.BRANCAS) {
+                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\bispoBranco.png");
+                } else {
+                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\bispoPreto.png");
+                }
+            } catch (Exception e) {
+                return null;
+            }
         }
     }
 

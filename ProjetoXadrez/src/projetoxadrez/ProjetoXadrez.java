@@ -37,8 +37,6 @@ public class ProjetoXadrez {
             case 1:
                 janela();
                 break;
-            default:
-                throw new AssertionError();
         }
     }
 
@@ -49,7 +47,6 @@ public class ProjetoXadrez {
 
         while (!partida.isCheckmate()) {
             try {
-
                 ViewProvisorio.imprimirPartida(partida, pecas);
                 System.out.println();
 
