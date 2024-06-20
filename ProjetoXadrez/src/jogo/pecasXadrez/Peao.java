@@ -4,6 +4,9 @@
  */
 package jogo.pecasXadrez;
 
+import java.io.File;
+import java.net.URL;
+import java.nio.file.NoSuchFileException;
 import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PartidaXadrez;
@@ -125,6 +128,27 @@ public class Peao extends PecasXadrez {
     }
 
     /**
+     * Método para carregar o Icone. 
+     * @param caminhoRelativo String - caminho relativo do png da peça
+     * @return ImageIcon - icone da peça
+     * @throws NoSuchFileException - Arquivo não encontrado
+     */
+    private ImageIcon carregarIcone(String caminhoRelativo) throws NoSuchFileException {
+        URL url = this.getClass().getResource(caminhoRelativo);
+        if (url != null) {
+            return new ImageIcon(url);
+        } else {
+            String filePath = "..\\src\\jogo\\pecasXadrez\\" + caminhoRelativo;
+            File file = new File(filePath);
+            if (file.exists()) {
+                return new ImageIcon(filePath);
+            } else {
+                throw new NoSuchFileException("Icone não encontrado.");
+            }
+        }
+    }
+    
+    /**
      * Método sobrescrito - localizar e retornar o Icone referente a peça Icon =
      * Peao B -
      * <a href="https://www.flaticon.com/br/icones-gratis/xadrez" >Xadrez ícones
@@ -139,20 +163,12 @@ public class Peao extends PecasXadrez {
     public ImageIcon toImageIcon() {
         try {
             if (super.getCor() == Cores.BRANCAS) {
-                return new ImageIcon(this.getClass().getResource(".\\imagens\\peaoBranco.png"));
+                return carregarIcone("imagens\\peaoBranco.png");
             } else {
-                return new ImageIcon(this.getClass().getResource(".\\imagens\\peaoPreto.png"));
+                return carregarIcone("imagens\\peaoPreto.png");
             }
-        } catch (Exception a) {
-            try {
-                if (super.getCor() == Cores.BRANCAS) {
-                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\peaoBranco.png");
-                } else {
-                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\peaoPreto.png");
-                }
-            } catch (Exception e) {
-                return null;
-            }
+        } catch (NoSuchFileException ex) {
+            throw new RuntimeException(ex.getMessage());
         }
     }
 
