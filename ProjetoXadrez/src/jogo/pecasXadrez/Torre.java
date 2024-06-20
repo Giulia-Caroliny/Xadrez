@@ -4,6 +4,11 @@
  */
 package jogo.pecasXadrez;
 
+import java.io.File;
+import java.net.URL;
+import java.nio.file.NoSuchFileException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PecasXadrez;
@@ -84,8 +89,29 @@ public class Torre extends PecasXadrez {
     }
 
     /**
-     * Método sobrescrito - localizar e retornar o Icone referente a peça Icon =
-     * Torre B -
+     * Método para carregar o Icone. 
+     * @param caminhoRelativo String - caminho relativo do png da peça
+     * @return ImageIcon - icone da peça
+     * @throws NoSuchFileException - Arquivo não encontrado
+     */
+    private ImageIcon carregarIcone(String caminhoRelativo) throws NoSuchFileException {
+        URL url = this.getClass().getResource(caminhoRelativo);
+        if (url != null) {
+            return new ImageIcon(url);
+        } else {
+            String filePath = "..\\src\\jogo\\pecasXadrez\\" + caminhoRelativo;
+            File file = new File(filePath);
+            if (file.exists()) {
+                return new ImageIcon(filePath);
+            } else {
+                throw new NoSuchFileException("Icone não encontrado.");
+            }
+        }
+    }
+
+    /**
+     * Método sobrescrito - discernir cor e retornar o Icone referente a peça.
+     * Icon = Torre B -
      * <a href="https://www.flaticon.com/br/icones-gratis/xadrez" >Xadrez ícones
      * criados por Freepik - Flaticon</a>
      * Torre P -
@@ -98,20 +124,12 @@ public class Torre extends PecasXadrez {
     public ImageIcon toImageIcon() {
         try {
             if (super.getCor() == Cores.BRANCAS) {
-                return new ImageIcon(this.getClass().getResource(".\\imagens\\torreBranca.png"));
+                return carregarIcone("imagens\\torreBranca.png");
             } else {
-                return new ImageIcon(this.getClass().getResource(".\\imagens\\torrePreta.png"));
+                return carregarIcone("imagens\\torrePreta.png");
             }
-        } catch (Exception a) {
-            try {
-                if (super.getCor() == Cores.BRANCAS) {
-                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\torreBranca.png");
-                } else {
-                    return new ImageIcon("..\\src\\jogo\\pecasXadrez\\imagens\\torrePreta.png");
-                }
-            } catch (Exception e) {
-                return null;
-            }
+        } catch (NoSuchFileException ex) {
+            throw new RuntimeException(ex.getMessage());
         }
     }
 

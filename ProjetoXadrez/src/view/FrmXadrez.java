@@ -271,10 +271,14 @@ public class FrmXadrez extends javax.swing.JFrame {
                 } else {
                     button.setBackground(Color.GRAY);
                 }
-
-                if (partida.getPecas()[i][j] != null) {
-                    button.setIcon(partida.getPecas()[i][j].toImageIcon());
+                try {
+                    if (partida.getPecas()[i][j] != null) {
+                        button.setIcon(partida.getPecas()[i][j].toImageIcon());
+                    }
+                } catch (RuntimeException e) {
+                    throw new RuntimeException("Erro ao iniciar tabuleiro: " + e.getMessage());
                 }
+
                 button.setName("pos-" + i + "-" + j);
 
                 button.addActionListener(new ActionListener() {
@@ -388,7 +392,7 @@ public class FrmXadrez extends javax.swing.JFrame {
             origem = null;
             destino = null;
 
-            info.setText(e.getMessage());
+            info.setText("Erro em atualizar partida: " + e.getMessage());
             info.setBackground(Color.red);
         }
     }

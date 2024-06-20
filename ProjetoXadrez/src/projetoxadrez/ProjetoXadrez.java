@@ -85,7 +85,12 @@ public class ProjetoXadrez {
     }
 
     private static void janela() {
-        FrmXadrez xad = new FrmXadrez();
-        xad.setVisible(true);
+        try {
+            FrmXadrez xad = new FrmXadrez();
+            xad.setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        }
     }
 }
