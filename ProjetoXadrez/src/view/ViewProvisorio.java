@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -37,6 +38,7 @@ public class ViewProvisorio {
     }
 
     public static void imprimirPartida(PartidaXadrez partida, List<PecasXadrez> pecas) {
+        limparTerminal();
         imprimirTabuleiro(partida.getPecas());
         System.out.println("");
         System.out.println("Turno: " + partida.getTurno());
@@ -90,7 +92,7 @@ public class ViewProvisorio {
             System.out.print(" ");
         } else {
             if (peca.getCor() == Cores.BRANCAS) {
-                System.out.print(ANSI_PURPLE+ peca + ANSI_RESET);
+                System.out.print(ANSI_PURPLE + peca + ANSI_RESET);
             } else {
                 System.out.print(ANSI_BLUE + peca + ANSI_RESET);
             }
@@ -105,5 +107,16 @@ public class ViewProvisorio {
         System.out.println("Peças capturadas: ");
         System.out.println("Brancas: " + pecasBrancas);
         System.out.println("Pretas: " + pecasPretas);
+    }
+
+    private static void limparTerminal(){
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (InterruptedException | IOException e) {
+        }
     }
 }

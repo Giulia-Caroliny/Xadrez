@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-import jogo.PartidaXadrez;
+import jogo.partidaXadrez.PartidaTerminal;
 import jogo.PecasXadrez;
 import jogo.PosicaoXadrez;
 import tabuleiro.TabuleiroException;
@@ -42,7 +42,7 @@ public class ProjetoXadrez {
 
     private static void terminal() {
         Scanner sc = new Scanner(System.in);
-        PartidaXadrez partida = new PartidaXadrez();
+        PartidaTerminal partida = new PartidaTerminal();
         List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
 
         while (!partida.isCheckmate()) {
@@ -82,6 +82,7 @@ public class ProjetoXadrez {
                 sc.nextLine();
             }
         }
+        ViewProvisorio.imprimirPartida(partida, pecas);
     }
 
     private static void janela() {

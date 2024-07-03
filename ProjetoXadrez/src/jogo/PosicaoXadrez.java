@@ -10,9 +10,7 @@ import tabuleiro.XadrezException;
 /**
  *
  * @author giuli
- * @deprecated 
  */
-@Deprecated
 public class PosicaoXadrez {
 
     private int linha;
@@ -34,11 +32,11 @@ public class PosicaoXadrez {
         return coluna;
     }
 
-    protected Posicao posicaoTabuleiro() {
+    public Posicao posicaoTabuleiro() {
         return new Posicao(8 - linha, coluna - 'a');
     }
 
-    protected static PosicaoXadrez posicaoXadrez(Posicao pos) {
+    public static PosicaoXadrez posicaoXadrez(Posicao pos) {
         return new PosicaoXadrez(8 - pos.getLinha(), (char) ('a' + pos.getColuna()));
     }
 

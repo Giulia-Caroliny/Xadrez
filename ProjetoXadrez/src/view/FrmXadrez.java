@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import jogo.Cores;
-import jogo.PartidaXadrez;
+import jogo.partidaXadrez.PartidaJanela;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
 
@@ -26,7 +26,7 @@ import tabuleiro.Posicao;
  */
 public class FrmXadrez extends javax.swing.JFrame {
 
-    private static PartidaXadrez partida = new PartidaXadrez();
+    private static PartidaJanela partida = new PartidaJanela();
     private static JButton[][] pos;
     private static JLabel[][] capP;
     private static JLabel[][] capB;
@@ -195,10 +195,11 @@ public class FrmXadrez extends javax.swing.JFrame {
 
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
         this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_sairMouseClicked
 
     private void novoJogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoJogoMouseClicked
-        partida = new PartidaXadrez();
+        partida = new PartidaJanela();
         pecasCap = new ArrayList<PecasXadrez>();
         origem = null;
         destino = null;
@@ -361,6 +362,7 @@ public class FrmXadrez extends javax.swing.JFrame {
 
         if (partida.validarAtribuicaoDestino(origem, new Posicao(linha, coluna))) {
             destino = new Posicao(linha, coluna);
+            partida.limparSetCheckmate();
             PecasXadrez aux = partida.movimentarPeca(origem, destino);
 
             if (aux != null) {
