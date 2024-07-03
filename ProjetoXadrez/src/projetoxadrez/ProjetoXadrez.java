@@ -4,9 +4,12 @@
  */
 package projetoxadrez;
 
+import view.ViewProvisorio;
+import view.FrmXadrez;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import jogo.PartidaXadrez;
 import jogo.PecasXadrez;
 import jogo.PosicaoXadrez;
@@ -24,27 +27,38 @@ public class ProjetoXadrez {
      */
     public static void main(String[] args) {
 
+        String[] op = {"Terminal", "Janela"};
+        int x = JOptionPane.showOptionDialog(null, "Onde vai jogar?", "Iniciar jogo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[1]);
+
+        switch (x) {
+            case 0:
+                terminal();
+                break;
+            case 1:
+                janela();
+                break;
+        }
+    }
+
+    private static void terminal() {
         Scanner sc = new Scanner(System.in);
         PartidaXadrez partida = new PartidaXadrez();
         List<PecasXadrez> pecas = new ArrayList<PecasXadrez>();
 
         while (!partida.isCheckmate()) {
             try {
-
                 ViewProvisorio.imprimirPartida(partida, pecas);
                 System.out.println();
 
                 System.out.println("Coordenadas de origem:");
                 PosicaoXadrez origem = ViewProvisorio.lerPosicaoJogador(sc);
-
-                boolean[][] b = partida.movimentosPossiveisImprimir(origem);
+                boolean[][] b = partida.movimentosPossiveisImprimir(origem.posicaoTabuleiro());
 
                 ViewProvisorio.imprimirTabuleiro(partida.getPecas(), b);
 
                 System.out.println("Coordenadas de destino:");
                 PosicaoXadrez destino = ViewProvisorio.lerPosicaoJogador(sc);
-
-                PecasXadrez pecaCapturada = partida.movimentarPeca(origem, destino);
+                PecasXadrez pecaCapturada = partida.movimentarPecaTerminal(origem, destino);
                 if (pecaCapturada != null) {
                     pecas.add(pecaCapturada);
                 }
@@ -67,6 +81,16 @@ public class ProjetoXadrez {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
+        }
+    }
+
+    private static void janela() {
+        try {
+            FrmXadrez xad = new FrmXadrez();
+            xad.setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
         }
     }
 }

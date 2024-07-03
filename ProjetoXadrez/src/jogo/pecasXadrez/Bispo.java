@@ -4,6 +4,10 @@
  */
 package jogo.pecasXadrez;
 
+import java.io.File;
+import java.net.URL;
+import java.nio.file.NoSuchFileException;
+import javax.swing.ImageIcon;
 import jogo.Cores;
 import jogo.PecasXadrez;
 import tabuleiro.Posicao;
@@ -15,10 +19,25 @@ import tabuleiro.Tabuleiro;
  */
 public class Bispo extends PecasXadrez {
 
+    /**
+     * Construtor - Parâmetros: Cores e Tabuleiro
+     *
+     * @param cor Cores - cor da peça
+     * @param tab Tabuleiro - linhas, colunas e matriz de peças posicionadas no
+     * tabuleiro
+     */
     public Bispo(Cores cor, Tabuleiro tab) {
         super(cor, tab);
     }
 
+    /**
+     * Método sobrescrito para descobrir os movimentos possíveis de uma peça.
+     * Avalia todos os movimentos da peça e as posições resultantes do
+     * movimento.
+     *
+     * @return boolean[][] - matriz de booleanos, true na posição resultante de
+     * algum de seus movimentos, false, se não há movimento que chegue à posição
+     */
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] b = new boolean[getTab().getLinhas()][getTab().getColunas()];
@@ -71,6 +90,48 @@ public class Bispo extends PecasXadrez {
         }
 
         return b;
+    }
+
+    /**
+     * Método para carregar o Icone.
+     *
+     * @param caminhoRelativo String - caminho relativo do png da peça
+     * @return ImageIcon - icone da peça
+     * @throws NoSuchFileException - Arquivo não encontrado
+     */
+    private ImageIcon carregarIcone(String caminhoRelativo) throws NoSuchFileException {
+        URL url = this.getClass().getResource(caminhoRelativo);
+        if (url != null) {
+            return new ImageIcon(url);
+        } else {
+            String filePath = "..\\src\\jogo\\pecasXadrez\\" + caminhoRelativo;
+            File file = new File(filePath);
+            if (file.exists()) {
+                return new ImageIcon(filePath);
+            } else {
+                throw new NoSuchFileException("Icone não encontrado.");
+            }
+        }
+    }
+
+    /**
+     * Método sobrescrito - localizar e retornar o Icone referente a peça Icon -
+     * <a href="https://www.flaticon.com/br/icones-gratis/xadrez">Xadrez ícones
+     * criados por smalllikeart - Flaticon</a>
+     *
+     * @return ImageIcon - icone da peça
+     */
+    @Override
+    public ImageIcon toImageIcon() {
+        try {
+            if (super.getCor() == Cores.BRANCAS) {
+                return carregarIcone("imagens\\bispoBranco.png");
+            } else {
+                return carregarIcone("imagens\\bispoPreto.png");
+            }
+        } catch (NoSuchFileException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
     }
 
     @Override
